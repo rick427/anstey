@@ -168,11 +168,11 @@ export const StyledSection = styled.section`
                         }
 
                         .alt{
-                            background: ${colors.blue};
+                            background: ${colors.orange};
                             transition: all 200ms;
 
                             :hover{
-                                background: ${colors.blue2};
+                                background: ${colors.orange2};
                                 transform: translateY(-2px);
                             }
                         }

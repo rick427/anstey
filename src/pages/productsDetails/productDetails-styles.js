@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import colors from '../../utils/colors';
 
 export const StyledSection = styled.section`
-  width: 95%;
+  width: 97%;
   background: ${colors.white};
 
     /* start of @: main */

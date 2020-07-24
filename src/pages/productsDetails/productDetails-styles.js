@@ -70,21 +70,9 @@ export const StyledSection = styled.section`
             display: grid;
             gap: 1em;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            grid-auto-rows: 400px;
+            grid-auto-rows: 420px;
 
             .product-card{
-                border: 1px solid grey;
-
-                /* @media screen and (min-width: 600px){
-                    &.wide{
-                        grid-column: span 1 / auto;
-                    }
-
-                    &.w-40{
-                        width: 45rem;
-                    }
-                } */
-
                 &.flex{
                     display: flex;
                     justify-content: center;
@@ -100,6 +88,7 @@ export const StyledSection = styled.section`
 
                 &.details{
                     padding: 2rem;
+                    border: 1px solid ${colors.grey3};
 
                     .title{
                         text-transform: capitalize;
@@ -138,22 +127,140 @@ export const StyledSection = styled.section`
                         font-size: 2rem;
                         font-weight: 600;
                         color: ${colors.grey2};
-                        margin-top: 1rem;
+                        margin-top: 1.5rem;
                         letter-spacing: .5px;
                     }
 
                     .description{
-                        width: 75%;
+                        width: 100%;
                         font-size: 1.4rem;
                         font-style: italic;
                         color: ${colors.grey};
                         letter-spacing: .5px;
                         margin-top: 2rem;
                     }
+
+                    .picker{
+                        width: 12rem;
+                        height: 2rem;
+                        padding: 1rem;
+                        border: 1px solid ${colors.grey3};
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        font-size: 1.4rem;
+                        color: ${colors.grey2};
+                        margin: 2rem 0;
+
+                        button{
+                            width: 1.5rem;
+                            height: 1.5rem;
+                            cursor: pointer;
+                            padding: .5rem;
+                            border: none;
+                            border-radius: 50px;
+                            outline: none;
+                            background: none;
+
+
+                            :hover{
+                                background: ${colors.grey3};
+                            }
+                        }
+
+                        p{
+                            font-weight: 600;
+                            cursor: pointer;
+                        }
+                    }
+
+                    .actions{
+                        width: 60%;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items:  center;
+
+                        button{
+                            width: 12rem;
+                            padding: 1rem;
+                            display: block;
+                            background: ${colors.pastelGreen};
+                            border: none;
+                            border-radius: 2px;
+                            color: ${colors.white};
+                            text-transform: uppercase;
+                            font-family: 'Open Sans', sans-serif;
+                            font-weight: 400;
+                            cursor: pointer;
+                            font-size: 1.3rem;
+                            outline: none;
+                            transition: all 200ms;
+
+                            :hover{
+                                background: ${colors.primary};
+                            }
+                        }
+
+                        .alt{
+                            background: ${colors.blue};
+                            transition: all 200ms;
+
+                            :hover{
+                                background: ${colors.blue2};
+                                transform: translateY(-2px);
+                            }
+                        }
+                    }
+                    @media screen and (max-width: 600px){
+                        .price{
+                            font-size: 1.6rem;
+                            text-align: center;
+                        }
+
+                        .picker{
+                            margin: 1.5rem auto;
+                        }
+
+                        .actions{
+                            width: 100%;
+                        }
+                    }
                 }
             }
         }
         /* end of product */
+
+        /* start of product-description */
+        .product-description{
+            margin-bottom: 5rem;
+
+            h3{
+                text-transform: capitalize;
+                font-size: 1.7em;
+                font-weight: 600;
+                color: ${colors.grey2};
+                margin: 1rem 0;
+                border-bottom: 1px solid ${colors.grey3};
+            }
+
+            p{
+                font-size: 1.4rem;
+                font-weight: 300;
+                color: ${colors.grey};
+                letter-spacing: .5px;
+            }
+
+            @media screen and (max-width: 600px){
+                padding: 1rem;
+
+                h3{
+                    margin-top: 2rem;
+                    text-align: center;
+                    padding-bottom: 1rem;
+                }
+            }
+        }
+        /* end of product-description */
 
         /* small screens @: main */
         @media screen and (max-width: 600px){

@@ -198,22 +198,31 @@ export const StyledSection = styled.section`
 
         /* start of product-description */
         .product-description{
+            display: grid;
+            gap: 1em;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-auto-rows: 300px;
+            margin-top: 2rem;
             margin-bottom: 5rem;
 
-            h3{
-                text-transform: capitalize;
-                font-size: 1.7em;
-                font-weight: 600;
-                color: ${colors.grey2};
-                margin: 1rem 0;
-                border-bottom: 1px solid ${colors.grey3};
-            }
+            .product-desc-card{
+                /* padding: 1rem; */
 
-            p{
-                font-size: 1.4rem;
-                font-weight: 300;
-                color: ${colors.grey};
-                letter-spacing: .5px;
+                h3{
+                    text-transform: capitalize;
+                    font-size: 1.7em;
+                    font-weight: 600;
+                    color: ${colors.grey2};
+                    margin: 1rem 0;
+                    border-bottom: 1px solid ${colors.grey3};
+                }
+
+                p{
+                    font-size: 1.3rem;
+                    font-weight: 300;
+                    color: ${colors.grey};
+                    letter-spacing: .5px;
+                }
             }
 
             @media screen and (max-width: 600px){

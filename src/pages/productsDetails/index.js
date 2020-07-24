@@ -1,7 +1,7 @@
 import React from 'react';
 import {AiOutlineStar} from 'react-icons/ai';
 
-import product from '../../assets/g-8.jpg';
+import product from '../../assets/h-3.jpg';
 
 import {StyledSection} from './productDetails-styles';
 import Navbar from '../../components/navbar';

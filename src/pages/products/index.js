@@ -1,17 +1,17 @@
 import React from 'react';
 import {AiFillStar, AiOutlineStar} from 'react-icons/ai';
 
-import bg from '../../assets/g-6.jpg';
-import bg2 from '../../assets/g-1.jpg';
-import bg3 from '../../assets/g-2.jpg';
-import bg4 from '../../assets/g-9.jpg';
-import bg5 from '../../assets/g-3.jpg';
+import bg from '../../assets/h-1.jpg';
+import bg2 from '../../assets/h-2.jpg';
+import bg3 from '../../assets/h-3.jpg';
+import bg4 from '../../assets/h-4.jpg';
+import bg5 from '../../assets/h-5.jpg';
 // import bg6 from '../../assets/g-7.jpg';
-import bg7 from '../../assets/g-9.jpg';
-import bg8 from '../../assets/g-8.jpg';
-import bg9 from '../../assets/g-4.jpg';
-import bg10 from '../../assets/g-5.jpg';
-import bg11 from '../../assets/g-10.jpg';
+import bg7 from '../../assets/h-6.jpg';
+import bg8 from '../../assets/h-7.jpg';
+import bg9 from '../../assets/h-8.jpg';
+import bg10 from '../../assets/h-9.jpg';
+import bg11 from '../../assets/h-10.jpg';
 import bg12 from '../../assets/g-11.png';
 import bg13 from '../../assets/g-12.png';
 import bg14 from '../../assets/g-13.png';

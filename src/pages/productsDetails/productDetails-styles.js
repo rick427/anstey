@@ -29,8 +29,8 @@ export const StyledSection = styled.section`
             }
 
             .breadcrumb-link{
-                font-size: 1.2rem;
-                font-weight: 400;
+                font-size: 1.1rem;
+                font-weight: 600;
                 color: ${colors.grey};
                 text-transform: uppercase;
 
@@ -88,7 +88,7 @@ export const StyledSection = styled.section`
 
                 &.details{
                     padding: 2rem;
-                    border: 1px solid ${colors.grey3};
+                    /* border: 1px solid ${colors.grey3}; */
 
                     .title{
                         text-transform: capitalize;

@@ -70,8 +70,8 @@ export const StyledNav = styled.nav`
 
         :hover{
             filter: greyscale(0%) opacity(1);
-            background: ${colors.offGreen};
-            color: ${colors.primary};
+            background: ${colors.offGreenAlt};
+            color: ${colors.offGreen};
         }
     }
 

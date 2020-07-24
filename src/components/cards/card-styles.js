@@ -14,7 +14,7 @@ export const StyledDiv = styled.div`
     .actions{
         position: absolute;
         top: 0;
-        background: ${colors.white};
+        background: ${colors.offGreenAlternative};
         width: 70%;
         height: 3rem;
         padding: 1rem;
@@ -34,14 +34,14 @@ export const StyledDiv = styled.div`
             height: 2rem;
             padding: 1rem;
             border-radius: 50px;
-            background: ${colors.grey3};
+            background: ${colors.offGreen};
             color: ${colors.grey};
             text-align: center;
             transition: all 200ms;
 
             :hover{
-                background: ${colors.greenDust};
-                color: ${colors.primary};
+                background: ${colors.pastelGreen};
+                color: ${colors.white};
             }
         }
     }

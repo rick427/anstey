@@ -1,6 +1,8 @@
 export default {
     primary: '#00654f',
     offGreen: '#ecf5e2',
+    offGreenAlt: '#2c8571',
+    offGreenAlternative: '#bddbd4',
     white: '#fff',
     lime: '#c4e906',
     pastelGreen: '#009474',

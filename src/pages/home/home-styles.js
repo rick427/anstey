@@ -336,6 +336,10 @@ export const StyledSection = styled.section`
                     }
                 }
 
+                :last-child{
+                    border-bottom-right-radius: 25px; 
+                }
+
                 img{
                     width: 100%;
                     height: 100%;

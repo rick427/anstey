@@ -40,7 +40,7 @@ export default function Navbar() {
                     </Link>
                 </li>
                 <li className="nav-item">
-                    <Link to="/cart" className="nav-link">
+                    <Link to="/cart" style={checkActive('/cart')} className="nav-link">
                         <span><AiOutlineShoppingCart/></span>
                         <p className="link-text">cart</p>
                     </Link>

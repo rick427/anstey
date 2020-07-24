@@ -1,24 +1,13 @@
-import React, {useState} from 'react';
-import {AiOutlineStar, AiOutlineMinus} from 'react-icons/ai';
-import {FiPlus} from 'react-icons/fi';
+import React from 'react';
+import {AiOutlineStar} from 'react-icons/ai';
 
 import product from '../../assets/g-8.jpg';
 
 import {StyledSection} from './productDetails-styles';
 import Navbar from '../../components/navbar';
+import Picker from '../../components/picker';
 
 const ProductDetails = ({history}) => {
-    const [amount, setAmount] = useState(0);
-
-    const handleIncrement = () => {
-        setAmount(prevState => prevState + 1);
-    }
-
-    const handleDecrement = () => {
-        if(amount === 0) return;
-        setAmount(prevState => prevState - 1);
-    }
-
     return (
         <StyledSection>
             <Navbar/>
@@ -60,20 +49,12 @@ const ProductDetails = ({history}) => {
                             forever just ask sponge bob. Our sole founder, slayer of dragons, king of
                             the north Jon Snow. Amapiano is the new norm !!..
                         </p>
-
-                        <div className="picker">
-                            <button onClick={handleDecrement}>
-                                <AiOutlineMinus/>
-                            </button>
-                            <p>{amount}</p>
-                            <button onClick={handleIncrement}>
-                                <FiPlus/>
-                            </button>
-                        </div>
+                        
+                        <Picker/>
 
                         <div className="actions">
                             <button onClick={() => history.push('/cart')}>add to cart</button>
-                            <button className="alt">buy now</button>
+                            <button onClick={() => history.push('/cart')} className="alt">buy now</button>
                         </div>
                     </div>
                 </div>

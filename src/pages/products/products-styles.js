@@ -65,7 +65,7 @@ export const StyledSection = styled.section`
         .collage{
             display: grid;
             gap: .5em;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             grid-auto-rows: 200px;
 
             .collage-card{

@@ -1,7 +1,7 @@
 import React from 'react';
 import {AiOutlineStar, AiOutlinePlus, AiOutlineMinus} from 'react-icons/ai';
 
-import product from '../../assets/g-4.jpg';
+import product from '../../assets/g-8.jpg';
 
 import {StyledSection} from './productDetails-styles';
 import Navbar from '../../components/navbar';
@@ -22,7 +22,7 @@ const ProductDetails = () => {
                 </div>
 
                 <div className="product">
-                    <div className="product-card w-40">
+                    <div className="product-card">
                         <img src={product} alt="product"  className="product-img"/>
                     </div>
 

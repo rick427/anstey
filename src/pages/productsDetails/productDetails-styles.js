@@ -69,31 +69,33 @@ export const StyledSection = styled.section`
         .product{
             display: grid;
             gap: 1em;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            grid-auto-rows: 500px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-auto-rows: 400px;
 
             .product-card{
                 border: 1px solid grey;
 
-                @media screen and (min-width: 600px){
+                /* @media screen and (min-width: 600px){
                     &.wide{
-                        grid-column: span 2 / auto;
+                        grid-column: span 1 / auto;
                     }
 
                     &.w-40{
                         width: 45rem;
                     }
-                }
+                } */
 
                 &.flex{
                     display: flex;
                     justify-content: center;
                     align-items: center;
+                    background: ${colors.grey3};
                 }
 
                 .product-img{
                     width: 100%;
                     height: 100%;
+                    object-fit: cover;
                 }
 
                 &.details{

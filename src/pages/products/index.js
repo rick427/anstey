@@ -6,7 +6,7 @@ import bg2 from '../../assets/g-1.jpg';
 import bg3 from '../../assets/g-2.jpg';
 import bg4 from '../../assets/g-9.jpg';
 import bg5 from '../../assets/g-3.jpg';
-import bg6 from '../../assets/g-7.jpg';
+// import bg6 from '../../assets/g-7.jpg';
 import bg7 from '../../assets/g-9.jpg';
 import bg8 from '../../assets/g-8.jpg';
 import bg9 from '../../assets/g-4.jpg';
@@ -57,15 +57,15 @@ const ProductsPage = () => {
                     <div className="collage-card">
                         <img src={bg3} alt="collage"/>
                     </div>
-                    <div className="collage-card">
+                    <div className="collage-card tall">
                         <img src={bg4} alt="collage"/>
                     </div>
                     <div className="collage-card  wide">
                         <img src={bg5} alt="collage"/>
                     </div>
-                    <div className="collage-card">
+                    {/* <div className="collage-card">
                         <img src={bg6} alt="collage"/>
-                    </div>
+                    </div> */}
                 </div>
 
                 {/* <div className="listings-content small">

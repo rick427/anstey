@@ -126,7 +126,7 @@ export const StyledSection = styled.section`
                     border: 1px solid ${colors.lightGrey};
 
                     :focus{
-                        box-shadow: 0 0 10px rgba(0,0,0,.15);
+                        box-shadow: 0 0 10px rgba(0,148,116,.15);
                     }
 
                     ::placeholder{

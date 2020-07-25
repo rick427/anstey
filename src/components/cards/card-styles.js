@@ -8,7 +8,8 @@ export const StyledDiv = styled.div`
     align-items: center;
     position: relative;
     overflow: hidden;
-    border: 1px solid ${colors.grey3};
+    border: none;
+    box-shadow: 0 0 5px rgba(0,0,0,.15);
     cursor: pointer;
 
     .actions{

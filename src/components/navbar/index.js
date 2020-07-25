@@ -46,7 +46,7 @@ export default function Navbar() {
                     </Link>
                 </li>
                 <li className="nav-item">
-                    <Link to="/settings" className="nav-link">
+                    <Link to="/settings" style={checkActive('/settings')} className="nav-link">
                         <span><AiOutlineSetting/></span>
                         <p className="link-text">settings</p>
                     </Link>

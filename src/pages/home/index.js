@@ -7,6 +7,8 @@ import banner2 from '../../assets/b-2.jpg';
 import banner3 from '../../assets/b-3.jpg';
 import infoBanner from '../../assets/ban.jpg';
 import contact from '../../assets/contact.jpg';
+import sponser from '../../assets/sponser.png';
+import sponser2 from '../../assets/sponser-2.png';
 
 import {StyledSection} from './home-styles';
 import Navbar from '../../components/navbar';
@@ -93,6 +95,11 @@ export default function HomePage() {
                         as <span className="alt">"The Bunnings"</span> of healthcare. If it's not in stock
                         we'll find it !
                     </p>
+
+                    <div className="sponsers">
+                        <img src={sponser} alt="sponser"/>
+                        <img src={sponser2} alt="sponser"/>
+                    </div>
                 </div>
 
                 <div className="footer">

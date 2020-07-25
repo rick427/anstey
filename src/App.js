@@ -7,6 +7,7 @@ import HomePage from './pages/home';
 import ProductsPage from './pages/products';
 import ProductDetails from './pages/productsDetails';
 import CartPage from './pages/cart';
+import SettingsPage from './pages/settings';
 import ErrorPage from './pages/error';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route exact path="/products" component={ProductsPage}/>
         <Route exact path="/product/:id" component={ProductDetails}/>
         <Route exact path="/cart" component={CartPage}/>
+        <Route exact path="/settings" component={SettingsPage}/>
         <Route component={ErrorPage}/>
       </Switch>
     </Router>

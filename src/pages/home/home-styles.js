@@ -107,7 +107,7 @@ export const StyledSection = styled.section`
             display: grid;
             gap: 2em;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            grid-auto-rows: 100px;
+            grid-auto-rows: 80px;
             margin-top: 5%;
 
             .tab{
@@ -250,7 +250,7 @@ export const StyledSection = styled.section`
                 font-size: 2.5rem;
                 font-weight: 600;
                 text-align: center;
-                line-height: 4rem;
+                line-height: 4.5rem;
                 letter-spacing: 2px;
 
                 .caps{
@@ -266,6 +266,26 @@ export const StyledSection = styled.section`
                 }
             }
 
+            .sponsers{
+                width: 40rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background: transparent;
+                position: absolute;
+                top: 95%;
+                left: 50%;
+                transform: translate(-50%, -95%);
+
+                img{
+                    width: 20%;
+
+                    :last-child{
+                        width: 35%;
+                    }
+                }
+            }
+
             @media screen and (max-width: 600px){
                 width: 100%;
                 margin-left: 1rem;
@@ -274,7 +294,18 @@ export const StyledSection = styled.section`
                 p{
                     width: 80%;
                     line-height: 3rem;
-                    font-size: 1.8rem;
+                    font-size: 1.7rem;
+                    top: 40%;
+                    left: 50%;
+                    transform: translate(-50%, -40%);
+                }
+
+                .sponsers{
+                    width: 80%;
+
+                    img{
+                        width: 20%;
+                    }
                 }
             }
         }

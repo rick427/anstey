@@ -156,9 +156,9 @@ export const StyledSection = styled.section`
                             color: ${colors.white};
                             text-transform: uppercase;
                             font-family: 'Open Sans', sans-serif;
-                            font-weight: 400;
+                            font-weight: 600;
                             cursor: pointer;
-                            font-size: 1.3rem;
+                            font-size: 1.2rem;
                             outline: none;
                             transition: all 200ms;
 
@@ -168,12 +168,14 @@ export const StyledSection = styled.section`
                         }
 
                         .alt{
-                            background: ${colors.orange};
+                            background: ${colors.white};
+                            color: ${colors.pastelGreen};
+                            box-shadow: 0 0 5px rgba(0,0,0,.25);
                             transition: all 200ms;
 
                             :hover{
-                                background: ${colors.orange2};
-                                transform: translateY(-2px);
+                                background: ${colors.pastelGreen};
+                                color: ${colors.white};
                             }
                         }
                     }

@@ -1,11 +1,13 @@
 import React from 'react';
-import {GoTrashcan} from 'react-icons/go';
+import {BsTrash} from 'react-icons/bs';
+import {FiAlertCircle} from 'react-icons/fi';
 
 import {StyledSection} from './cart-styles';
 import Navbar from '../../components/navbar';
 
-import prod1 from '../../assets/g-8.jpg';
+import prod1 from '../../assets/h-3.jpg';
 import prod2 from '../../assets/g-18.jpg';
+import prod3 from '../../assets/g-16.jpg';
 import Picker from '../../components/picker';
 
 const CartPage = () => {
@@ -16,59 +18,83 @@ const CartPage = () => {
             <div className="main">
                 <div className="breadcrumb">
                     <p className="breadcrumb-link">home <span>| cart</span></p>
-                    <div className="flex">   
+                    {/* <div className="flex">   
                         <p className="breadcrumb-text">
                             my cart (3)
                         </p>
-                    </div>
+                    </div> */}
                 </div>
 
                 <div className="cart">
-                    <div className="cart-card">
-                        <div className="cart-items">
-                            <img src={prod1} alt="product"/>
-                            <div className="info">
-                                <h3>oxford enterprise xamarin bedroom</h3>
-                                <p>Item Price:  <span>&#8358;120,000.00</span></p>
-                                <p>Item Color:  <span className="error">Not Provided</span></p>
-                               <div className="flex">
-                                  <Picker/>
-                                  <span className="delete">
-                                      <GoTrashcan/>
-                                  </span>
-                               </div>
-                                <p className="total">
-                                    Total: <span className="ml-2">&#8358;120,000.00</span></p>
-                            </div>
-                        </div>
-                        <div className="cart-items">
-                            <img src={prod2} alt="product"/>
-                            <div className="info">
-                                <h3>headache xamarin pills</h3>
-                                <p>Item Price:  <span>&#8358;6,000.00</span></p>
-                                <p>Item Color:  <span className="error">purple</span></p>
-                               <div className="flex">
-                                  <Picker/>
-                                  <span className="delete">
-                                      <GoTrashcan/>
-                                  </span>
-                               </div>
-                                <p className="total">
-                                    Total: <span className="ml-2">&#8358;6,000.00</span></p>
-                            </div>
-                        </div>
-                    </div>
+                    <table className="cart-table">
+                        <thead>
+                            <tr>
+                                <th>product</th>
+                                <th>name</th>
+                                <th>description</th>
+                                <th>price</th>
+                                <th>quantity</th>
+                                <th>total</th>
+                                <th>action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <img src={prod1} alt="product"/>
+                                </td>
+                                <td className="w-25 name">oxyford bedroom</td>
+                                <td className="w-30">NXA xamarin enterprise bedroom.</td>
+                                <td>&#8358; 88,100</td>
+                                <td>
+                                    <Picker/>
+                                </td>
+                                <td className="total">&#8358; 88,100</td>
+                                <td><span><BsTrash/></span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src={prod2} alt="product"/>
+                                </td>
+                                <td className="w-25 name">synaptic nerves inducer P10</td>
+                                <td className="w-30">Brain optimizer and pain killers. Only for adults.</td>
+                                <td>&#8358; 5,100</td>
+                                <td>
+                                    <Picker/>
+                                </td>
+                                <td className="total">&#8358; 5,100</td>
+                                <td><span><BsTrash/></span></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src={prod3} alt="product"/>
+                                </td>
+                                <td className="w-25 name">medical gas masks.</td>
+                                <td className="w-30">h20 optimizer and stress reducer. Only for pied pipers.</td>
+                                <td>&#8358; 2,100</td>
+                                <td>
+                                    <Picker/>
+                                </td>
+                                <td className="total">&#8358; 2,100</td>
+                                <td><span><BsTrash/></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
-                    <div className="confirm">
-                        <h3>cart summary</h3>
-                        <div className="flex">
-                            <h4>subtotal</h4>
-                            <p>&#8358;126,000.00</p>
-                        </div>
-                        <div className="flex">
-                            <h4>total</h4>
-                            <p>&#8358;126,000.00</p>
-                        </div>
+                <div className="subtotal">
+                    <div className="subtotal-flex">
+                        <h3>total: </h3>
+                        <p className="amount">&#8358; 95,300</p>
+                    </div>
+                    <div className="text">
+                        <span><FiAlertCircle/></span>
+                        <p>
+                            Delivery charges not included.
+                        </p>
+                    </div>
+                    <div className="btns">
+                        <button className="alt">continue shopping</button>
                         <button>proceed to checkout</button>
                     </div>
                 </div>

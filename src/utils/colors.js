@@ -7,6 +7,7 @@ export default {
     lime: '#c4e906',
     pastelGreen: '#009474',
     greenDust: '#73d4a8',
+    lightGreen: '#009879',
     grey: '#444',
     grey2: '#555',
     grey3: '#EEF1FB',
@@ -17,4 +18,5 @@ export default {
     blue2: '#14B8F0',
     green: '#34bd7c',
     red: '#de2f40',
+    red2: '#e05c69',
 }

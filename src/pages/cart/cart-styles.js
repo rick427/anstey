@@ -67,142 +67,180 @@ export const StyledSection = styled.section`
 
         .cart{
             width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            overflow-x: auto;
 
-            .cart-card{
-                width: 60%;
-                padding: 1rem;
-                /* border: 1px solid red; */
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                align-items: center;
+            .cart-table{
+                border-collapse: collapse;
+                margin: 20px auto 25px auto;
+                font-size: 1.3rem;
+                min-width: 400px;
+                border-radius: 2px 2px 0 0;
+                box-shadow: 0 0 5px rgba(0,0,0,.25);
+                overflow: hidden;
 
-                .cart-items{
-                    width: 100%;
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    border: 1px solid ${colors.grey3};
-                    overflow: hidden;
-                    margin: 1rem 0;
+                thead tr{
+                    background-color: ${colors.pastelGreen};
+                    color: ${colors.white};
+                    text-align: center;
+                    text-transform: capitalize;
+                }
+
+                th, td{
+                    padding: 10px 15px;
+                    text-align: center;
 
                     img{
-                        width: 25rem;
-                        height: 22rem;
+                        width: 12rem;
+                        height: 10rem;
                         object-fit: cover;
                     }
 
-                    .info{
-                        width: 30rem;
-                        font-size: 1.3rem;
+                    span{
+                        display: block;
+                        padding: 1rem;
+                        width: 1.6rem;
+                        height: 1.6rem;
+                        font-size: 1.5rem;
                         color: ${colors.grey};
-                        margin-right: 1rem;
+                        cursor: pointer;
+                        border-radius: 50px;
+                        transition: all 200ms;
+                        margin: 0 auto;
 
-                        h3{
-                            font-size: 1.4rem;
-                            text-transform: uppercase;
-                            font-weight: 600;
-                            margin: 1rem 0;
-                            color: ${colors.grey};
-                        }
-
-                        p{
-                            font-weight: 400;
-                            margin: 1rem 0; 
-
-                            span{
-                                margin-left: 2rem;
-                                font-weight: 400;
-                                color: ${colors.grey2};
-                            }
-
-                            .error{
-                                color: ${colors.grey2};
-                                font-weight: 600;
-                            }
-                        }
-
-                        .flex{
-                            width: 70%;
-                            display: flex;
-                            justify-content: space-between;
-                            align-items: center;
-
-                            .delete{
-                                font-size: 1.7rem;
-                                color: ${colors.red};
-                                cursor: pointer;
-                            }
-                        }
-
-                        .total{
-                            padding-top: .5rem;
-                            border-top: 1px solid ${colors.grey3};
-
-                            .ml-2{
-                                margin-left: 4.5rem;
-                                font-weight: 600;
-                                color: ${colors.grey2};
-                            }
+                        :hover{
+                            background: ${colors.red2};
+                            color: ${colors.white};
                         }
                     }
+                }
+
+                td{
+                    color: ${colors.grey};
+                    margin: 0 1rem;
+                    border: 1px solid ${colors.offGreen};
+                }
+
+                .w-25{
+                    width: 20rem;
+
+                    &.name{
+                        text-transform: capitalize;
+                        font-weight: 400;
+                    }
+                }
+
+                .w-30{
+                    width: 30rem;
+                }
+
+                .total{
+                    font-weight: 600;
+                    color: ${colors.pastelGreen};
+                }
+
+                tbody tr{
+                    border-bottom: 1px solid ${colors.grey3};
+
+                    :nth-of-type(even){
+                        background-color: ${colors.offGreen};
+                    }
+
+                    :last-of-type{
+                        border-bottom: 2px solid ${colors.lightGreen};
+                    }
+                }
+
+                .active-row{
+                    color: ${colors.pastelGreen};
+                }
+            }
+        }
+
+        .subtotal{
+            height: 20vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+
+            .subtotal-flex{
+                width: 15rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                color: ${colors.grey};
+                padding: 1rem;
+
+                h3{
+                    font-weight: 400;
+                    font-size: 1.5rem;
+                    text-transform: capitalize;
+                }
+
+                .amount{
+                    font-size: 1.8rem;
+                    font-weight: 700;
+                    color: ${colors.offGreenAlt};
                 }
             }
 
-            .confirm{
-                width: 30%;
-                padding: 3rem;
-                align-self: flex-start;
-                margin-top: 2rem;
-                background: ${colors.grey3};
+            .text{
+                display: flex;
+                align-items: center;
 
-                h3{
-                    text-transform: uppercase;
-                    font-size: 1.4rem;
-                    font-weight: 600;
+                p{
+                    font-size: 1.3rem;
+                    font-weight: 400;
+                    color: ${colors.grey2};
+                    margin-left: 1rem;
+
+                }
+
+                span{
+                    display: inline-block;
+                    font-size: 1.5rem;
                     color: ${colors.grey};
-                    padding-bottom: 2rem;
-                    border-bottom: 1px solid ${colors.grey};
                 }
+            }
 
-                .flex{
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    text-transform: capitalize;
 
-                    h4{
-                        font-size: 1.4rem;
-                        color: ${colors.grey};
-                        font-weight: 400;
-                        margin: 1rem 0;
-                    }
-
-                    p{
-                        font-size: 1.4rem;
-                        color: ${colors.grey};
-                        font-weight: 400;
-                        margin: 1rem 0;
-                    }
-                }
+            .btns{
+                width: 40rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
 
                 button{
-                    width: 100%;
-                    height: 2rem;
-                    border: none;
+                    width: 15rem;
                     padding: 1rem;
                     display: block;
                     background: ${colors.pastelGreen};
+                    border: none;
+                    border-radius: 2px;
                     color: ${colors.white};
-                    border-top: 1px solid ${colors.grey};
                     text-transform: uppercase;
-                    font-weight: 400;
-                    margin-top: 2rem;
+                    font-family: 'Open Sans', sans-serif;
+                    font-weight: 600;
                     cursor: pointer;
-                    outline-color: ${colors.primary};
+                    font-size: 1.2rem;
+                    outline: none;
+                    transition: all 200ms;
+
+                    :hover{
+                        background: ${colors.primary};
+                    }
+                }
+
+                .alt{
+                    background: ${colors.white};
+                    color: ${colors.pastelGreen};
+                    box-shadow: 0 0 7px rgba(0,0,0,.25);
+                    transition: all 200ms;
+
+                    :hover{
+                        background: ${colors.pastelGreen};
+                        color: ${colors.white};
+                    }
                 }
             }
         }

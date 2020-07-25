@@ -6,7 +6,6 @@ import bg2 from '../../assets/h-2.jpg';
 import bg3 from '../../assets/h-3.jpg';
 import bg4 from '../../assets/h-4.jpg';
 import bg5 from '../../assets/h-5.jpg';
-// import bg6 from '../../assets/g-7.jpg';
 import bg7 from '../../assets/h-6.jpg';
 import bg8 from '../../assets/h-7.jpg';
 import bg9 from '../../assets/h-8.jpg';
@@ -63,9 +62,6 @@ const ProductsPage = () => {
                     <div className="collage-card  wide">
                         <img src={bg5} alt="collage"/>
                     </div>
-                    {/* <div className="collage-card">
-                        <img src={bg6} alt="collage"/>
-                    </div> */}
                 </div>
 
                 {/* <div className="listings-content small">
@@ -83,6 +79,20 @@ const ProductsPage = () => {
                         <li className="category-item">sleep</li>
                     </ul>
                 </div> */}
+
+                <div className="breadcrumb">
+                    <p className="breadcrumb-link">home |<span> products</span></p>
+                    <div className="flex">
+                        <span>
+                            <AiFillStar/>
+                            <AiFillStar/>
+                            <AiOutlineStar/>
+                        </span>    
+                        <p className="breadcrumb-text">
+                            new featured listings
+                        </p>
+                    </div>
+                </div>
                 
                 <div className="listings">
                     <Card image={bg7} title="hekal enterprise bedroom" price="50,000" stars/>

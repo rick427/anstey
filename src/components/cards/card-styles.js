@@ -25,6 +25,7 @@ export const StyledDiv = styled.div`
         z-index: 100;
         transform: translateY(-120%);
         transition: all 500ms;
+        opacity: 0;
 
         span{
             display: block;
@@ -78,12 +79,13 @@ export const StyledDiv = styled.div`
     }
 
     :hover .actions{
-        top: 30%;
-        transform: translateY(-30%);
+        top: 20%;
+        transform: translateY(-20%);
+        opacity: 1;
     }
 
     :hover img{
-        filter: blur(1.5px);
+        filter: blur(1.8px);
     }
 
     @media screen and (max-width: 600px){

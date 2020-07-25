@@ -1,5 +1,6 @@
 import React from 'react';
 import {AiFillStar, AiOutlineStar} from 'react-icons/ai';
+import {MdFilterList} from 'react-icons/md';
 
 import bg from '../../assets/h-1.jpg';
 import bg2 from '../../assets/h-2.jpg';
@@ -64,36 +65,27 @@ const ProductsPage = () => {
                     </div>
                 </div>
 
-                {/* <div className="listings-content small">
-                    <h3>category</h3>
-                    <ul className="category-list">
-                        <li className="category-item">bathroom</li>
-                        <li className="category-item">bedrooms</li>
-                        <li className="category-item">compression garments</li>
-                        <li className="category-item">continence</li>
-                        <li className="category-item">daily assisted living</li>
-                        <li className="category-item">hire</li>
-                        <li className="category-item">injury recovery & rehabilitation</li>
-                        <li className="category-item">maternity</li>
-                        <li className="category-item">mobility</li>
-                        <li className="category-item">sleep</li>
-                    </ul>
-                </div> */}
-
-                <div className="breadcrumb">
-                    <p className="breadcrumb-link">home |<span> products</span></p>
+                <div className="menu">
                     <div className="flex">
-                        <span>
-                            <AiFillStar/>
-                            <AiFillStar/>
-                            <AiOutlineStar/>
-                        </span>    
-                        <p className="breadcrumb-text">
-                            new featured listings
-                        </p>
+                        <p className="menu-text"><MdFilterList/>categories</p>
+                        <input type="text" placeholder="search by product name"/>
                     </div>
+
+                    <ul className="category-list">
+                        <li className="category-item">All</li>
+                        <li className="category-item">Bathroom</li>
+                        <li className="category-item">Bedrooms</li>
+                        <li className="category-item">Compression garments</li>
+                        <li className="category-item">Continence</li>
+                        <li className="category-item">Daily assisted living</li>
+                        <li className="category-item">Hire</li>
+                        <li className="category-item">Injury recovery & rehabilitation</li>
+                        <li className="category-item">Maternity</li>
+                        <li className="category-item">Mobility</li>
+                        <li className="category-item">Sleep</li>
+                    </ul>
                 </div>
-                
+
                 <div className="listings">
                     <Card image={bg7} title="hekal enterprise bedroom" price="50,000" stars/>
                     <Card image={bg8} title="queens premium bedroom" price="20,500"/>

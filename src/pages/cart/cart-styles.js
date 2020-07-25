@@ -9,7 +9,7 @@ export const StyledSection = styled.section`
     .main{
         margin-left: 10rem;
         margin-bottom: 5rem;
-        background: ${colors.white};
+        overflow: hidden;
 
         /* start of breadcrumbs */
         .breadcrumb{
@@ -39,7 +39,7 @@ export const StyledSection = styled.section`
                 }
 
                 @media screen and (max-width: 600px){
-                    display: none;
+                    display: block;
                 }
             }
 
@@ -65,6 +65,7 @@ export const StyledSection = styled.section`
         }
         /* end of breadcrumbs */
 
+        /* start of @: .cart */
         .cart{
             width: 100%;
             overflow-x: auto;
@@ -93,6 +94,11 @@ export const StyledSection = styled.section`
                         width: 12rem;
                         height: 10rem;
                         object-fit: cover;
+
+                        @media screen and (max-width: 600px){
+                            width: 10rem;
+                            height: 8rem;
+                        }
                     }
 
                     span{
@@ -117,7 +123,14 @@ export const StyledSection = styled.section`
                 td{
                     color: ${colors.grey};
                     margin: 0 1rem;
-                    border: 1px solid ${colors.offGreen};
+
+                    :nth-of-type(odd){
+                        border-right: 1px solid ${colors.grey3};
+                    }
+
+                    :not(:first-child){
+                        border-left: 1px solid ${colors.grey3};
+                    }
                 }
 
                 .w-25{
@@ -143,6 +156,10 @@ export const StyledSection = styled.section`
 
                     :nth-of-type(even){
                         background-color: ${colors.offGreen};
+
+                        td{
+                            border-right: 1px solid ${colors.offGreenAlternative};
+                        }
                     }
 
                     :last-of-type{
@@ -154,10 +171,21 @@ export const StyledSection = styled.section`
                     color: ${colors.pastelGreen};
                 }
             }
-        }
 
+            @media screen and (max-width: 600px){
+                .cart-table{
+                    td{
+                        font-size: 1.1rem;
+                    }
+                }
+            }
+        }
+        /* end of @: .cart */
+
+        /* start of  @: .subtotal */
         .subtotal{
-            height: 20vh;
+            height: 15rem;
+            padding: 1rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -242,8 +270,25 @@ export const StyledSection = styled.section`
                         color: ${colors.white};
                     }
                 }
+
+                @media screen and (max-width: 600px){
+                    /* height: 20rem; */
+                    margin: 1rem 0;
+                    flex-direction: column;
+                    justify-content: space-between;
+
+                    button{
+                        margin: 1.5rem 0;
+                    }
+                }
+            }
+
+            @media screen and (max-width: 600px){
+                height: 100%;
+                margin-bottom: 5rem;
             }
         }
+        /* end of  @: .subtotal */
 
         
         /* small screens @: main */

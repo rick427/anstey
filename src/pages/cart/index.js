@@ -17,7 +17,7 @@ const CartPage = () => {
 
             <div className="main">
                 <div className="breadcrumb">
-                    <p className="breadcrumb-link">home <span>| cart</span></p>
+                    <p className="breadcrumb-link">home <span>| my cart</span></p>
                     {/* <div className="flex">   
                         <p className="breadcrumb-text">
                             my cart (3)
@@ -45,11 +45,11 @@ const CartPage = () => {
                                 </td>
                                 <td className="w-25 name">oxyford bedroom</td>
                                 <td className="w-30">NXA xamarin enterprise bedroom.</td>
-                                <td>&#8358; 88,100</td>
+                                <td>&#8358;88,100</td>
                                 <td>
                                     <Picker/>
                                 </td>
-                                <td className="total">&#8358; 88,100</td>
+                                <td className="total">&#8358;88,100</td>
                                 <td><span><BsTrash/></span></td>
                             </tr>
                             <tr>
@@ -58,11 +58,11 @@ const CartPage = () => {
                                 </td>
                                 <td className="w-25 name">synaptic nerves inducer P10</td>
                                 <td className="w-30">Brain optimizer and pain killers. Only for adults.</td>
-                                <td>&#8358; 5,100</td>
+                                <td>&#8358;5,100</td>
                                 <td>
                                     <Picker/>
                                 </td>
-                                <td className="total">&#8358; 5,100</td>
+                                <td className="total">&#8358;5,100</td>
                                 <td><span><BsTrash/></span></td>
                             </tr>
                             <tr>
@@ -71,11 +71,11 @@ const CartPage = () => {
                                 </td>
                                 <td className="w-25 name">medical gas masks.</td>
                                 <td className="w-30">h20 optimizer and stress reducer. Only for pied pipers.</td>
-                                <td>&#8358; 2,100</td>
+                                <td>&#8358;2,100</td>
                                 <td>
                                     <Picker/>
                                 </td>
-                                <td className="total">&#8358; 2,100</td>
+                                <td className="total">&#8358;2,100</td>
                                 <td><span><BsTrash/></span></td>
                             </tr>
                         </tbody>

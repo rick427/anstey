@@ -100,6 +100,89 @@ export const StyledSection = styled.section`
         }
         /* end of collage */
 
+        /* start of menu */
+        .menu{
+            padding: 1rem;
+            border-bottom: 1px solid ${colors.grey3};
+            margin-top: 2rem;
+
+            .flex{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                p{
+                    font-size: 1.3rem;
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    color: ${colors.primary};
+                }
+
+                input{
+                    padding: 1rem;
+                    width: 25rem;
+                    outline: none;
+                    border-radius: 25px;
+                    border: 1px solid ${colors.lightGrey};
+
+                    :focus{
+                        box-shadow: 0 0 10px rgba(0,0,0,.15);
+                    }
+
+                    ::placeholder{
+                        font-style: italic;
+                        text-transform: capitalize;
+                    }
+                }
+            }
+
+            .category-list{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                list-style: none;
+                margin-top: 2rem;
+
+                .category-item{
+                    display: inline-block;
+                    font-size: 1.2rem;
+                    font-weight: 600;
+                    color: ${colors.grey2};
+                    cursor: pointer;
+
+                    :first-child{
+                        border-bottom: 2px solid ${colors.pastelGreen};
+                    }
+
+                    :not(:first-child){
+                        margin: 0 2rem;
+                    }
+                }
+            }
+
+            @media screen and (max-width: 600px){
+                .flex{
+                    flex-direction: column;
+                    height: 8rem;
+
+                    input{
+                        width: 85%;
+                    }
+                }
+
+                .category-list{
+                    flex-direction: column;
+
+                    .category-item{
+                        :not(:first-child){
+                            margin: 1rem 0;
+                        }
+                    }
+                }
+            }
+        }
+        /* end of menu */
+
         /* start of listings */
         .listings{
             display: grid;

@@ -10,7 +10,7 @@ import prod2 from '../../assets/g-18.jpg';
 import prod3 from '../../assets/g-16.jpg';
 import Picker from '../../components/picker';
 
-const CartPage = () => {
+const CartPage = ({history}) => {
     return (
         <StyledSection>
             <Navbar/>
@@ -95,7 +95,7 @@ const CartPage = () => {
                     </div>
                     <div className="btns">
                         <button className="alt">continue shopping</button>
-                        <button>proceed to checkout</button>
+                        <button onClick={() => history.push('/checkout')}>proceed to checkout</button>
                     </div>
                 </div>
             </div>

@@ -11,6 +11,7 @@ import SettingsPage from './pages/settings';
 import ErrorPage from './pages/error';
 import LoginPage from './pages/login';
 import RegisterPage from './pages/register';
+import CheckOutPage from './pages/checkout';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route exact path="/settings" component={SettingsPage}/>
         <Route exact path="/login" component={LoginPage}/>
         <Route exact path="/register" component={RegisterPage}/>
+        <Route exact path="/checkout" component={CheckOutPage}/>
         <Route component={ErrorPage}/>
       </Switch>
     </Router>

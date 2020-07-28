@@ -141,7 +141,7 @@ export const StyledSection = styled.section`
                     }
 
                     .actions{
-                        width: 60%;
+                        width: 50%;
                         display: flex;
                         justify-content: space-between;
                         align-items:  center;

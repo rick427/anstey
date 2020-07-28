@@ -1,6 +1,6 @@
 import React from 'react';
-import {AiFillStar, AiOutlineStar} from 'react-icons/ai';
-import {MdFilterList} from 'react-icons/md';
+// import {AiFillStar, AiOutlineStar} from 'react-icons/ai';
+// import {MdFilterList} from 'react-icons/md';
 
 import bg from '../../assets/h-1.jpg';
 import bg2 from '../../assets/h-2.jpg';
@@ -22,6 +22,7 @@ import bg18 from '../../assets/g-17.jpg';
 import bg19 from '../../assets/g-18.jpg';
 import bg20 from '../../assets/g-19.jpg';
 import bg21 from '../../assets/g-20.jpg';
+import category from '../../assets/cat-banner.jpg';
 
 import {StyledSection} from './products-styles';
 import Navbar from '../../components/navbar';
@@ -29,13 +30,13 @@ import Card from '../../components/cards';
 
 const ProductsPage = () => {
     return (
-        <StyledSection>
+        <StyledSection bg={category}>
             <Navbar/>
 
             <div className="main">
                 <div className="breadcrumb">
                     <p className="breadcrumb-link">home |<span> products</span></p>
-                    <div className="flex">
+                    {/* <div className="flex">
                         <span>
                             <AiFillStar/>
                             <AiFillStar/>
@@ -44,48 +45,71 @@ const ProductsPage = () => {
                         <p className="breadcrumb-text">
                             new featured listings
                         </p>
+                    </div> */}
+                </div>
+
+                <div className="category">
+                    <div className="category-card">
+                        <p className="header">categories</p>
+                        <ul className="category-list">
+                            <li className="category-item"><span>Pharmacy</span></li>
+                            <li className="category-item"><span>Bathroom</span></li>
+                            <li className="category-item"><span>Bedrooms</span></li>
+                            <li className="category-item"><span>Compression garments</span></li>
+                            <li className="category-item"><span>Continence</span></li>
+                            <li className="category-item"><span>Daily assisted living</span></li>
+                            <li className="category-item"><span>Hire</span></li>
+                            <li className="category-item"><span>Injury recovery & rehabilitation</span></li>
+                            <li className="category-item"><span>Maternity</span></li>
+                            <li className="category-item"><span>Mobility</span></li>
+                            <li className="category-item"><span>Sleep</span></li>
+                        </ul>
+                    </div>
+                    <div className="category-card wide banner">
+                       <div className="inner-text">
+                            <p className="title-tag">premium quality</p>
+                            <h3 className="name">synaptic boosters</h3>
+                            <p className="sub">
+                                Alpha GPC is a 300mg acoustic medical drug which 
+                                is used for ageing patients. It also tracks heart beats,
+                                and can restores facial hair.
+                            </p>
+                       </div>
                     </div>
                 </div>
                 
+                <div className="title">
+                    <h3>new arrivals</h3>
+                    <input type="text" placeholder="search by product name"/>
+                </div>
+
                 <div className="collage">
                     <div className="collage-card wide tall">
                         <img src={bg} alt="collage"/>
+                        <span>trending beddings !</span>
                     </div>
                     <div className="collage-card">
                         <img src={bg2} alt="collage"/>
+                        <span>comfortable sheets !</span>
                     </div>
                     <div className="collage-card">
                         <img src={bg3} alt="collage"/>
+                        <span>air conditioned x-ray !</span>
                     </div>
                     <div className="collage-card tall">
                         <img src={bg4} alt="collage"/>
+                        <span>improvised triage unit !</span>
                     </div>
                     <div className="collage-card  wide">
                         <img src={bg5} alt="collage"/>
+                        <span>sanitized environments !</span>
                     </div>
                 </div>
 
-                <div className="menu">
-                    <div className="flex">
-                        <p className="menu-text"><MdFilterList/>categories</p>
-                        <input type="text" placeholder="search by product name"/>
-                    </div>
-
-                    <ul className="category-list">
-                        <li className="category-item">All</li>
-                        <li className="category-item">Bathroom</li>
-                        <li className="category-item">Bedrooms</li>
-                        <li className="category-item">Compression garments</li>
-                        <li className="category-item">Continence</li>
-                        <li className="category-item">Daily assisted living</li>
-                        <li className="category-item">Hire</li>
-                        <li className="category-item">Injury recovery & rehabilitation</li>
-                        <li className="category-item">Maternity</li>
-                        <li className="category-item">Mobility</li>
-                        <li className="category-item">Sleep</li>
-                    </ul>
+                <div className="title">
+                    <h3>best selling products</h3>
+                    <input type="text" placeholder="search by product name"/>
                 </div>
-
                 <div className="listings">
                     <Card image={bg7} title="hekal enterprise bedroom" price="50,000" stars/>
                     <Card image={bg8} title="queens premium bedroom" price="20,500"/>

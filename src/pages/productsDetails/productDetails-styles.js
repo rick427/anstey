@@ -88,6 +88,8 @@ export const StyledSection = styled.section`
 
                 &.details{
                     padding: 2rem;
+                    border-right: 1px solid ${colors.grey3};
+                    border-bottom: 1px solid ${colors.grey3};
 
                     .title{
                         text-transform: capitalize;
@@ -202,7 +204,7 @@ export const StyledSection = styled.section`
             display: grid;
             gap: 1em;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            grid-auto-rows: 300px;
+            /* grid-auto-rows: 300px; */
             margin-top: 2rem;
             margin-bottom: 5rem;
 
@@ -224,16 +226,47 @@ export const StyledSection = styled.section`
                     color: ${colors.grey};
                     letter-spacing: .5px;
                 }
+
+                .images{
+                    padding: 1rem;
+                    width: 70%;
+                    margin-top: 1rem;
+                    display: flex;
+                    justify-content: space-between;
+
+                    img{
+                        width: 12rem;
+                        height: 10rem;
+                        object-fit: cover;
+                        outline-color: ${colors.pastelGreen};
+                        outline-width: 2;
+                        outline-style: solid;
+                        outline-offset: 4px;
+                        cursor: pointer;
+                    }
+                }
+
             }
 
             @media screen and (max-width: 600px){
                 padding: 1rem;
 
-                h3{
-                    margin-top: 2rem;
-                    text-align: center;
-                    padding-bottom: 1rem;
+                .product-desc-card{
+                    h3{
+                        margin-top: 2rem;
+                        text-align: center;
+                        padding-bottom: 1rem;
+                    }
+
+                    .images{
+                        width: 100%;
+                        height: 40rem;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: space-between;
+                    }
                 }
+
             }
         }
         /* end of product-description */

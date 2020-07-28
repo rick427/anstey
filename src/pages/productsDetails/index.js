@@ -6,6 +6,9 @@ import product from '../../assets/h-3.jpg';
 import {StyledSection} from './productDetails-styles';
 import Navbar from '../../components/navbar';
 import Picker from '../../components/picker';
+import banner from '../../assets/banner-3.jpg';
+import banner2 from '../../assets/g-8.jpg';
+import banner3 from '../../assets/h-5.jpg';
 
 const ProductDetails = ({history}) => {
     return (
@@ -24,7 +27,7 @@ const ProductDetails = ({history}) => {
 
                 <div className="product">
                     <div className="product-card">
-                        <img src={product} alt="product"  className="product-img"/>
+                        <img src={banner3} alt="product"  className="product-img"/>
                     </div>
 
                     <div className="product-card wide details">
@@ -67,11 +70,13 @@ const ProductDetails = ({history}) => {
                             atque corrupti quos dolores et quas molestias excepturi. sint occaecati cupiditate non provident, similique 
                             sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum 
                             facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil 
-                            impedit quo minus id quod maxime placeat facere. <br/><br/> possimus, omnis voluptas assumenda est, omnis dolor repellendus. 
-                            Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae 
-                            sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus 
-                            maiores alias consequatur aut perferendis doloribus asperiores repellat.
+                            impedit quo minus id quod maxime placeat facere.
                         </p>
+                        <div className="images">
+                            <img src={banner} alt="banner-img"/>
+                            <img src={banner3} alt="banner-img"/>
+                            <img src={banner2} alt="banner-img"/>
+                        </div>
                     </div>
                     <div className="product-desc-card">
                         <h3>additional info</h3>

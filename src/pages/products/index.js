@@ -2,6 +2,10 @@ import React from 'react';
 // import {AiFillStar, AiOutlineStar} from 'react-icons/ai';
 // import {MdFilterList} from 'react-icons/md';
 
+import {StyledSection} from './products-styles';
+import Navbar from '../../components/navbar';
+import Card from '../../components/cards';
+
 import bg from '../../assets/h-1.jpg';
 import bg2 from '../../assets/h-2.jpg';
 import bg3 from '../../assets/h-3.jpg';
@@ -24,11 +28,7 @@ import bg20 from '../../assets/g-19.jpg';
 import bg21 from '../../assets/g-20.jpg';
 import category from '../../assets/cat-banner.jpg';
 
-import {StyledSection} from './products-styles';
-import Navbar from '../../components/navbar';
-import Card from '../../components/cards';
-
-const ProductsPage = () => {
+const ProductsPage = ({history}) => {
     return (
         <StyledSection bg={category}>
             <Navbar/>
@@ -85,23 +85,23 @@ const ProductsPage = () => {
 
                 <div className="collage">
                     <div className="collage-card wide tall">
-                        <img src={bg} alt="collage"/>
+                        <img src={bg} alt="collage" onClick={() => history.push('/product/214')}/>
                         <span>trending beddings !</span>
                     </div>
                     <div className="collage-card">
-                        <img src={bg2} alt="collage"/>
+                        <img src={bg2} alt="collage" onClick={() => history.push('/product/218')}/>
                         <span>comfortable sheets !</span>
                     </div>
                     <div className="collage-card">
-                        <img src={bg3} alt="collage"/>
+                        <img src={bg3} alt="collage" onClick={() => history.push('/product/112')}/>
                         <span>air conditioned x-ray !</span>
                     </div>
-                    <div className="collage-card tall">
+                    <div className="collage-card tall" onClick={() => history.push('/product/200')}>
                         <img src={bg4} alt="collage"/>
                         <span>improvised triage unit !</span>
                     </div>
-                    <div className="collage-card  wide">
-                        <img src={bg5} alt="collage"/>
+                    <div className="collage-card wide">
+                        <img src={bg5} alt="collage" onClick={() => history.push('/product/14')}/>
                         <span>sanitized environments !</span>
                     </div>
                 </div>

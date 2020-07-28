@@ -85,10 +85,10 @@ export const StyledSection = styled.section`
                     .inner-text{
                         position: absolute;
                         top: 50%;
-                        left: 10%;
-                        transform: translate(-10%, -50%);
+                        left: 5%;
+                        transform: translate(-5%, -50%);
                         width: 40%;
-                        padding: 1.5rem;
+                        padding: 1rem;
                         color: ${colors.white};
                         background: ${colors.offGreenAlt};
                         
@@ -99,9 +99,9 @@ export const StyledSection = styled.section`
                         }
 
                         .name{
-                            font-size: 4rem;
+                            font-size: 3.5rem;
                             text-transform: capitalize;
-                            margin: 1rem 0;
+                            margin: .5rem 0;
                         }
 
                         .sub{

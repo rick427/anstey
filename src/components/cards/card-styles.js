@@ -76,7 +76,7 @@ export const StyledDiv = styled.div`
         font-size: 1.3rem;
         font-weight: 700;
         color: ${colors.grey};
-        margin-bottom: .5rem;
+        margin-bottom: 1rem;
     }
 
     :hover .actions{

@@ -152,7 +152,7 @@ export const StyledSection = styled.section`
         /* end of category */
 
         /* start of title */
-        .title{
+        .section-title{
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -174,7 +174,7 @@ export const StyledSection = styled.section`
                 font-size: 1.8rem;
                 font-weight: 600;
                 text-transform: capitalize;
-                color: ${colors.grey};
+                color: ${colors.primary};
             }
 
             input{

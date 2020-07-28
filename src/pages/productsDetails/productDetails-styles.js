@@ -89,7 +89,6 @@ export const StyledSection = styled.section`
                 &.details{
                     padding: 2rem;
                     border-right: 1px solid ${colors.grey3};
-                    border-bottom: 1px solid ${colors.grey3};
 
                     .title{
                         text-transform: capitalize;

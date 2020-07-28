@@ -9,6 +9,8 @@ import ProductDetails from './pages/productsDetails';
 import CartPage from './pages/cart';
 import SettingsPage from './pages/settings';
 import ErrorPage from './pages/error';
+import LoginPage from './pages/login';
+import RegisterPage from './pages/register';
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
         <Route exact path="/product/:id" component={ProductDetails}/>
         <Route exact path="/cart" component={CartPage}/>
         <Route exact path="/settings" component={SettingsPage}/>
+        <Route exact path="/login" component={LoginPage}/>
+        <Route exact path="/register" component={RegisterPage}/>
         <Route component={ErrorPage}/>
       </Switch>
     </Router>

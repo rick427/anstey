@@ -72,13 +72,13 @@ const ProductsPage = ({history}) => {
                             <p className="sub">
                                 Alpha GPC is a 300mg acoustic medical drug which 
                                 is used for ageing patients. It also tracks heart beats,
-                                and can restores facial hair.
+                                and can restore facial hair.
                             </p>
                        </div>
                     </div>
                 </div>
                 
-                <div className="title">
+                <div className="section-title">
                     <h3>new arrivals</h3>
                     <input type="text" placeholder="search by product name"/>
                 </div>
@@ -106,7 +106,7 @@ const ProductsPage = ({history}) => {
                     </div>
                 </div>
 
-                <div className="title">
+                <div className="section-title">
                     <h3>best selling products</h3>
                     <input type="text" placeholder="search by product name"/>
                 </div>

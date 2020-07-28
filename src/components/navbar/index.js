@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link, useLocation} from 'react-router-dom';
-import {AiOutlineHome, AiOutlineShoppingCart, AiOutlineSetting} from 'react-icons/ai';
+import {AiOutlineHome, AiOutlineShoppingCart, AiOutlineUser} from 'react-icons/ai';
 import {RiWhatsappLine, RiStore3Line} from 'react-icons/ri';
 import {GiThreeLeaves} from 'react-icons/gi';
 
@@ -46,11 +46,17 @@ export default function Navbar() {
                     </Link>
                 </li>
                 <li className="nav-item">
+                    <Link to="/login" style={checkActive('/login')} className="nav-link">
+                        <span><AiOutlineUser/></span>
+                        <p className="link-text">login</p>
+                    </Link>
+                </li>
+                {/* <li className="nav-item">
                     <Link to="/settings" style={checkActive('/settings')} className="nav-link">
                         <span><AiOutlineSetting/></span>
                         <p className="link-text">settings</p>
                     </Link>
-                </li>
+                </li> */}
                 <li className="nav-item">
                     <Link to="/" className="nav-link">
                         <span><RiWhatsappLine/></span>

@@ -1,6 +1,6 @@
 import React from 'react';
 import {useHistory} from 'react-router-dom';
-import {AiFillStar, AiOutlineStar, AiOutlineShoppingCart, AiOutlineSearch} from 'react-icons/ai';
+import {AiFillStar, AiOutlineStar, AiOutlineShoppingCart, AiOutlineExpand} from 'react-icons/ai';
 
 import {StyledDiv} from './card-styles'
 
@@ -10,16 +10,13 @@ export default function Card({image, title, price, stars}) {
     return (
         <StyledDiv>
             <div className="actions">
-                <span onClick={() => history.push('/product/217')}><AiOutlineSearch/></span>
+                <span onClick={() => history.push('/product/217')}><AiOutlineExpand/></span>
                 <span><AiOutlineShoppingCart/></span>
             </div>
 
             <img src={image} alt="products"/>
 
-            <p className="title">
-                {title}
-            </p>
-
+            <p className="title">{title}</p>
             {stars ? (
                 <span className="star">
                     <AiFillStar/>
@@ -36,9 +33,7 @@ export default function Card({image, title, price, stars}) {
                 </span>
             )}
 
-            <p className="price">
-               ₦{price}
-            </p>
+            <p className="price">₦{price}</p>
         </StyledDiv>
     )
 }

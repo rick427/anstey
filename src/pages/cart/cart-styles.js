@@ -67,8 +67,8 @@ export const StyledSection = styled.section`
 
         /* start of @: .cart */
         .cart{
-            width: 100%;
             overflow-x: auto;
+            border: 1px solid ${colors.veryLightGrey};
 
             .cart-table{
                 border-collapse: collapse;

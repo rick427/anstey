@@ -44,7 +44,7 @@ const CartPage = ({history}) => {
                                 <td>
                                     <Picker/>
                                 </td>
-                                <td><span><BsTrash/></span></td>
+                                <td><span className="action"><BsTrash/></span></td>
                                 <td className="total">&#8358; 88,100</td>
                             </tr>
                             <tr>
@@ -57,7 +57,7 @@ const CartPage = ({history}) => {
                                 <td>
                                     <Picker/>
                                 </td>
-                                <td><span><BsTrash/></span></td>
+                                <td><span className="action"><BsTrash/></span></td>
                                 <td className="total">&#8358; 5,100</td>
                             </tr>
                             <tr>
@@ -70,7 +70,7 @@ const CartPage = ({history}) => {
                                 <td>
                                     <Picker/>
                                 </td>
-                                <td><span><BsTrash/></span></td>
+                                <td><span className="action"><BsTrash/></span></td>
                                 <td className="total">&#8358; 2,100</td>
                             </tr>
                             <tr>
@@ -78,12 +78,16 @@ const CartPage = ({history}) => {
                                     <img src={prod4} alt="product"/>
                                 </td>
                                 <td className="w-25 name">context provider exterminator.</td>
-                                <td className="w-30">context optimizer and stress flexer. For the devs that like Angular &#x1F92E;.</td>
+                                <td className="w-30">
+                                    context optimizer and stress flexer. 
+                                    For the devs that like Angular 
+                                    <span role="img" aria-label="emoji">&#129326;</span>
+                                </td>
                                 <td>&#8358; 4,100</td>
                                 <td>
                                     <Picker/>
                                 </td>
-                                <td><span><BsTrash/></span></td>
+                                <td><span className="action"><BsTrash/></span></td>
                                 <td className="total">&#8358; 4,100</td>
                             </tr>
                         </tbody>

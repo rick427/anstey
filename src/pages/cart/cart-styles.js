@@ -47,7 +47,7 @@ export const StyledSection = styled.section`
                         }
                     }
 
-                    span{
+                    .action{
                         display: block;
                         padding: 1rem;
                         width: 1.6rem;

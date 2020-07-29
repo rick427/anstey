@@ -36,7 +36,7 @@ export default function RegisterPage() {
                                 </div>
                                 <div className="form-group">
                                     <label>email</label>
-                                    <input className="input" type="text" placeholder="your_email@example.com" required/>
+                                    <input className="input" type="text" placeholder="Enter your email" required/>
                                     <div className="underline"/>
                                 </div>
                                 <div className="form-group">

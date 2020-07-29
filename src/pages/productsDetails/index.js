@@ -6,6 +6,8 @@ import {AiOutlineStar} from 'react-icons/ai';
 import {StyledSection} from './productDetails-styles';
 import Navbar from '../../components/navbar';
 import Picker from '../../components/picker';
+import Header from '../../components/header';
+
 import banner from '../../assets/banner-3.jpg';
 import banner2 from '../../assets/g-8.jpg';
 import banner3 from '../../assets/h-5.jpg';
@@ -16,14 +18,7 @@ const ProductDetails = ({history}) => {
             <Navbar/>
 
             <div className="main">
-                <div className="breadcrumb">
-                    <p className="breadcrumb-link">home | products |<span> product detail</span></p>
-                    <div className="flex">   
-                        <p className="breadcrumb-text">
-                            oxford enterprise bedroom
-                        </p>
-                    </div>
-                </div>
+                <Header current="products | details"/>
 
                 <div className="product">
                     <div className="product-card">

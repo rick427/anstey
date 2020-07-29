@@ -14,7 +14,7 @@ export const StyledSection = styled.section`
         .main-grid{
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            grid-auto-rows: 93vh;
+            grid-auto-rows: 90vh;
 
             .main-grid-card{
                 position: relative;
@@ -83,6 +83,7 @@ export const StyledSection = styled.section`
                         font-size: 2rem;
                         color: ${colors.grey2};
                         text-transform: capitalize;
+                        margin-top:  1rem;
                     }
 
                     .form-message{

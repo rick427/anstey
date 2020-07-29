@@ -6,6 +6,7 @@ import {StyledSection} from './products-styles';
 import Navbar from '../../components/navbar';
 import Card from '../../components/cards';
 
+import logo from '../../assets/logo.svg';
 import bg from '../../assets/h-1.jpg';
 import bg2 from '../../assets/h-2.jpg';
 import bg3 from '../../assets/h-3.jpg';
@@ -27,6 +28,7 @@ import bg19 from '../../assets/g-18.jpg';
 import bg20 from '../../assets/g-19.jpg';
 import bg21 from '../../assets/g-20.jpg';
 import category from '../../assets/cat-banner.jpg';
+import Header from '../../components/header';
 
 const ProductsPage = ({history}) => {
     return (
@@ -34,19 +36,7 @@ const ProductsPage = ({history}) => {
             <Navbar/>
 
             <div className="main">
-                <div className="breadcrumb">
-                    <p className="breadcrumb-link">home |<span> products</span></p>
-                    {/* <div className="flex">
-                        <span>
-                            <AiFillStar/>
-                            <AiFillStar/>
-                            <AiOutlineStar/>
-                        </span>    
-                        <p className="breadcrumb-text">
-                            new featured listings
-                        </p>
-                    </div> */}
-                </div>
+                <Header current="products"/>
 
                 <div className="category">
                     <div className="category-card">

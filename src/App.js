@@ -1,5 +1,6 @@
 import React from 'react';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import {ToastProvider} from 'react-toast-notifications';
 
 import ScrollToTop from './utils/scrollToTop';
 
@@ -18,17 +19,19 @@ function App() {
     <Router>
       <ScrollToTop/>
 
-      <Switch>
-        <Route exact path="/" component={HomePage}/>
-        <Route exact path="/products" component={ProductsPage}/>
-        <Route exact path="/product/:id" component={ProductDetails}/>
-        <Route exact path="/cart" component={CartPage}/>
-        <Route exact path="/settings" component={SettingsPage}/>
-        <Route exact path="/login" component={LoginPage}/>
-        <Route exact path="/register" component={RegisterPage}/>
-        <Route exact path="/checkout" component={CheckOutPage}/>
-        <Route component={ErrorPage}/>
-      </Switch>
+        <ToastProvider>
+          <Switch>
+            <Route exact path="/" component={HomePage}/>
+            <Route  path="/products" component={ProductsPage}/>
+            <Route  path="/product/:id" component={ProductDetails}/>
+            <Route  path="/cart" component={CartPage}/>
+            <Route  path="/settings" component={SettingsPage}/>
+            <Route  path="/login" component={LoginPage}/>
+            <Route  path="/register" component={RegisterPage}/>
+            <Route  path="/checkout" component={CheckOutPage}/>
+            <Route component={ErrorPage}/>
+          </Switch>
+        </ToastProvider>
     </Router>
   );
 }

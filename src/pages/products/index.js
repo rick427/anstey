@@ -6,7 +6,6 @@ import {StyledSection} from './products-styles';
 import Navbar from '../../components/navbar';
 import Card from '../../components/cards';
 
-import logo from '../../assets/logo.svg';
 import bg from '../../assets/h-1.jpg';
 import bg2 from '../../assets/h-2.jpg';
 import bg3 from '../../assets/h-3.jpg';
@@ -32,6 +31,8 @@ import Header from '../../components/header';
 
 const ProductsPage = ({history}) => {
     return (
+
+
         <StyledSection bg={category}>
             <Navbar/>
 
@@ -124,6 +125,7 @@ const ProductsPage = ({history}) => {
                 </div>
             </div>
         </StyledSection>
+
     )
 }
 

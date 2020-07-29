@@ -43,7 +43,7 @@ export default function LoginPage({history}) {
                             </form>
                         </div>
                         <p className="info">
-                            Don't have an Anstey account ? Create one by registering <span onClick={() => history.push('/register')}>Here</span>
+                            Don't have an Anstey account ? Create one <span onClick={() => history.push('/register')}>Here</span>
                         </p>
                     </div>
                 </div>               

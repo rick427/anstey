@@ -5,7 +5,7 @@ import Navbar from '../../components/navbar';
 
 import logo from '../../assets/logo.svg';
 
-export default function RegisterPage() {
+export default function RegisterPage({history}) {
     return (
         <StyledSection>
             <Navbar/>
@@ -47,6 +47,9 @@ export default function RegisterPage() {
                                 <input className="submit-btn" type="submit" value="CREATE ACCOUNT"/>
                             </form>
                         </div>
+                        <p className="info">
+                            Already have an account ? Login <span onClick={() => history.push('/login')}>Here</span>
+                        </p>
                     </div>
                 </div>               
             </div>

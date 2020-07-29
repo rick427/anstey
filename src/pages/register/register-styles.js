@@ -70,7 +70,7 @@ export const StyledSection = styled.section`
 
                 .form{
                     width: 40rem;
-                    height: 45rem;
+                    height: 50rem;
                     position: absolute;
                     top: 50%;
                     left: 50%;
@@ -171,15 +171,16 @@ export const StyledSection = styled.section`
                 }
 
                 .info{
-                    width: 80%;
+                    width: 90%;
                     position: absolute;
                     top: 80%;
                     left: 50%;
-                    transform: translate(-50%, -80%);
+                    transform: translate(-50%, -90%);
                     font-size: 1.2rem;
                     font-weight: 300;
                     letter-spacing: .5px;
                     text-align: center;
+                    margin: 2rem 0 4rem 0;
 
                     span{
                         font-weight: 700;

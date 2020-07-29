@@ -9,6 +9,7 @@ import Header from '../../components/header';
 import prod1 from '../../assets/h-3.jpg';
 import prod2 from '../../assets/g-18.jpg';
 import prod3 from '../../assets/g-16.jpg';
+import prod4 from '../../assets/g-20.jpg';
 import Picker from '../../components/picker';
 
 const CartPage = ({history}) => {
@@ -71,6 +72,19 @@ const CartPage = ({history}) => {
                                 </td>
                                 <td><span><BsTrash/></span></td>
                                 <td className="total">&#8358; 2,100</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src={prod4} alt="product"/>
+                                </td>
+                                <td className="w-25 name">context provider exterminator.</td>
+                                <td className="w-30">context optimizer and stress flexer. For the devs that like Angular &#x1F92E;.</td>
+                                <td>&#8358; 4,100</td>
+                                <td>
+                                    <Picker/>
+                                </td>
+                                <td><span><BsTrash/></span></td>
+                                <td className="total">&#8358; 4,100</td>
                             </tr>
                         </tbody>
                     </table>

@@ -128,17 +128,56 @@ export const StyledSection = styled.section`
         }
         /* end of @: .cart */
 
+        .edit{
+            width: 82%;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+
+            .edit-inner{
+                width: 40rem;
+                display: flex;
+                justify-content: space-between;
+
+                input{
+                    border: none;
+                    padding: .5rem;
+                    border-bottom: 2px solid ${colors.lightGrey};
+                    outline: none;
+                    font-family: 'Open Sans', sans-serif;
+                }
+            }
+
+            .btn{
+                padding: .8rem;
+                width: 12rem;
+                text-transform: capitalize;
+                color: ${colors.offGreenAlt};
+                background: ${colors.white};
+                border: 1px solid ${colors.pastelGreen};
+                font-weight: 600;
+                font-family: 'Open Sans', sans-serif;
+                cursor: pointer;
+            }
+        }
+
         /* start of  @: .subtotal */
         .subtotal{
+            /* width: 50rem; */
             height: 15rem;
+            /* margin-left: auto; */
             padding: 1rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             align-items: center;
+            /* border: 1px solid red; */
+
 
             .subtotal-flex{
-                width: 15rem;
+                width: 13rem;
                 display: flex;
                 justify-content: space-between;
                 align-items: center;

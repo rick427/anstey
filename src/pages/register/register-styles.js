@@ -70,7 +70,7 @@ export const StyledSection = styled.section`
 
                 .form{
                     width: 40rem;
-                    height: 50rem;
+                    height: 55rem;
                     position: absolute;
                     top: 50%;
                     left: 50%;
@@ -155,13 +155,13 @@ export const StyledSection = styled.section`
                         padding: 1.2rem;
                         width: 50%;
                         display: block;
-                        margin: auto;
+                        margin: 5rem auto;
                         background: ${colors.pastelGreen};
                         border: none;
                         color: ${colors.white};
-                        border-radius: 25px;
+                        border-radius: 2px;
                         font-weight: 600;
-                        margin-top: 2rem;
+                        cursor: pointer;
                     }
 
                     @media screen and (max-width: 600px){

@@ -74,6 +74,15 @@ const CartPage = ({history}) => {
                             </tr>
                         </tbody>
                     </table>
+
+                    <div className="edit">
+                        <div className="edit-inner">
+                            <input type="text" placeholder="Coupon code"/>
+                            <button className="btn">apply coupon</button>
+                        </div>
+
+                        <button className="btn">update cart</button>
+                    </div>
                 </div>
 
                 <div className="subtotal">

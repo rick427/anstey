@@ -290,7 +290,7 @@ export const StyledSection = styled.section`
                 display: block;
                 background: ${colors.pastelGreen};
                 border: none;
-                border-radius: 20px;
+                border-radius: 2px;
                 color: ${colors.white};
                 text-transform: uppercase;
                 font-family: 'Open Sans', sans-serif;

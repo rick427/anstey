@@ -159,9 +159,10 @@ export const StyledSection = styled.section`
                         background: ${colors.pastelGreen};
                         border: none;
                         color: ${colors.white};
-                        border-radius: 25px;
+                        border-radius: 2px;
                         font-weight: 600;
                         margin-top: 2rem;
+                        cursor: pointer;
                     }
 
                     @media screen and (max-width: 600px){

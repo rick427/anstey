@@ -37,7 +37,7 @@ export const StyledDiv = styled.div`
             padding: 1rem;
             border-radius: 50px;
             background: ${colors.offGreen};
-            color: ${colors.grey};
+            color: ${colors.grey2};
             text-align: center;
             transition: all 200ms;
 

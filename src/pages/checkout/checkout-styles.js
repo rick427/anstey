@@ -136,7 +136,7 @@ export const StyledSection = styled.section`
                         border-bottom: 1px solid ${colors.grey3};
 
                         .order-img{
-                            width: 15rem;
+                            width: 12rem;
                             height: 10rem;
 
                             img{

@@ -39,7 +39,7 @@ export const StyledSection = styled.section`
 
                     h3{
                         position: absolute;
-                        font-size: 18rem;
+                        font-size: 16rem;
                         font-weight: 700;
                         color: ${colors.grey3};
                         text-transform: uppercase;

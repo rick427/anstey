@@ -24,11 +24,74 @@ export const StyledSection = styled.section`
 
                 @media screen and (min-width: 600px){
                     &.tall{
-                        grid-row: span 3 / auto;
+                        grid-row: span 4 / auto;
+                        /* border: 1px solid red; */
                     }
 
                     &.tall-sm{
                         grid-row: span 2 / auto;
+                        /* border: 1px solid red; */
+                        position: relative;
+                    }
+                }
+
+                .top-card{
+                    padding: 1rem;
+                    border: 1px solid ${colors.pastelGreen};
+                    border-radius: 3px;
+                    margin-bottom: 6rem;
+
+                    .top-heading{
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        border-bottom: 1px solid ${colors.grey3};
+                        margin-bottom: 1rem;
+
+                        .top-left{
+                            display: flex;
+                            align-items: center;
+
+                            span{
+                                font-size: 2rem;
+                                color: ${colors.pastelGreen};
+                            }
+
+                            h3{
+                                font-size: 1.2rem;
+                                font-weight: 700;
+                                margin-left: 1rem;
+                                text-transform: capitalize;
+                                color: ${colors.grey};
+                            }
+                        }
+
+                        h3{
+                            padding: .5rem;
+                            font-size: 1.2rem;
+                            font-weight: 700;
+                            margin-left: 1rem;
+                            text-transform: uppercase;
+                            color: ${colors.pastelGreen};
+                            transition: all 300ms ease;
+
+                            :hover{
+                                cursor: pointer;
+                                background: ${colors.veryLightGrey};
+                            }
+                        }
+                    }
+
+                    h4{
+                        font-size: 1.2rem;
+                        text-transform: capitalize;
+                        color: ${colors.grey};
+                        margin-bottom: 1rem;
+                    }
+
+                    p{
+                        font-size: 1.2rem;
+                        font-weight: 300;
                     }
                 }
 
@@ -44,7 +107,6 @@ export const StyledSection = styled.section`
                         color: ${colors.pastelGreen};
                         margin: 3rem 0;
                         padding: 0 0 1rem 0;
-                        border-bottom: 1px solid ${colors.grey3};
                     }
 
                     .form-flex{

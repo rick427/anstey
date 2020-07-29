@@ -1,4 +1,5 @@
 import React from 'react';
+import {AiFillCheckCircle} from 'react-icons/ai';
 
 import Navbar from '../../components/navbar';
 import Header from '../../components/header';
@@ -19,7 +20,23 @@ export default function CheckOutPage() {
                 <div className="checkout-grid">
                     <div className="checkout-card tall">
                         <div className="inner-card">
-                            <h3 className="title">billing details</h3>
+                            <h3 className="title">checkout</h3>
+
+                            <div className="top-card">
+                                <div className="top-heading">
+                                    <div className="top-left">
+                                        <span><AiFillCheckCircle/></span>
+                                        <h3>address details</h3>
+                                    </div>
+                                    <h3 className="top-action">change</h3>
+                                </div>
+                                <h4>kirigaya kazuhito</h4>
+                                <p>
+                                    Anstey Australia Limited, World trade center, 
+                                    20th floor, Constituition Avenue, Central area, 
+                                    Abuja-Central, Federal Capital Territory
+                                </p>
+                            </div>
 
                             <form>
                                 <div className="form-flex">

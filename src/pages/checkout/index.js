@@ -8,6 +8,7 @@ import {StyledSection} from './checkout-styles';
 import g6 from '../../assets/h-4.jpg';
 import g7 from '../../assets/g-16.jpg';
 import g8 from '../../assets/g-20.jpg';
+import g9 from '../../assets/g-18.jpg';
 
 export default function CheckOutPage() {
     return (
@@ -97,7 +98,7 @@ export default function CheckOutPage() {
 
                     <div className="checkout-card tall-sm">
                         <div className="summary">
-                            <h3 className="summary-header">order summary (3)</h3>
+                            <h3 className="summary-header">order summary (4)</h3>
 
                             <div className="order">
                                 <div className="order-img">
@@ -118,10 +119,10 @@ export default function CheckOutPage() {
                                     <img src={g7} alt="order-product"/>
                                 </div>
                                 <div className="order-info">
-                                    <h3>gas of the twilight zone</h3>
+                                    <h3>gas mask of the twilight zone</h3>
                                     <p>&#8358; 50.00</p>
                                     <p>Quantity: x2</p>
-                                    <p>xamarin bedded crips sheets</p>
+                                    <p>selenium bedded crips sheets</p>
                                 </div>
                                 <div className="order-price">
                                     <p>&#8358; 100,000.00</p>
@@ -133,12 +134,26 @@ export default function CheckOutPage() {
                                 </div>
                                 <div className="order-info">
                                     <h3>paracetmol redux inducer</h3>
-                                    <p>&#8358; 10.00</p>
+                                    <p>&#8358; 10,000.00</p>
                                     <p>Quantity: x1</p>
-                                    <p>xamarin bedded crips sheets</p>
+                                    <p>springboot bedded crips sheets</p>
                                 </div>
                                 <div className="order-price">
                                     <p>&#8358; 10,000.00</p>
+                                </div>
+                            </div>
+                            <div className="order">
+                                <div className="order-img">
+                                    <img src={g9} alt="order-product"/>
+                                </div>
+                                <div className="order-info">
+                                    <h3>paracetmol context relaxer</h3>
+                                    <p>&#8358; 20,000.00</p>
+                                    <p>Quantity: x4</p>
+                                    <p>jenkins bedded crips sheets</p>
+                                </div>
+                                <div className="order-price">
+                                    <p>&#8358; 80,000.00</p>
                                 </div>
                             </div>
 
@@ -162,6 +177,7 @@ export default function CheckOutPage() {
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </StyledSection>

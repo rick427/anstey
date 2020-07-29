@@ -87,7 +87,7 @@ export const StyledSection = styled.section`
                     }
 
                     .actions{
-                        width: 50%;
+                        width: 30rem;
                         display: flex;
                         justify-content: space-between;
                         align-items:  center;

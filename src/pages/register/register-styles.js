@@ -70,11 +70,11 @@ export const StyledSection = styled.section`
 
                 .form{
                     width: 40rem;
-                    height: 57rem;
+                    height: 55rem;
                     position: absolute;
-                    top: 70%;
+                    top: 50%;
                     left: 50%;
-                    transform: translate(-50%, -70%);
+                    transform: translate(-50%, -50%);
                     padding: 1rem;
                     box-shadow: 0 0 10px rgba(0,0,0,.15);
 
@@ -173,10 +173,10 @@ export const StyledSection = styled.section`
 
                 .info{
                     width: 90%;
-                    position: absolute;
+                    /* position: absolute;
                     top: 86%;
                     left: 50%;
-                    transform: translate(-50%, -85%);
+                    transform: translate(-50%, -85%); */
                     font-size: 1.2rem;
                     font-weight: 300;
                     letter-spacing: .5px;

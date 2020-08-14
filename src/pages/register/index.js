@@ -46,10 +46,10 @@ export default function RegisterPage({history}) {
                                 </div>
                                 <input className="submit-btn" type="submit" value="CREATE ACCOUNT"/>
                             </form>
+                            <p className="info">
+                                Already have an account ? Login <span onClick={() => history.push('/login')}>Here</span>
+                            </p>
                         </div>
-                        <p className="info">
-                            Already have an account ? Login <span onClick={() => history.push('/login')}>Here</span>
-                        </p>
                     </div>
                 </div>               
             </div>

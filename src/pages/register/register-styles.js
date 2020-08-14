@@ -70,7 +70,7 @@ export const StyledSection = styled.section`
 
                 .form{
                     width: 40rem;
-                    height: 55rem;
+                    height: 60rem;
                     position: absolute;
                     top: 50%;
                     left: 50%;
@@ -153,8 +153,8 @@ export const StyledSection = styled.section`
                     }
 
                     .submit-btn{
-                        padding: 1.2rem;
-                        width: 50%;
+                        padding: 1rem;
+                        width: 40%;
                         display: block;
                         margin: 3rem auto;
                         background: ${colors.pastelGreen};
@@ -174,7 +174,7 @@ export const StyledSection = styled.section`
                 .info{
                     width: 90%;
                     position: absolute;
-                    top: 85%;
+                    top: 86%;
                     left: 50%;
                     transform: translate(-50%, -85%);
                     font-size: 1.2rem;

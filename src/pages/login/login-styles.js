@@ -165,6 +165,7 @@ export const StyledSection = styled.section`
                         font-weight: 600;
                         margin-top: 2rem;
                         cursor: pointer;
+                        outline: none;
                     }
 
                     @media screen and (max-width: 600px){

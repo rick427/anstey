@@ -70,7 +70,7 @@ export const StyledSection = styled.section`
 
                 .form{
                     width: 40rem;
-                    height: 60rem;
+                    height: 58rem;
                     position: absolute;
                     top: 50%;
                     left: 50%;

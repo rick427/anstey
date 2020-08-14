@@ -72,9 +72,9 @@ export const StyledSection = styled.section`
                     width: 40rem;
                     height: 57rem;
                     position: absolute;
-                    top: 60%;
+                    top: 70%;
                     left: 50%;
-                    transform: translate(-50%, -60%);
+                    transform: translate(-50%, -70%);
                     padding: 1rem;
                     box-shadow: 0 0 10px rgba(0,0,0,.15);
 

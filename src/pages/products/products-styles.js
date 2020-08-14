@@ -37,7 +37,7 @@ export const StyledSection = styled.section`
                         top: 50%;
                         left: 5%;
                         transform: translate(-5%, -50%);
-                        width: 40%;
+                        width: 45%;
                         padding: 1rem;
                         color: ${colors.white};
                         background: ${colors.offGreenAlt};
@@ -52,6 +52,7 @@ export const StyledSection = styled.section`
                             font-size: 3.5rem;
                             text-transform: capitalize;
                             margin: .5rem 0;
+                            color: ${colors.white};
                         }
 
                         .sub{
@@ -143,6 +144,18 @@ export const StyledSection = styled.section`
                     text-transform: capitalize;
                 }
             }
+
+            @media screen and (max-width: 600px){
+                justify-content: center;
+                margin-bottom: 2rem;
+
+                h3{
+                    font-size: 1.9rem;
+                }
+                input{
+                    display: none;
+                }
+            }
         }
         /* end of title */
 
@@ -189,7 +202,7 @@ export const StyledSection = styled.section`
                     position: absolute;
                     top: 10%;
                     left: 0%;
-                    width: 16rem;
+                    width: 18rem;
                     padding: 1rem;
                     transform: translate(-100%, -10%);
                     display: inline-block;
@@ -275,7 +288,7 @@ export const StyledSection = styled.section`
         .listings{
             display: grid;
             gap: 2em;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             grid-auto-rows: 330px;
         }
 

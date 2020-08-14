@@ -110,13 +110,14 @@ export const StyledSection = styled.section`
 
                         .input{
                             width: 95%;
-                            padding: 1rem;
+                            padding: 1rem 0;
                             border: none;
                             border-bottom: 2px solid ${colors.lightGrey};
                             outline: none;
 
                             ::placeholder{
                                 font-family: 'Open Sans', sans-serif;
+                                font-size: 1.3rem;
                             }
 
                             :focus ~ .underline:before, :valid ~ .underline:before{
@@ -128,7 +129,7 @@ export const StyledSection = styled.section`
                             position: absolute;
                             bottom: 0px;
                             height: 2px;
-                            width: 100%;
+                            width: 95%;
 
                             :before{
                                 position: absolute;
@@ -155,7 +156,7 @@ export const StyledSection = styled.section`
                         padding: 1.2rem;
                         width: 50%;
                         display: block;
-                        margin: 5rem auto;
+                        margin: 3rem auto;
                         background: ${colors.pastelGreen};
                         border: none;
                         color: ${colors.white};
@@ -173,9 +174,9 @@ export const StyledSection = styled.section`
                 .info{
                     width: 90%;
                     position: absolute;
-                    top: 80%;
+                    top: 85%;
                     left: 50%;
-                    transform: translate(-50%, -90%);
+                    transform: translate(-50%, -85%);
                     font-size: 1.2rem;
                     font-weight: 300;
                     letter-spacing: .5px;
@@ -183,7 +184,7 @@ export const StyledSection = styled.section`
                     margin: 2rem 0 4rem 0;
 
                     span{
-                        font-weight: 700;
+                        font-weight: 600;
                         color: ${colors.primary};
                         cursor: pointer;
                     }

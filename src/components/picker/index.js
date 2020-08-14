@@ -19,13 +19,13 @@ export default function Picker() {
     return (
         <StyledDiv>
             <button onClick={handleDecrement}>
-                <AiOutlineMinus/>
+                <AiOutlineMinus className="icon"/>
             </button>
 
             <p>{amount}</p>
 
             <button onClick={handleIncrement}>
-                <FiPlus/>
+                <FiPlus className="icon"/>
             </button>
         </StyledDiv>
     )

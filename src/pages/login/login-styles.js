@@ -110,13 +110,14 @@ export const StyledSection = styled.section`
 
                         .input{
                             width: 95%;
-                            padding: 1rem;
+                            padding: 1rem 0;
                             border: none;
                             border-bottom: 2px solid ${colors.lightGrey};
                             outline: none;
 
                             ::placeholder{
                                 font-family: 'Open Sans', sans-serif;
+                                font-size: 1.3rem;
                             }
 
                             :focus ~ .underline:before, :valid ~ .underline:before{
@@ -128,7 +129,7 @@ export const StyledSection = styled.section`
                             position: absolute;
                             bottom: 0px;
                             height: 2px;
-                            width: 100%;
+                            width: 95%;
 
                             :before{
                                 position: absolute;
@@ -147,8 +148,9 @@ export const StyledSection = styled.section`
                         text-transform: capitalize;
                         font-weight: 300;
                         font-size: 1.2rem;
-                        margin-right: 3rem;
+                        margin-right: 5rem;
                         margin-top: 1rem;
+                        color: ${colors.pastelGreen};
                     }
 
                     .submit-btn{
@@ -183,7 +185,7 @@ export const StyledSection = styled.section`
                     text-align: center;
 
                     span{
-                        font-weight: 700;
+                        font-weight: 600;
                         color: ${colors.primary};
                         cursor: pointer;
                     }

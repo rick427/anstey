@@ -4,7 +4,7 @@ import colors from '../../utils/colors';
 export const StyledDiv = styled.div`
     height: 5vh;
     background: ${colors.veryLightGrey};
-    padding: 1rem;
+    padding: 3rem;
     display: flex;
     justify-content: space-between;
     align-items: center;

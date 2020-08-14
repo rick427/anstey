@@ -27,6 +27,12 @@ export default function Navbar() {
                     </Link>
                 </li>
 
+                {/* <li className="nav-item">
+                    <Link to="/dashboard" style={checkActive('/dashboard')} className="nav-link">
+                        <span><AiOutlineDashboard/></span>
+                        <p className="link-text">Dashboard</p>
+                    </Link>
+                </li> */}
                 <li className="nav-item">
                     <Link to="/" style={checkActive('/')} className="nav-link">
                         <span><AiOutlineHome/></span>

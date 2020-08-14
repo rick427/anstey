@@ -44,7 +44,7 @@ const CartPage = ({history}) => {
                                 <td>
                                     <Picker/>
                                 </td>
-                                <td><span className="action"><BsTrash/></span></td>
+                                <td><span className="action"><BsTrash className="icon"/></span></td>
                                 <td className="total">&#8358; 88,100</td>
                             </tr>
                             <tr>
@@ -57,7 +57,7 @@ const CartPage = ({history}) => {
                                 <td>
                                     <Picker/>
                                 </td>
-                                <td><span className="action"><BsTrash/></span></td>
+                                <td><span className="action"><BsTrash className="icon"/></span></td>
                                 <td className="total">&#8358; 5,100</td>
                             </tr>
                             <tr>
@@ -70,7 +70,7 @@ const CartPage = ({history}) => {
                                 <td>
                                     <Picker/>
                                 </td>
-                                <td><span className="action"><BsTrash/></span></td>
+                                <td><span className="action"><BsTrash className="icon"/></span></td>
                                 <td className="total">&#8358; 2,100</td>
                             </tr>
                             <tr>
@@ -87,7 +87,7 @@ const CartPage = ({history}) => {
                                 <td>
                                     <Picker/>
                                 </td>
-                                <td><span className="action"><BsTrash/></span></td>
+                                <td><span className="action"><BsTrash className="icon"/></span></td>
                                 <td className="total">&#8358; 4,100</td>
                             </tr>
                         </tbody>

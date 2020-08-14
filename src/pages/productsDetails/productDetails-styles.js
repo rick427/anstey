@@ -80,7 +80,7 @@ export const StyledSection = styled.section`
                     .description{
                         width: 100%;
                         font-size: 1.4rem;
-                        font-style: italic;
+                        /* font-style: italic; */
                         color: ${colors.grey};
                         letter-spacing: .5px;
                         margin-top: 2rem;

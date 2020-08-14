@@ -77,6 +77,7 @@ export const StyledNav = styled.nav`
 
     .link-text{
         display: none;
+        margin-top: 1rem;
         margin-left: 3rem;
         font-size: 1.1rem;
         font-weight: 400;

@@ -59,7 +59,7 @@ const ProductsPage = ({history}) => {
                     <div className="category-card wide banner">
                        <div className="inner-text">
                             <p className="title-tag">premium quality</p>
-                            <h3 className="name">synaptic boosters</h3>
+                            <h1 className="name">synaptic boosters</h1>
                             <p className="sub">
                                 Alpha GPC is a 300mg acoustic medical drug which 
                                 is used for ageing patients. It also tracks heart beats,

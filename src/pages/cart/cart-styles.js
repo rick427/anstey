@@ -49,7 +49,7 @@ export const StyledSection = styled.section`
 
                     .action{
                         display: block;
-                        padding: 1rem;
+                        padding: 1.5rem;
                         width: 1.6rem;
                         height: 1.6rem;
                         font-size: 1.5rem;
@@ -58,6 +58,15 @@ export const StyledSection = styled.section`
                         border-radius: 50px;
                         transition: all 200ms;
                         margin: 0 auto;
+                        position: relative;
+
+                        .icon{
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            font-size: 1.5rem;
+                        }
 
                         :hover{
                             background: ${colors.red2};
@@ -143,11 +152,12 @@ export const StyledSection = styled.section`
 
                 input{
                     border: none;
-                    padding: .5rem;
+                    padding: 1rem 0;
                     border-bottom: 2px solid ${colors.lightGrey};
                     outline: none;
                     font-family: 'Open Sans', sans-serif;
                 }
+
             }
 
             .btn{
@@ -160,6 +170,22 @@ export const StyledSection = styled.section`
                 font-weight: 600;
                 font-family: 'Open Sans', sans-serif;
                 cursor: pointer;
+            }
+
+            @media screen and (max-width: 600px){
+                flex-direction: column;
+                align-items: center;
+
+                .edit-inner{
+                    width: 100%;
+                    flex-direction: column;
+                    align-items: center;
+                    margin-bottom: 4rem;
+
+                    input{
+                        margin-bottom: 2rem;
+                    }
+                }
             }
         }
 
@@ -177,7 +203,7 @@ export const StyledSection = styled.section`
 
 
             .subtotal-flex{
-                width: 13rem;
+                width: 15rem;
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
@@ -224,7 +250,7 @@ export const StyledSection = styled.section`
                 align-items: center;
 
                 button{
-                    width: 15rem;
+                    width: 18rem;
                     padding: 1rem;
                     display: block;
                     background: ${colors.pastelGreen};

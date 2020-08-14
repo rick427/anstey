@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {Spin} from 'antd';
+import { LoadingOutlined } from '@ant-design/icons';
 
 import {StyledSection} from './login-styles';
 import Navbar from '../../components/navbar';
@@ -6,6 +8,21 @@ import Navbar from '../../components/navbar';
 import logo from '../../assets/logo.svg';
 
 export default function LoginPage({history}) {
+    const [loading, setLoading] = useState(false);
+
+    const handleLogin = e => {
+        e.preventDefault();
+        
+        setLoading(true);
+
+        setTimeout(() => {
+            setLoading(false);
+            history.push('/main/dashboard/admin')
+        }, 3000);
+    }
+    
+    const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />
+
     return (
         <StyledSection>
             <Navbar/>
@@ -20,6 +37,8 @@ export default function LoginPage({history}) {
                             </div>
                         </div>
                     </div>
+
+
                     <div className="main-grid-card">
                         <div className="form">
                             <h3 className="form-title">login</h3>
@@ -27,21 +46,24 @@ export default function LoginPage({history}) {
                                 Please login to continue using Anstey.
                             </p>
 
-                            <form>
-                                <div className="form-group">
-                                    <label>email</label>
-                                    <input className="input" type="text" placeholder="Enter your email" required/>
-                                    <div className="underline"/>
-                                </div>
-                                <div className="form-group">
-                                    <label>password</label>
-                                    <input className="input" type="password" placeholder="Enter your password" required/>
-                                    <div className="underline"/>
-                                </div>
-                                <p className="sub">forgot password</p>
-                                <input className="submit-btn" type="submit" value="LOGIN"/>
-                            </form>
+                            <Spin indicator={antIcon} spinning={loading}>
+                                <form onSubmit={handleLogin}>
+                                    <div className="form-group">
+                                        <label>email</label>
+                                        <input className="input" type="text" placeholder="Enter your email" required/>
+                                        <div className="underline"/>
+                                    </div>
+                                    <div className="form-group">
+                                        <label>password</label>
+                                        <input className="input" type="password" placeholder="Enter your password" required/>
+                                        <div className="underline"/>
+                                    </div>
+                                    <p className="sub">forgot password</p>
+                                    <input className="submit-btn" type="submit" value="LOGIN"/>
+                                </form>
+                            </Spin>
                         </div>
+
                         <p className="info">
                             Don't have an Anstey account ? Create one <span onClick={() => history.push('/register')}>Here</span>
                         </p>

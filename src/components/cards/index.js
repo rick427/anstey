@@ -18,10 +18,10 @@ export default function Card({image, title, price, stars}) {
         <StyledDiv>
             <div className="actions">
                 <span onClick={() => history.push('/product/217')}>
-                    <FaExpand/>
+                    <FaExpand className="icon"/>
                 </span>
                 <span onClick={handleAddToCart}>
-                    <FaCartPlus/>
+                    <FaCartPlus className="icon"/>
                 </span>
             </div>
 

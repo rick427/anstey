@@ -1,0 +1,259 @@
+.cardReset{
+    box-shadow: 12px 7px 13px -3px #b4bfd8;
+    border-radius: 5px !important;
+    animation: fadeIn 900ms ease-out;
+    animation-fill-mode: backwards;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+        transform: scale(0.2);
+    }
+    to{
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.stagger_1{
+    animation-delay: calc(1 * 100ms);
+}
+.stagger_2{
+    animation-delay: calc(2 * 100ms);
+}
+.stagger_3{
+    animation-delay: calc(3 * 100ms);
+}
+.stagger_4{
+    animation-delay: calc(4 * 100ms);
+}
+.stagger_5{
+    animation-delay: calc(5 * 100ms);
+}
+.stagger_6{
+    animation-delay: calc(6 * 100ms);
+}
+.stagger_7{
+    animation-delay: calc(7 * 100ms);
+}
+.stagger_8{
+    animation-delay: calc(8 * 100ms);
+}
+.stagger_9{
+    animation-delay: calc(9 * 100ms);
+}
+.stagger_10{
+    animation-delay: calc(10 * 100ms);
+}
+
+.heading{
+    text-transform: uppercase;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #252B3C;
+}
+
+.cardInfo{
+    margin: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cardInfo h2{
+    font-weight: 700;
+    color: #2e3f63;
+}
+
+.cardImg{
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    background: #E4E9FF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profit{
+    background: #FEE5F1;
+}
+.sales{
+    background: #d4f2e1;
+}
+.revenue{
+    background: #fdf6de;
+}
+
+.cardImg img{
+    width: 80%;
+    height: 80%;
+    object-fit: cover;
+}
+
+.cardStats{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cardDay{
+    font-size: 1.2rem;
+    color: #999;
+}
+
+.line{
+    width: 10rem;
+    height: .1rem;
+    background: #ddd;
+}
+
+.value{
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #3f5175;
+}
+
+
+.cardDetails{
+    width: 95%;
+    margin: 0 auto;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cardDetails img{
+    width: 3rem;
+    height: 3rem;
+}
+
+.cardText{
+    text-align: right;
+}
+
+.cardText h2{
+    font-size: 1.4rem;
+    font-weight: 400;
+    text-transform: capitalize;
+    color: #2e3f63;
+}
+
+.cardText h3{
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: #2e3f63;
+}
+
+/* .blue{
+    background-image: linear-gradient(to left, #0db2de 0%, #005bea 100%) !important;
+}
+
+.red{
+    background-image: linear-gradient(45deg, #f93a5a, #f7778c) !important;
+}
+
+.green{
+    background-image: linear-gradient(to left, #48d6a8 0%, #029666 100%) !important;
+}
+
+.orange{
+    background-image: linear-gradient(to left, #efa65f, #f76a2d) !important;
+} */
+
+.innerTitle{
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #252B3C;
+}
+
+.current{
+    color: #1890FF;
+    cursor: pointer;
+}
+
+.activity{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    padding: .5rem;
+    transition: all 200ms ease;
+    border-radius: 2px;
+}
+
+.activity:hover{
+    box-shadow: 0 0 5px rgba(0,0,0,.15);
+}
+
+.inner{
+    display: flex;
+    align-items: center;
+}
+
+.shape{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-color: #d4f2e1;
+    position: relative;
+}
+
+.blue{
+    background: #E4E9FF;
+}
+
+.red{
+    background: #FEE5F1;
+}
+
+.yellow{
+    background: #fdf6de;
+}
+
+.shape img{
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.textWrapper{
+    margin: 1rem 0 0 1rem;
+}
+
+.status{
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    padding: 0;
+    margin: 0;
+}
+
+.product{
+    text-transform: capitalize;
+    font-size: 1.2rem;
+    color: #777;
+}
+
+.time{
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: #bbb;
+}
+
+.tableImg{
+    width: 4rem;
+    height: 4rem;
+    border-radius: 5px;
+}
+
+.mb2{
+    margin-bottom: 2rem;
+}

@@ -26,7 +26,7 @@ export default function AppDashboard({match, history}) {
     const onClose = () => setVisible(false);
 
     const handleLogout = () => {
-        history.push('/');
+        history.push('/login');
     }
 
     const menu = (

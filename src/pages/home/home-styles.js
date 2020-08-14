@@ -34,6 +34,7 @@ export const StyledSection = styled.section`
 
                     span{
                         font-size: 2rem;
+                        margin-top: -1rem;
                     }
                 }
 

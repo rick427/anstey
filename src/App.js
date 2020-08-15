@@ -5,6 +5,7 @@ import {Provider} from 'react-redux';
 import ScrollToTop from './utils/scrollToTop';
 import store from './redux/store';
 import PrivateRoute from './components/privateRoute';
+import RestrictedRoute from './components/restrictedRoute';
 
 import HomePage from './pages/home';
 import ProductsPage from './pages/products';
@@ -29,7 +30,7 @@ function App() {
           <Route path="/product/:id" component={ProductDetails}/>
           <Route path="/cart" component={CartPage}/>
           <Route path="/settings" component={SettingsPage}/>
-          <Route path="/login" component={LoginPage}/>
+          <RestrictedRoute path="/login" component={LoginPage}/>
           <Route path="/register" component={RegisterPage}/>
           <Route path="/checkout" component={CheckOutPage}/>
           <PrivateRoute path="/main" component={AppDashboard}/>

@@ -102,6 +102,7 @@ export const StyledNav = styled.nav`
 
         :hover{
             width: 20rem;
+            box-shadow: 4px 0 5px rgba(0,0,0,.15);
         }
 
         :hover .link-text{

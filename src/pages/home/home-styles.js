@@ -31,6 +31,7 @@ export const StyledSection = styled.section`
                     font-size: 1.7rem;
                     font-weight: 600;
                     color: ${colors.primary};
+                    margin-top: 1rem;
 
                     span{
                         font-size: 2rem;
@@ -126,6 +127,7 @@ export const StyledSection = styled.section`
                     font-size: 1.7rem;
                     font-weight: 400;
                     text-transform: capitalize;
+                    margin-top: 2rem;
                 }
             }
 
@@ -331,8 +333,9 @@ export const StyledSection = styled.section`
                     align-items: flex-start;
 
                     h2{
-                        font-size: 2rem;
-                        font-weight: 800;
+                        font-size: 2.2rem;
+                        font-weight: 700;
+                        color: #444;
                     }
 
 

@@ -61,7 +61,16 @@ export const loginUser = (formData, routerProps) => async dispatch => {
 
         dispatch(loginSuccess(res.data.user));
         AuthService.setSession(res.data.user);
-        routerProps.history.push('/main/dashboard/admin');
+
+        if(res.data.user.role.name === 'SUPER_ADMIN'){
+            toast('success', `Welcome back, ${res.data.user.role.name}.`);
+        }
+        else{
+            toast('success', `Welcome back, ${res.data.user.name}`);
+        }
+
+        routerProps.history.push('/');
+        
         
     } catch (error) {
         dispatch(loginFailure(error.message));

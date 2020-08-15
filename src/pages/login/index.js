@@ -17,7 +17,6 @@ const LoginPage = ({history, login, loading}) => {
 
     const handleLogin = e => {
         e.preventDefault();
-        
         login(user);
     }
 

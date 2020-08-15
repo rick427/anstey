@@ -60,12 +60,17 @@ export const StyledNav = styled.nav`
         text-decoration: none;
         filter: greyscale(100%) opacity(0.7);
         transition: all 600ms;
+        cursor: pointer;
 
         span{
             display: block;
             min-width: 2rem;
             margin: 0 1.5rem;
             font-size: 1.8rem;
+        }
+
+        .app-logo-text{
+            margin-top: 1.5rem;
         }
 
         :hover{
@@ -78,7 +83,7 @@ export const StyledNav = styled.nav`
     .link-text{
         display: none;
         margin-top: 1rem;
-        margin-left: 3rem;
+        margin-left: 2rem;
         font-size: 1.1rem;
         font-weight: 400;
         letter-spacing: 2px;

@@ -22,7 +22,7 @@ function App() {
     <Provider store={store}>
       <Router>
         <ScrollToTop/>
-        
+
         <Switch>
           <Route exact path="/" component={HomePage}/>
           <Route path="/products" component={ProductsPage}/>

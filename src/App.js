@@ -1,7 +1,6 @@
 import React from 'react';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import {Provider} from 'react-redux';
-import {ToastProvider} from 'react-toast-notifications';
 
 import ScrollToTop from './utils/scrollToTop';
 import store from './redux/store';
@@ -23,7 +22,7 @@ function App() {
       <Router>
         <ScrollToTop/>
 
-        <ToastProvider>
+        
           <Switch>
             <Route exact path="/" component={HomePage}/>
             <Route path="/products" component={ProductsPage}/>
@@ -36,7 +35,7 @@ function App() {
             <Route path="/main" component={AppDashboard}/>
             <Route component={ErrorPage}/>
           </Switch>
-        </ToastProvider>
+      
       </Router>
     </Provider>
   );

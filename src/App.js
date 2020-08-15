@@ -4,6 +4,7 @@ import {Provider} from 'react-redux';
 
 import ScrollToTop from './utils/scrollToTop';
 import store from './redux/store';
+import PrivateRoute from './components/privateRoute';
 
 import HomePage from './pages/home';
 import ProductsPage from './pages/products';
@@ -21,21 +22,19 @@ function App() {
     <Provider store={store}>
       <Router>
         <ScrollToTop/>
-
         
-          <Switch>
-            <Route exact path="/" component={HomePage}/>
-            <Route path="/products" component={ProductsPage}/>
-            <Route path="/product/:id" component={ProductDetails}/>
-            <Route path="/cart" component={CartPage}/>
-            <Route path="/settings" component={SettingsPage}/>
-            <Route path="/login" component={LoginPage}/>
-            <Route path="/register" component={RegisterPage}/>
-            <Route path="/checkout" component={CheckOutPage}/>
-            <Route path="/main" component={AppDashboard}/>
-            <Route component={ErrorPage}/>
-          </Switch>
-      
+        <Switch>
+          <Route exact path="/" component={HomePage}/>
+          <Route path="/products" component={ProductsPage}/>
+          <Route path="/product/:id" component={ProductDetails}/>
+          <Route path="/cart" component={CartPage}/>
+          <Route path="/settings" component={SettingsPage}/>
+          <Route path="/login" component={LoginPage}/>
+          <Route path="/register" component={RegisterPage}/>
+          <Route path="/checkout" component={CheckOutPage}/>
+          <PrivateRoute path="/main" component={AppDashboard}/>
+          <Route component={ErrorPage}/>
+        </Switch>
       </Router>
     </Provider>
   );

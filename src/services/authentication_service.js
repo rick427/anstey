@@ -19,6 +19,15 @@ class AuthService {
         this.setPhoneNumber(null);
     }
 
+    static hasSession(){
+        return (
+            this.getId() !== null && this.getToken() !== null &&
+            this.getRole() !== null && this.getPermissions() !== null &&
+            this.getEmail() !== null && this.getName() !== null &&
+            this.getPhoneNumber() !== null
+        )
+    }
+
     static setId(id){
         if(id){
            localStorage.setItem('anstey:auth:id', id); 

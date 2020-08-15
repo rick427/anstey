@@ -32,10 +32,10 @@
     width: 14px;
     border: 2px solid white;
     border-radius: 50%;
-    animation: pulse 2s infinite;
+    /* animation: pulse 2s infinite;
     animation-duration: .9s;
     animation-iteration-count: infinite;
-    animation-timing-function: ease-out;
+    animation-timing-function: ease-out; */
 }
 
 @keyframes pulse {
@@ -73,6 +73,7 @@
 .mainLayout{
     background: #E0E4F3 !important;
     margin-left: 200px !important;
+    margin-top: 6rem !important;
 }
 
 .content{
@@ -103,12 +104,18 @@
     background: #fff !important;
     display: flex;
     justify-content: space-between;
+    position: fixed;
+    top: 0;
+    width: 86.85%;
+    z-index: 1000;
+    box-shadow: 0 6px 8px -6px rgba(0,0,0,.25);
 }
 
 .logo{
     width: 15rem;
     height: 100%;
     border-left: 1px solid #f5f5f5;
+    position: relative;
 }
 
 .logo img{
@@ -116,6 +123,10 @@
     height: 100%;
     object-fit: contain;
     padding: 0 1rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .nav{
@@ -124,6 +135,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    border: 1px solid red;
 }
 
 .profile{
@@ -136,9 +148,15 @@
     border-radius: 5px;
     margin: 0 2rem;
     position: relative;
+    transition: all 300ms;
+    cursor: pointer;
 }
 
-/* .profile:before{
+.profile:hover{
+    box-shadow: 0 0 5px rgba(0,0,0,.15);
+}
+
+.pulseBox:before{
     content: '';
     background-color: #009474;
     position: absolute;
@@ -153,12 +171,13 @@
     animation-duration: .9s;
     animation-iteration-count: infinite;
     animation-timing-function: ease-out;
-} */
+}
 
 .profile img{
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 5px;
 }
 
 .icon{
@@ -180,17 +199,17 @@
 }
 
 @media screen and (max-width: 600px){
-    .header{
+    /* .header{
         position: fixed;
         top: 0;
         width: 100%;
         z-index: 1000;
         box-shadow: 0 6px 8px -6px rgba(0,0,0,.25);
-    }
+    } */
 
-    .mainLayout{
+    /* .mainLayout{
         margin-top: 6rem !important;
-    }
+    } */
 
     .mobile{
         display: block;

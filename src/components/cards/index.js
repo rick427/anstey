@@ -1,17 +1,15 @@
 import React from 'react';
 import {useHistory} from 'react-router-dom';
-import {useToasts} from 'react-toast-notifications';
 import {AiFillStar, AiOutlineStar} from 'react-icons/ai';
 import {FaExpand, FaCartPlus} from 'react-icons/fa';
 
 import {StyledDiv} from './card-styles';
 
 export default function Card({image, title, price, stars}) {
-    const {addToast} = useToasts();
     const history = useHistory();
 
     const handleAddToCart = () => {
-        addToast(`Product added to cart`, {appearance: 'success', autoDismiss: true})
+        // addToast(`Product added to cart`, {appearance: 'success', autoDismiss: true})
     }
 
     return (

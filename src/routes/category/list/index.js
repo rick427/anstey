@@ -1,91 +1,38 @@
-import React, {useState} from 'react';
-import {Card, Table, Tag} from 'antd';
+import React, {useState, useEffect} from 'react';
+import {Card, Table, Tag, Spin} from 'antd';
 import Lightbox from 'react-image-lightbox';
-import {EditOutlined, DeleteOutlined} from '@ant-design/icons';
+import {EditOutlined, DeleteOutlined, LoadingOutlined} from '@ant-design/icons';
+import {useSelector, useDispatch} from 'react-redux';
 
-import c1 from '../../../assets/h-3.jpg';
-import c2 from '../../../assets/h-4.jpg';
-import c3 from '../../../assets/h-5.jpg';
-import c4 from '../../../assets/h-6.jpg';
-import c5 from '../../../assets/h-7.jpg';
-import c6 from '../../../assets/h-8.jpg';
-import c7 from '../../../assets/h-9.jpg';
+import {getAllCategories} from '../../../redux';
 import styles from './category.module.css';
 
 function CategoryList() {
   const [data, setData] = useState(null);
   const [lightbox, setLightbox] = useState(false);
 
-  const handleLightBox = (data) => {
-      setLightbox(true);
-      setData(data);
-  }
+  const loading = useSelector(state => state.category.loading);
+  const category = useSelector(state => state.category.data);
+  const dispatch = useDispatch();
 
-  const datasource = [
-    {
-        key: '1',
-        name: 'English ball gown',
-        gender: 'Female',
-        description: 'Beautiful silk english ball gown. For Deina only. Extra large pls.',
-        image: <img onClick={() => handleLightBox(c1)} className={styles.img} src={c1} alt="user"/>,
-        status: <Tag color="#34bd7c">Active</Tag>,
-    },
-    {
-        key: '2',
-        name: 'Red silky gown',
-        gender: 'Female',
-        description: 'Red satin belted blouse',
-        image: <img onClick={() => handleLightBox(c2)} className={styles.img} src={c2} alt="user"/>,
-        status: <Tag color="#D9534F">Inactive</Tag>,
-    },
-    {
-        key: '3',
-        name: 'Glow neck down',
-        gender: 'Female',
-        description: 'Elven white petaled glory. Bathed in sunlight embroidry',
-        image: <img onClick={() => handleLightBox(c3)} className={styles.img} src={c3} alt="user"/>,
-        status: <Tag color="#D9534F">Inactive</Tag>,
-    },
-    {
-        key: '4',
-        name: 'Honeymoon gown',
-        gender: 'Female',
-        description: 'Beautiful silk english ball gown. For Deina only. Extra large pls.',
-        image: <img onClick={() => handleLightBox(c4)} className={styles.img} src={c4} alt="user"/>,
-        status: <Tag color="#34bd7c">Active</Tag>,
-    },
-    {
-        key: '5',
-        name: 'Beach gown',
-        gender: 'Female',
-        description: 'Beautiful blue english ball gown. For Deina only. Extra large pls.',
-        image: <img onClick={() => handleLightBox(c5)} className={styles.img} src={c5} alt="user"/>,
-        status: <Tag color="orange">Incoming</Tag>,
-    },
-    {
-        key: '6',
-        name: 'English ball gown',
-        gender: 'Female',
-        description: 'Beautiful red english ball gown. For Deina only. Extra large pls.',
-        image: <img onClick={() => handleLightBox(c6)} className={styles.img} src={c6} alt="user"/>,
-        status: <Tag color="#D9534F">Inactive</Tag>,
-    },
-    {
-        key: '7',
-        name: 'Fashion decore blouse',
-        gender: 'Female',
-        description: 'Beautiful purple english ball gown. For Deina only. Extra large pls.',
-        image: <img onClick={() => handleLightBox(c7)} className={styles.img} src={c7} alt="user"/>,
-        status: <Tag color="#34bd7c">Active</Tag>,
-    },
-  ];
+  useEffect(() => {
+    dispatch(getAllCategories());
+    //eslint-disable-next-line
+  }, []);
+
+  const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />
+
+  const handleLightBox = (data) => {
+    setLightbox(true);
+    setData(data);
+  }
 
   const columns = [
     {
       title: 'S/N',
-      dataIndex: 'key',
-      key: 'key',
-      align: 'center'
+      key: 'id',
+      align: 'center',
+      render: (item, items, index) => index+1
     },
     {
       title: 'Name',
@@ -93,17 +40,12 @@ function CategoryList() {
       key: 'name',
       align: 'center'
     },
-    // {
-    //   title: 'Gender',
-    //   dataIndex: 'gender',
-    //   key: 'gender',
-    //   align: 'center'
-    // },
     {
       title: 'Image',
-      dataIndex: 'image',
-      key: 'image',
-      align: 'center'
+      dataIndex: 'coverimage',
+      key: 'coverimage',
+      align: 'center',
+      render: val => <img onClick={() => handleLightBox(val)} className={styles.img} src={val} alt="img-cover"/>
     },
     {
       title: 'Description',
@@ -112,10 +54,17 @@ function CategoryList() {
       align: 'center'
     },
     {
+      title: 'Created At',
+      dataIndex: 'created_at',
+      key: 'created_at',
+      align: 'center'
+    },
+    {
       title: 'Status',
       dataIndex: 'status',
       key: 'status',
-      align: 'center'
+      align: 'center',
+      render: val => <Tag color="#34bd7c">{val}</Tag>
     },
     {
       title: 'Edit',
@@ -132,15 +81,14 @@ function CategoryList() {
   ];
 
   return (
-    <>
-      {/* <Header title="category" breadcrumb="category" breadCrumbActive="list"/> */}
-
+    <Spin indicator={antIcon} spinning={loading}>
       <Card className={styles.cardReset}>
         <Table
           columns={columns}
-          dataSource={datasource}
+          dataSource={category}
           bordered
           scroll={{x: 1200}}
+          rowKey="id"
         />
       </Card> 
 
@@ -150,7 +98,7 @@ function CategoryList() {
         onCloseRequest={() => setLightbox(false)}
         animationOnKeyInput={true}
       />}
-    </>
+    </Spin>
   )
 }
 

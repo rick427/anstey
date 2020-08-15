@@ -17,34 +17,34 @@
 }
 
 .stagger_1{
-    animation-delay: calc(1 * 100ms);
+    animation-delay: calc(1 * 30ms);
 }
 .stagger_2{
-    animation-delay: calc(2 * 100ms);
+    animation-delay: calc(2 * 30ms);
 }
 .stagger_3{
-    animation-delay: calc(3 * 100ms);
+    animation-delay: calc(3 * 30ms);
 }
 .stagger_4{
-    animation-delay: calc(4 * 100ms);
+    animation-delay: calc(4 * 30ms);
 }
 .stagger_5{
-    animation-delay: calc(5 * 100ms);
+    animation-delay: calc(5 * 30ms);
 }
 .stagger_6{
-    animation-delay: calc(6 * 100ms);
+    animation-delay: calc(6 * 30ms);
 }
 .stagger_7{
-    animation-delay: calc(7 * 100ms);
+    animation-delay: calc(7 * 30ms);
 }
 .stagger_8{
-    animation-delay: calc(8 * 100ms);
+    animation-delay: calc(8 * 30ms);
 }
 .stagger_9{
-    animation-delay: calc(9 * 100ms);
+    animation-delay: calc(9 * 30ms);
 }
 .stagger_10{
-    animation-delay: calc(10 * 100ms);
+    animation-delay: calc(10 * 30ms);
 }
 
 .heading{

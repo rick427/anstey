@@ -1,24 +1,29 @@
 import React, {useState} from 'react';
 import {Spin} from 'antd';
+import {connect} from 'react-redux';
 import { LoadingOutlined } from '@ant-design/icons';
 
 import {StyledSection} from './login-styles';
+import {loginUser} from '../../redux';
 import Navbar from '../../components/navbar';
 
 import logo from '../../assets/logo.svg';
 
-export default function LoginPage({history}) {
-    const [loading, setLoading] = useState(false);
+const LoginPage = ({history, login, loading}) => {
+    const [user, setUser] = useState({
+        username: '',
+        password: ''
+    });
 
     const handleLogin = e => {
         e.preventDefault();
         
-        setLoading(true);
+        login(user);
+    }
 
-        setTimeout(() => {
-            setLoading(false);
-            history.push('/main/dashboard/admin')
-        }, 3000);
+    const handleChange = e => {
+        const {name, value} = e.target;
+        setUser({...user, [name]: value});
     }
     
     const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />
@@ -50,12 +55,28 @@ export default function LoginPage({history}) {
                                 <form onSubmit={handleLogin}>
                                     <div className="form-group">
                                         <label>email</label>
-                                        <input className="input" type="text" placeholder="Enter your email" required/>
+                                        <input 
+                                          className="input" 
+                                          type="text"
+                                          name="username" 
+                                          value={user.username} 
+                                          onChange={handleChange}
+                                          placeholder="Enter your email" 
+                                          required
+                                        />
                                         <div className="underline"/>
                                     </div>
                                     <div className="form-group">
                                         <label>password</label>
-                                        <input className="input" type="password" placeholder="Enter your password" required/>
+                                        <input 
+                                          className="input" 
+                                          type="password" 
+                                          name="password"
+                                          value={user.password} 
+                                          onChange={handleChange}
+                                          placeholder="Enter your password" 
+                                          required
+                                        />
                                         <div className="underline"/>
                                     </div>
                                     <p className="sub">forgot password</p>
@@ -73,3 +94,13 @@ export default function LoginPage({history}) {
         </StyledSection>
     )
 }
+
+const mapStateToProps = (state) => ({
+    loading: state.auth.loading
+})
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
+    login: data => dispatch(loginUser(data, ownProps))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage); 

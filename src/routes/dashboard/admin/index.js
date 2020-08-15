@@ -1,7 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import {Row, Col, Card, Table, Tag, Rate} from 'antd';
+import {useSelector, useDispatch} from 'react-redux';
 
 import styles from './admin.module.css';
+import {getDashboardDetails} from '../../../redux';
 
 import offer from '../../../assets/dashboard/offer.svg';
 import price from '../../../assets/dashboard/price.svg';
@@ -24,14 +26,13 @@ import p6 from '../../../assets/g-15.jpg';
 import p7 from '../../../assets/g-16.jpg'; 
 
 export default function AdminDashboard() {
-    const [loading, setLoading] = useState(true);
+    const loading = useSelector(state => state.dashboard.loading);
+    const data = useSelector(state => state.dashboard.data);
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        const interval = setTimeout(() => setLoading(false), 4000);
-
-        return () => {
-            clearInterval(interval);
-        }
+        dispatch(getDashboardDetails());
+        //eslint-disable-next-line
     }, [])
 
     const datasource = [
@@ -214,7 +215,7 @@ export default function AdminDashboard() {
                             <img src={customer} alt="customers"/>
                             <div className={styles.cardText}>
                                 <h2>all customers</h2>
-                                <h3>12</h3>
+                                <h3>{data.customer}</h3>
                             </div>
                         </div>
                     </Card>
@@ -225,7 +226,7 @@ export default function AdminDashboard() {
                             <img src={truck} alt="customers"/>
                             <div className={styles.cardText}>
                                 <h2>all dispatchers</h2>
-                                <h3>1</h3>
+                                <h3> {data.dispatcher} </h3>
                             </div>
                         </div>
                     </Card>
@@ -236,7 +237,7 @@ export default function AdminDashboard() {
                             <img src={cart} alt="customers"/>
                             <div className={styles.cardText}>
                                 <h2>all orders</h2>
-                                <h3>8</h3>
+                                <h3>{data.orders}</h3>
                             </div>
                         </div>
                     </Card>
@@ -247,7 +248,7 @@ export default function AdminDashboard() {
                             <img src={order} alt="customers"/>
                             <div className={styles.cardText}>
                                 <h2>all products</h2>
-                                <h3>17</h3>
+                                <h3>{data.products}</h3>
                             </div>
                         </div>
                     </Card>

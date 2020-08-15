@@ -1,18 +1,13 @@
 import React, {useState} from 'react';
 import {Layout, Divider, Dropdown, Drawer, Menu, Button} from 'antd';
-import {
-    ProfileOutlined,
-    SettingOutlined,
-    LogoutOutlined,
-    UserOutlined,
-    MenuOutlined
-    
-} from '@ant-design/icons';
-//import {useSelector} from 'react-redux';
+import {ProfileOutlined, SettingOutlined, LogoutOutlined, MailOutlined,MenuOutlined, SearchOutlined} from '@ant-design/icons';
+import {useDispatch} from 'react-redux';
 
 import styles from './dashboard.module.css';
 import AdminRoutes from '../../routes';
 import SiderMenu from '../siderMenu';
+import {logoutUser} from '../../redux';
+import AuthService from '../../services/authentication_service';
 
 import logo from '../../assets/logo.svg';
 import user from '../../assets/user.jpg';
@@ -21,11 +16,12 @@ const {Header, Footer, Sider, Content} = Layout;
 
 export default function AppDashboard({match, history}) {
     const [visible, setVisible] = useState(false);
-    //const userData = useSelector(state => state.auth.userData);
+    const dispatch = useDispatch();
 
     const onClose = () => setVisible(false);
 
     const handleLogout = () => {
+        dispatch(logoutUser());
         history.push('/login');
     }
 
@@ -58,9 +54,9 @@ export default function AppDashboard({match, history}) {
                         <div className={styles.pulse}/>
                     </div>
 
-                    <p className={styles.title}>Segun Olusegun</p>
+                    <p className={styles.title}>{AuthService.getName()}</p>
                    
-                    <h1 className={styles.role}>SUPER ADMIN</h1>
+                    <h1 className={styles.role}>{AuthService.getRole()}</h1>
 
                     <Divider/>
 
@@ -79,8 +75,16 @@ export default function AppDashboard({match, history}) {
                             </div>
 
                             <div className={`${styles.profile} ${styles.large}`}>
+                                <SearchOutlined />
+                            </div>
+
+                            <div className={`${styles.profile} ${styles.large}`}>
+                                <MailOutlined />
+                            </div>
+
+                            <div className={`${styles.profile} ${styles.large} ${styles.pulseBox}`}>
                                 <Dropdown overlay={menu} placement="bottomLeft" arrow>
-                                    <UserOutlined className={styles.icon}/>
+                                    <img src={user} alt="user"/>
                                 </Dropdown>
                             </div>
                         </div>

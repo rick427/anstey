@@ -1,204 +1,137 @@
-import React, {useState} from 'react';
-import {Card, Table, Tag} from 'antd';
+import React, {useState, useEffect} from 'react';
+import {Card, Table, Tag, Spin} from 'antd';
 import Lightbox from 'react-image-lightbox';
-import {EditOutlined, DeleteOutlined, ExpandAltOutlined} from '@ant-design/icons';
+import {EditOutlined, DeleteOutlined, ExpandAltOutlined, LoadingOutlined} from '@ant-design/icons';
+import {useSelector, useDispatch} from 'react-redux';
 
-import c1 from '../../../assets/h-3.jpg';
-import c2 from '../../../assets/h-4.jpg';
-import c3 from '../../../assets/h-5.jpg';
-import c4 from '../../../assets/h-6.jpg';
-import c5 from '../../../assets/h-7.jpg';
-import c6 from '../../../assets/h-8.jpg';
-import c7 from '../../../assets/h-9.jpg';
-// import Header from '../../../components/Header';
+import {getAllProducts} from '../../../redux';
 import styles from './list.module.css';
 
 function ProductList() {
-    const [data, setData] = useState(null);
-    const [lightbox, setLightbox] = useState(false);
+  const [data, setData] = useState(null);
+  const [lightbox, setLightbox] = useState(false);
 
-    const handleLightBox = (data) => {
-        setLightbox(true);
-        setData(data);
-    }
+  const loading = useSelector(state => state.products.loading);
+  const products = useSelector(state => state.products.data);
+  const dispatch = useDispatch();
 
-    const datasource = [
-        {
-            key: '1',
-            name: 'English ball gown',
-            fabricType: 'Silk',
-            category: 'Coporate',
-            sewingPeriod: '10 days',
-            price: '₦ 10,000.00',
-            express: '₦ 15,000.00',
-            gender: 'Female',
-            image: <img onClick={() => handleLightBox(c1)} className={styles.img} src={c1} alt="user"/>,
-            status: <Tag color="#34bd7c">Active</Tag>,
-        },
-        {
-            key: '2',
-            name: 'English ball gown',
-            fabricType: 'Silk',
-            category: 'Casual',
-            sewingPeriod: '10 days',
-            price: '₦ 10,000.00',
-            express: '₦ 15,000.00',
-            gender: 'Female',
-            image: <img onClick={() => handleLightBox(c2)} className={styles.img} src={c2} alt="user"/>,
-            status: <Tag color="#D9534F">Inactive</Tag>,
-        },
-        {
-            key: '3',
-            name: 'English ball gown',
-            fabricType: 'Silk',
-            category: 'Ball gown',
-            sewingPeriod: '10 days',
-            price: '₦ 10,000.00',
-            express: '₦ 15,000.00',
-            gender: 'Female',
-            image: <img onClick={() => handleLightBox(c3)} className={styles.img} src={c3} alt="user"/>,
-            status: <Tag color="#34bd7c">Active</Tag>,
-        },
-        {
-            key: '4',
-            name: 'English ball gown',
-            fabricType: 'Silk',
-            category: 'Coporate',
-            sewingPeriod: '10 days',
-            price: '₦ 10,000.00',
-            express: '₦ 15,000.00',
-            gender: 'Female',
-            image: <img onClick={() => handleLightBox(c4)} className={styles.img} src={c4} alt="user"/>,
-            status: <Tag color="#34bd7c">Active</Tag>,
-        },
-        {
-            key: '5',
-            name: 'English ball gown',
-            fabricType: 'Silk',
-            category: 'Trads',
-            sewingPeriod: '10 days',
-            price: '₦ 10,000.00',
-            express: '₦ 15,000.00',
-            gender: 'Female',
-            image: <img onClick={() => handleLightBox(c5)} className={styles.img} src={c5} alt="user"/>,
-            status: <Tag color="#34bd7c">Active</Tag>,
-        },
-        {
-            key: '6',
-            name: 'English ball gown',
-            fabricType: 'Silk',
-            category: 'Casual',
-            sewingPeriod: '10 days',
-            price: '₦ 10,000.00',
-            express: '₦ 15,000.00',
-            gender: 'Female',
-            image: <img onClick={() => handleLightBox(c6)} className={styles.img} src={c6} alt="user"/>,
-            status: <Tag color="#34bd7c">Active</Tag>,
-        },
-        {
-            key: '7',
-            name: 'English ball gown',
-            fabricType: 'Silk',
-            category: 'Coporate',
-            sewingPeriod: '10 days',
-            price: '₦ 10,000.00',
-            express: '₦ 15,000.00',
-            gender: 'Female',
-            image: <img onClick={() => handleLightBox(c7)} className={styles.img} src={c7} alt="user"/>,
-            status: <Tag color="#34bd7c">Active</Tag>,
-        },
-    ];
+  useEffect(() => {
+    dispatch(getAllProducts());
+    //eslint-disable-next-line
+  }, []);
 
-    const columns = [
-        {
-          title: 'Image',
-          dataIndex: 'image',
-          key: 'image',
-          align: 'center',
-          fixed: 'left',
-          width: 150,
-        },
-        {
-          title: 'Category',
-          dataIndex: 'category',
-          key: 'category',
-          align: 'center'
-        },
-        {
-          title: 'Fabric Type',
-          dataIndex: 'fabricType',
-          key: 'fabricType',
-          align: 'center'
-        },
-        {
-          title: 'Sewing Period',
-          dataIndex: 'sewingPeriod',
-          key: 'sewingPeriod',
-          align: 'center'
-        },
-        {
-          title: 'Price',
-          dataIndex: 'price',
-          key: 'price',
-          align: 'center'
-        },
-        {
-          title: 'Express Price',
-          dataIndex: 'express',
-          key: 'express',
-          align: 'center'
-        },
-        {
-          title: 'Gender',
-          dataIndex: 'gender',
-          key: 'gender',
-          align: 'center'
-        },
-        {
-          title: 'Status',
-          dataIndex: 'status',
-          key: 'status',
-          align: 'center'
-        },
-        {
-          title: 'View',
-          key: 'view',
-          align: 'center',
-          render: () => <ExpandAltOutlined style={{cursor: 'pointer'}}/>
-        },
-        {
-          title: 'Edit',
-          key: 'edit',
-          align: 'center',
-          render: () => <EditOutlined style={{cursor: 'pointer'}}/>
-        },
-        {
-          title: 'Delete',
-          key: 'delete',
-          align: 'center',
-          render: () => <DeleteOutlined style={{cursor: 'pointer', color: '#de2f40'}}/>
-        },
-    ]
-    return (
-        <>
-            {/* <Header title="products" breadcrumb="products" breadCrumbActive="list"/> */}
+  const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />
 
-            <Card className={styles.cardReset}>
-                <Table
-                  columns={columns}
-                  dataSource={datasource}
-                  bordered
-                  scroll={{x: 1500}}
-                />
-            </Card> 
-            {lightbox && 
-            <Lightbox
-                mainSrc={data}
-                onCloseRequest={() => setLightbox(false)}
-                animationOnKeyInput={true}
-            />}
-        </>
-    )
+  const handleLightBox = (data) => {
+    setLightbox(true);
+    setData(data);
+  }
+
+  const columns = [
+    {
+      title: 'Category',
+      dataIndex: 'categoryname',
+      key: 'categoryname',
+      align: 'center',
+    },
+    {
+      title: 'Name',
+      dataIndex: 'name',
+      key: 'name',
+      align: 'center',
+      width: 300,
+    },
+    {
+      title: 'Image',
+      dataIndex: 'imageone',
+      key: 'imageone',
+      align: 'center',
+      render: val => <img onClick={() => handleLightBox(val)} className={styles.img} src={val} alt="product"/>
+    },
+    {
+      title: 'Description',
+      dataIndex: 'longdescription',
+      key: 'longdescription',
+      align: 'center',
+      width: 500
+    },
+    {
+      title: 'Price',
+      dataIndex: 'price',
+      key: 'price',
+      align: 'center'
+    },
+    {
+      title: 'Quantity',
+      dataIndex: 'quantity',
+      key: 'quantity',
+      align: 'center'
+    },
+    {
+      title: 'Total Quantity',
+      dataIndex: 'totalquantity',
+      key: 'totalquantity',
+      align: 'center'
+    },
+    {
+      title: 'Sold',
+      dataIndex: 'sold',
+      key: 'sold',
+      align: 'center'
+    },
+    {
+      title: 'Created At',
+      dataIndex: 'created_at',
+      key: 'created_at',
+      align: 'center'
+    },
+    {
+      title: 'Status',
+      dataIndex: 'status',
+      key: 'status',
+      align: 'center',
+      render: val => <Tag color="#34bd7c">{val}</Tag>
+    },
+    {
+      title: 'View',
+      key: 'view',
+      align: 'center',
+      render: () => <ExpandAltOutlined style={{cursor: 'pointer'}}/>
+    },
+    {
+      title: 'Edit',
+      key: 'edit',
+      align: 'center',
+      render: () => <EditOutlined style={{cursor: 'pointer'}}/>
+    },
+    {
+      title: 'Delete',
+      key: 'delete',
+      align: 'center',
+      render: () => <DeleteOutlined style={{cursor: 'pointer', color: '#de2f40'}}/>
+    },
+  ];
+
+  return (
+    <Spin indicator={antIcon} spinning={loading}>
+      <Card className={styles.cardReset}>
+        <Table
+          columns={columns}
+          dataSource={products}
+          bordered
+          scroll={{x: 1800}}
+          rowKey="id"
+        />
+      </Card> 
+
+      {lightbox && 
+      <Lightbox
+          mainSrc={data}
+          onCloseRequest={() => setLightbox(false)}
+          animationOnKeyInput={true}
+      />}
+    </Spin>
+  )
 }
 
 export default ProductList

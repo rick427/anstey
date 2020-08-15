@@ -1,106 +1,21 @@
-import React from 'react';
-import {Table, Tag} from 'antd';
-import {SyncOutlined, WarningOutlined, ExpandAltOutlined} from '@ant-design/icons';
+import React, {useEffect} from 'react';
+import {Table, Tag, Spin} from 'antd';
+import {ExpandAltOutlined, LoadingOutlined} from '@ant-design/icons';
+import {useSelector, useDispatch} from 'react-redux';
+
+import {getAllOrders} from '../../../../redux';
 
 function LatestOrders() {
-  const datasource = [
-    {
-      key: '1',
-      id: 1,
-      customer: 'Moses',
-      dispatcher: 'John Dumelo',
-      amount: '₦ 11,000.00',
-      quantity: 2,
-      paymentStatus: <Tag color="#34bd7c">Paid</Tag>,
-      deliveryStatus: <Tag color="orange">Processing</Tag>,
-      createdAt: '2020-05-17 12:34:32',
-      deliveryTime: <SyncOutlined spin/>
-    },
-    {
-      key: '2',
-      id: 2,
-      customer: 'Moses',
-      dispatcher: 'John Dumelo',
-      amount: '₦ 12,000.00',
-      quantity: 15,
-      paymentStatus: <Tag color="#34bd7c">Paid</Tag>,
-      deliveryStatus: <Tag color="orange">Processing</Tag>,
-      createdAt: '2020-05-12 11:08:45',
-      deliveryTime: <SyncOutlined spin/>
-    },
-    {
-      key: '3',
-      id: 3,
-      customer: 'Iyke Perry',
-      dispatcher: 'John Dumelo',
-      amount: '₦ 39,350.00',
-      quantity: 20,
-      paymentStatus: <Tag color="#34bd7c">Paid</Tag>,
-      deliveryStatus: <Tag color="#1C84C6">Intransit</Tag>,
-      createdAt: '2020-02-19 14:57:41',
-      deliveryTime: <SyncOutlined spin/>
-    },
-    {
-      key: '4',
-      id: 4,
-      customer: 'Ikechukwu Onyekanna',
-      dispatcher: 'John Dumelo',
-      amount: '₦ 24,650.00',
-      quantity: 1,
-      paymentStatus: <Tag color="#34bd7c">Paid</Tag>,
-      deliveryStatus: <Tag color="#34bd7c">Delivered</Tag>,
-      createdAt: '2020-02-04 14:41:39',
-      deliveryTime: '7(hrs) 25(mins) 4(sec)'
-    },
-    {
-      key: '5',
-      id: 5,
-      customer: 'Ikechukwu Onyekanna',
-      dispatcher: 'John Dumelo',
-      amount: '₦ 32,000.00',
-      quantity: 3,
-      paymentStatus: <Tag color="#34bd7c">Paid</Tag>,
-      deliveryStatus: <Tag color="#D9534F">Not Delivered</Tag>,
-      createdAt: '2020-02-04 14:17:45',
-      deliveryTime: <WarningOutlined style={{color: '#D9534F'}} />
-    },
-    {
-      key: '6',
-      id: 6,
-      customer: 'Ikechukwu Onyekanna',
-      dispatcher: 'John Dumelo',
-      amount: '₦ 36,000.00',
-      quantity: 2,
-      paymentStatus: <Tag color="#34bd7c">Paid</Tag>,
-      deliveryStatus: <Tag color="#D9534F">Not Delivered</Tag>,
-      createdAt: '2020-01-29 08:36:37',
-      deliveryTime: <WarningOutlined style={{color: '#D9534F'}} />
-    },
-    {
-      key: '6',
-      id: 6,
-      customer: 'Ikechukwu Onyekanna',
-      dispatcher: 'John Dumelo',
-      amount: '₦ 33,050.00',
-      quantity: 2,
-      paymentStatus: <Tag color="#34bd7c">Paid</Tag>,
-      deliveryStatus: <Tag color="orange">Processing</Tag>,
-      createdAt: '2020-01-29 07:43:50',
-      deliveryTime: <SyncOutlined spin/>
-    },
-    {
-      key: '7',
-      id: 7,
-      customer: 'Ikechukwu Onyekanna',
-      dispatcher: 'John Dumelo',
-      amount: '₦ 23,650.00',
-      quantity: 2,
-      paymentStatus: <Tag color="#34bd7c">Paid</Tag>,
-      deliveryStatus: <Tag color="orange">Processing</Tag>,
-      createdAt: '2020-01-27 23:45:38',
-      deliveryTime: <SyncOutlined spin/>
-    },
-  ]
+  const loading = useSelector(state => state.orders.loading);
+  const orders = useSelector(state => state.orders.data);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllOrders());
+    //eslint-disable-next-line
+  }, []);
+
+  const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />
 
   const columns = [
     {
@@ -111,50 +26,57 @@ function LatestOrders() {
     },
     {
       title: 'Customer',
-      dataIndex: 'customer',
-      key: 'customer',
+      dataIndex: 'customername',
+      key: 'customername',
       align: 'center'
     },
     {
-      title: 'Dispatcher',
-      dataIndex: 'dispatcher',
-      key: 'dispatcher',
+      title: 'Sum Total',
+      dataIndex: 'sumtotal',
+      key: 'sumtotal',
       align: 'center'
     },
     {
       title: 'Amount',
-      dataIndex: 'amount',
-      key: 'amount',
+      dataIndex: 'totalamount',
+      key: 'totalamount',
       align: 'center'
     },
     {
       title: 'Quantity',
-      dataIndex: 'quantity',
+      dataIndex: 'totalquantity',
       key: 'quantity',
       align: 'center'
     },
     {
       title: 'Payment Status',
-      dataIndex: 'paymentStatus',
+      dataIndex: 'paymentstatus',
       key: 'paymentStatus',
       align: 'center'
     },
     {
       title: 'Delivery Status',
-      dataIndex: 'deliveryStatus',
+      dataIndex: 'deliverystatus',
       key: 'deliveryStatus',
-      align: 'center'
+      align: 'center',
+      render: val => val === 'processing' ? <Tag color="orange">{val}</Tag> : val === 'intransit' ? <Tag color="#1C84C6">{val}</Tag> : <Tag color="#34bd7c">{val}</Tag>
     },
     {
-      title: 'Created At',
-      dataIndex: 'createdAt',
-      key: 'createdAt',
+      title: 'Delivery Fee',
+      dataIndex: 'deliveryfee',
+      key: 'deliveryfee',
       align: 'center'
     },
     {
       title: 'Delivery Time',
-      dataIndex: 'deliveryTime',
+      dataIndex: 'deliverytime',
       key: 'deliveryTime',
+      align: 'center'
+    },
+    {
+      title: 'Created At',
+      dataIndex: 'created_at',
+      key: 'createdAt',
       align: 'center'
     },
     {
@@ -164,13 +86,16 @@ function LatestOrders() {
       render: () => <ExpandAltOutlined style={{cursor: 'pointer'}}/>
     },
   ];
+
   return (
-    <Table
-      dataSource={datasource}
-      columns={columns}
-      bordered
-      scroll={{x: 1500}}
-    />
+    <Spin indicator={antIcon} spinning={loading}>
+      <Table
+        dataSource={orders}
+        columns={columns}
+        bordered
+        scroll={{x: 1500}}
+      />
+    </Spin>
   )
 }
 

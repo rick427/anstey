@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link, useLocation, useHistory} from 'react-router-dom';
-import {AiOutlineHome, AiOutlineShoppingCart, AiOutlineLogin, AiOutlineLogout, AiOutlineDashboard} from 'react-icons/ai';
+import {AiOutlineHome, AiOutlineShoppingCart, AiOutlineLogin, AiOutlineLogout, AiOutlineFileProtect} from 'react-icons/ai';
 import {RiWhatsappLine, RiStore3Line} from 'react-icons/ri';
 import {GiThreeLeaves} from 'react-icons/gi';
 
@@ -82,7 +82,7 @@ export default function Navbar() {
                 {AuthService.getRole() === 'SUPER_ADMIN' &&
                 <li className="nav-item">
                     <Link to="/main/dashboard/admin" style={checkActive('/main/dashboard/admin')} className="nav-link">
-                        <span><AiOutlineDashboard/></span>
+                        <span><AiOutlineFileProtect/></span>
                         <p className="link-text">Dashboard</p>
                     </Link>
                 </li>}

@@ -214,12 +214,15 @@ export const StyledSection = styled.section`
                     font-weight: 400;
                     font-size: 1.5rem;
                     text-transform: capitalize;
+                    margin: 0;
                 }
 
                 .amount{
                     font-size: 1.8rem;
                     font-weight: 700;
                     color: ${colors.offGreenAlt};
+                    margin: 0;
+                    /* padding-top: 1rem; */
                 }
             }
 
@@ -231,7 +234,7 @@ export const StyledSection = styled.section`
                     font-size: 1.3rem;
                     font-weight: 400;
                     color: ${colors.grey2};
-                    margin-left: 1rem;
+                    margin: 0 0 .5rem 1rem;
 
                 }
 

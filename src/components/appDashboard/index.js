@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Layout, Divider, Dropdown, Drawer, Menu, Button} from 'antd';
-import {ProfileOutlined, SettingOutlined, LogoutOutlined, MailOutlined,MenuOutlined, SearchOutlined} from '@ant-design/icons';
+import {ProfileOutlined, SettingOutlined, LogoutOutlined, HomeOutlined, MailOutlined, MenuOutlined, SearchOutlined} from '@ant-design/icons';
 import {useDispatch} from 'react-redux';
 
 import styles from './dashboard.module.css';
@@ -27,6 +27,10 @@ export default function AppDashboard({match, history}) {
 
     const menu = (
         <Menu>
+          <Menu.Item icon={<HomeOutlined />} onClick={() => history.push('/')}>
+            <span>Home</span>
+          </Menu.Item>
+
           <Menu.Item icon={<ProfileOutlined />}>
             <span>My Profile</span>
           </Menu.Item>

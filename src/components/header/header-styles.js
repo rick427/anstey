@@ -32,6 +32,7 @@ export const StyledDiv = styled.div`
         font-weight: 600;
         color: ${colors.grey};
         text-transform: uppercase;
+        margin-top: 1rem;
 
         span{
             color: ${colors.primary};

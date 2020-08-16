@@ -31,7 +31,7 @@ const Order = () => {
         <>
             {/* <Header title="orders" breadcrumb="orders" breadCrumbActive="list"/>  */}
 
-            <Card className={styles.cardReset}>
+            <Card className={styles.cardReset} title="All Orders">
                 <Row style={{marginBottom: 50}} gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
                     <Col lg={6} md={8} sm={12} xs={24} className={styles.mb2}>
                         <Card className={styles.shadow} bodyStyle={{padding: 0}} loading={loading}>

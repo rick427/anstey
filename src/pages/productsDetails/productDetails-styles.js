@@ -57,6 +57,7 @@ export const StyledSection = styled.section`
 
                         p{
                             font-size: 1.3rem;
+                            margin-top: 1rem;
                             margin-left: 2rem;
                             color: ${colors.grey};
 

@@ -120,6 +120,7 @@ export const StyledNav = styled.nav`
         bottom: 0;
         width: 100vw;
         height: 5rem;
+        overflow-x: scroll;
 
         .navbar-nav{
             flex-direction: row;

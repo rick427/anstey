@@ -86,7 +86,8 @@ export const StyledSection = styled.section`
                     color: ${colors.offGreen};
                     font-family: 'Open Sans', sans-serif;
                     text-transform: capitalize;
-                    font-style: italic;
+                    font-weight: 300;
+                    opacity: .7;
                 }
             }
 
@@ -263,8 +264,8 @@ export const StyledSection = styled.section`
                 }
 
                 .alt{
-                    text-transform: capitalize;
-                    font-weight: 600;
+                    text-transform: uppercase;
+                    font-weight: 700;
                     color: ${colors.white};
                 }
             }

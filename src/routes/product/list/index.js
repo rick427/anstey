@@ -114,7 +114,7 @@ function ProductList() {
 
   return (
     <Spin indicator={antIcon} spinning={loading}>
-      <Card className={styles.cardReset}>
+      <Card className={styles.cardReset} title="All Products">
         <Table
           columns={columns}
           dataSource={products}

@@ -119,7 +119,7 @@ function CustomerList() {
         <>
             {/* <Header title="customers" breadcrumb="customers" breadCrumbActive="list"/> */}
 
-            <Card className={styles.cardReset}>
+            <Card className={styles.cardReset} title="All Customers">
                 <Table
                   columns={columns}
                   dataSource={datasource}

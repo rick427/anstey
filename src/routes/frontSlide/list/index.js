@@ -84,12 +84,13 @@ function FrontSlideList() {
 
   return (
     <Spin indicator={antIcon} spinning={loading}>
-      <Card className={styles.cardReset}>
+      <Card className={styles.cardReset} title="Front Slides">
         <Table
           columns={columns}
           dataSource={frontSlides}
           bordered
           scroll={{x: 1400}}
+          rowKey="id"
         />
       </Card> 
 

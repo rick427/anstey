@@ -82,7 +82,7 @@ function CategoryList() {
 
   return (
     <Spin indicator={antIcon} spinning={loading}>
-      <Card className={styles.cardReset}>
+      <Card className={styles.cardReset} title="All Categories">
         <Table
           columns={columns}
           dataSource={category}

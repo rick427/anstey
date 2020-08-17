@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Card, Table, Tag, Spin} from 'antd';
 import Lightbox from 'react-image-lightbox';
-import {EditOutlined, DeleteOutlined, ExpandAltOutlined, LoadingOutlined} from '@ant-design/icons';
+import {EditOutlined, DeleteOutlined, LoadingOutlined} from '@ant-design/icons';
 import {useSelector, useDispatch} from 'react-redux';
 
 import {getAllProducts} from '../../../redux';
@@ -92,12 +92,12 @@ function ProductList() {
       align: 'center',
       render: val => <Tag color="#34bd7c">{val}</Tag>
     },
-    {
-      title: 'View',
-      key: 'view',
-      align: 'center',
-      render: () => <ExpandAltOutlined style={{cursor: 'pointer'}}/>
-    },
+    // {
+    //   title: 'View',
+    //   key: 'view',
+    //   align: 'center',
+    //   render: () => <ExpandAltOutlined style={{cursor: 'pointer'}}/>
+    // },
     {
       title: 'Edit',
       key: 'edit',

@@ -1,14 +1,17 @@
 import React, {useState, useEffect} from 'react';
-import {Card, Table, Tag, Spin} from 'antd';
+import {Card, Table, Tag, Spin, Button, Popconfirm, message} from 'antd';
 import Lightbox from 'react-image-lightbox';
-import {EditOutlined, DeleteOutlined, LoadingOutlined} from '@ant-design/icons';
+import {EditOutlined, DeleteOutlined, LoadingOutlined, FormOutlined} from '@ant-design/icons';
 import {useSelector, useDispatch} from 'react-redux';
 
-import {getAllCategories} from '../../../redux';
+import {getAllCategories, deleteCategory} from '../../../redux';
 import styles from './category.module.css';
+import CreateCategory from '../create';
+import UtilService from '../../../services/util_service';
 
-function CategoryList() {
+function CategoryList({history}) {
   const [data, setData] = useState(null);
+  const [isCreating, setIsCreating] = useState(false);
   const [lightbox, setLightbox] = useState(false);
 
   const loading = useSelector(state => state.category.loading);
@@ -27,13 +30,24 @@ function CategoryList() {
     setData(data);
   }
 
+  const checkPath = (image) => {
+    if(image && image.indexOf('https') === -1){
+      return `${UtilService.getAttachmentPath()}${image}`;
+    }
+    return image;
+  }
+
+  function confirm(id) {
+    dispatch(deleteCategory(id)).then(() => {
+      message.success('Category Deleted.');
+    });
+  }
+
+  const handleRoute = id => {
+    history.push(`/main/category/edit/${id}`)
+  }
+
   const columns = [
-    {
-      title: 'S/N',
-      key: 'id',
-      align: 'center',
-      render: (item, items, index) => index+1
-    },
     {
       title: 'Name',
       dataIndex: 'name',
@@ -45,7 +59,7 @@ function CategoryList() {
       dataIndex: 'coverimage',
       key: 'coverimage',
       align: 'center',
-      render: val => <img onClick={() => handleLightBox(val)} className={styles.img} src={val} alt="img-cover"/>
+      render: val => <img onClick={() => handleLightBox(val)} className={styles.img} src={checkPath(val)} alt="coverimage"/>
     },
     {
       title: 'Description',
@@ -60,41 +74,71 @@ function CategoryList() {
       align: 'center'
     },
     {
+      title: 'Created By',
+      dataIndex: 'created_by',
+      key: 'created_by',
+      align: 'center',
+      render: val => val ? <p>{val}</p> : <p style={{color: '#de2f40'}}>-</p>
+    },
+    {
       title: 'Status',
       dataIndex: 'status',
       key: 'status',
       align: 'center',
-      render: val => <Tag color="#34bd7c">{val}</Tag>
+      render: val => val === 'Active' || val === 'ACTIVE' ? <Tag color="#34bd7c">{val}</Tag> : <Tag color="#de2f40">{val}</Tag>
     },
     {
       title: 'Edit',
       key: 'edit',
       align: 'center',
-      render: () => <EditOutlined style={{cursor: 'pointer'}}/>
+      render: (items) => <EditOutlined style={{cursor: 'pointer'}} onClick={() => handleRoute(items.id)}/>
     },
     {
       title: 'Delete',
       key: 'delete',
       align: 'center',
-      render: () => <DeleteOutlined style={{cursor: 'pointer'}}/>
+      fixed: 'right',
+      width: 100,
+      render: (items) => (
+        <Popconfirm
+          title="Are you sure you want to delete this category?"
+          onConfirm={() => confirm(items.id)}
+          okText="Yes"
+          cancelText="No"
+        >
+          <DeleteOutlined style={{cursor: 'pointer'}}/>
+        </Popconfirm>
+      )
     },
   ];
 
+  const handleCreate = () => setIsCreating(true);
+
   return (
     <Spin indicator={antIcon} spinning={loading}>
-      <Card className={styles.cardReset} title="All Categories">
-        <Table
-          columns={columns}
-          dataSource={category}
-          bordered
-          scroll={{x: 1200}}
-          rowKey="id"
-        />
+      <Card className={styles.cardReset} title='All Category Listings'>
+
+        {!isCreating && <Button icon={<FormOutlined />} type="primary" onClick={handleCreate}>
+          Add Category
+        </Button>}
+
+        {isCreating ? (
+          <CreateCategory setIsCreating={() => setIsCreating()}/>
+        ) : (
+          <Table
+            columns={columns}
+            dataSource={category}
+            bordered
+            scroll={{x: 1200}}
+            rowKey="id"
+            style={{marginTop: '2rem'}}
+          />
+        )}
       </Card> 
 
       {lightbox && 
       <Lightbox
-        mainSrc={data}
+        mainSrc={checkPath(data)}
         onCloseRequest={() => setLightbox(false)}
         animationOnKeyInput={true}
       />}
@@ -102,4 +146,4 @@ function CategoryList() {
   )
 }
 
-export default CategoryList
+export default CategoryList;

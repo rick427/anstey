@@ -77,6 +77,7 @@ export const StyledSection = styled.section`
                     transform: translate(-50%, -50%);
                     padding: 1rem;
                     box-shadow: 0 0 10px rgba(0,0,0,.15);
+                    overflow-y: scroll;
 
                     .form-title{
                         text-align: center;

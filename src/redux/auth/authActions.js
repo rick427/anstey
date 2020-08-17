@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import {LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT_SUCCESS, LOGOUT_REQUEST} from '../types';
+import {LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT_SUCCESS, LOGOUT_REQUEST, REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_FAILED} from '../types';
 import toast from '../../utils/toasts';
 import UrlService from '../../services/url_service';
 import AuthService from '../../services/authentication_service';
@@ -28,6 +28,24 @@ export const loginFailure = error => {
     }
 }
 
+export const registerRequest = () => {
+    return {
+        type: REGISTER_REQUEST,
+    }
+}
+export const registerSuccess = (data) => {
+    return {
+        type: REGISTER_SUCCESS,
+        payload: data
+    }
+}
+export const registerFailed = (error) => {
+    return {
+        type: REGISTER_FAILED,
+        payload: error
+    }
+}
+
 //@: ACTION - logout request
 export const logoutRequest = () => {
     return {
@@ -49,7 +67,6 @@ export const loginUser = (formData, routerProps) => async dispatch => {
             'Content-Type': 'application/json'
         }
     }
-
     try {
         dispatch(loginRequest());
         const res = await axios.post(UrlService.LOGIN, formData, config);
@@ -63,17 +80,39 @@ export const loginUser = (formData, routerProps) => async dispatch => {
         AuthService.setSession(res.data.user);
 
         if(res.data.user.role.name === 'SUPER_ADMIN'){
-            toast('success', `Welcome back, ${res.data.user.role.name}.`);
+            toast('success', `Welcome, ${res.data.user.role.name}.`);
         }
         else{
-            toast('success', `Welcome back, ${res.data.user.name}`);
+            toast('success', `Welcome, ${res.data.user.name}`);
         }
-
-        routerProps.history.push('/');
-        
-        
+        routerProps.history.push('/');  
     } catch (error) {
         dispatch(loginFailure(error.message));
+    }
+}
+
+//@: ACTION CREATOR - register user
+export const registerUser = (formData, routerProps) => async dispatch => {
+    const config = {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }
+    try {
+        dispatch(registerRequest());
+        const res = await axios.post(UrlService.REGISTER, formData, config);
+
+        if(res.data.status === false){
+            dispatch(registerFailed(res.data.message));
+            return toast('error', res.data.message);
+        }
+
+        dispatch(registerSuccess(res.data.user));
+        toast('success', `Registeration successfully. Please Sign in.`);
+        routerProps.history.push('/login');  
+
+    } catch (error) {
+        dispatch(registerFailed(error.message));
     }
 }
 

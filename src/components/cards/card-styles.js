@@ -59,7 +59,7 @@ export const StyledDiv = styled.div`
 
     img{
         width: 100%;
-        height: 70%;
+        height: 05%;
         object-fit: cover;
         transition: all 200ms;
     }

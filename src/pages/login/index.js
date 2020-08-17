@@ -53,14 +53,14 @@ const LoginPage = ({history, login, loading}) => {
                             <Spin indicator={antIcon} spinning={loading}>
                                 <form onSubmit={handleLogin}>
                                     <div className="form-group">
-                                        <label>email</label>
+                                        <label>username</label>
                                         <input 
                                           className="input" 
                                           type="text"
                                           name="username" 
                                           value={user.username} 
                                           onChange={handleChange}
-                                          placeholder="Enter your email" 
+                                          placeholder="Enter your username" 
                                           required
                                         />
                                         <div className="underline"/>

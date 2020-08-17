@@ -21,6 +21,7 @@ export const StyledSection = styled.section`
 
             .category-card{
                 position: relative;
+                border-bottom: 1px solid #f5f5f5;
 
                 @media screen and (min-width: 800px){
                     &.wide{
@@ -77,6 +78,7 @@ export const StyledSection = styled.section`
                     display: flex;
                     flex-direction: column;
                     background: ${colors.veryLightGrey};
+                    overflow-y: scroll;
 
                     .category-item{
                         display: inline-block;
@@ -288,7 +290,7 @@ export const StyledSection = styled.section`
         .listings{
             display: grid;
             gap: 2em;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             grid-auto-rows: 330px;
         }
 

@@ -26,13 +26,13 @@ function App() {
 
         <Switch>
           <Route exact path="/" component={HomePage}/>
-          <Route path="/products" component={ProductsPage}/>
-          <Route path="/product/:id" component={ProductDetails}/>
+          <PrivateRoute path="/products" component={ProductsPage}/>
+          <PrivateRoute path="/product/:id" component={ProductDetails}/>
           <Route path="/cart" component={CartPage}/>
           <Route path="/settings" component={SettingsPage}/>
           <RestrictedRoute path="/login" component={LoginPage}/>
           <Route path="/register" component={RegisterPage}/>
-          <Route path="/checkout" component={CheckOutPage}/>
+          <PrivateRoute path="/checkout" component={CheckOutPage}/>
           <PrivateRoute path="/main" component={AppDashboard}/>
           <Route component={ErrorPage}/>
         </Switch>

@@ -1,6 +1,7 @@
 import React from 'react';
+import {Badge} from 'antd';
 import {Link, useLocation, useHistory} from 'react-router-dom';
-import {AiOutlineHome, AiOutlineShoppingCart, AiOutlineLogin, AiOutlineLogout, AiOutlineFileProtect} from 'react-icons/ai';
+import {AiOutlineHome, AiOutlineShoppingCart, AiOutlineLogin, AiOutlineLogout, AiOutlineFileProtect, AiFillUnlock} from 'react-icons/ai';
 import {RiWhatsappLine, RiStore3Line} from 'react-icons/ri';
 import {GiThreeLeaves} from 'react-icons/gi';
 
@@ -31,7 +32,7 @@ export default function Navbar() {
 
     const handleLogout = () => {
         dispatch(logoutUser());
-        history.push('/');
+        history.push('/login');
     }
 
     return (
@@ -50,12 +51,15 @@ export default function Navbar() {
                         <p className="link-text">home</p>
                     </Link>
                 </li>
+
+                {AuthService.hasSession() && 
                 <li className="nav-item">
                     <Link to="/products" style={checkActive('/products')} className="nav-link">
                         <span><RiStore3Line/></span>
                         <p className="link-text">store</p>
                     </Link>
-                </li>
+                </li>}
+
                 <li className="nav-item">
                     <Link to="/cart" style={checkActive('/cart')} className="nav-link">
                         <span><AiOutlineShoppingCart/></span>
@@ -89,8 +93,12 @@ export default function Navbar() {
                 
                 <li className="nav-item">
                     <Link to="/" className="nav-link">
-                        <span><RiWhatsappLine/></span>
-                        <p className="link-text">whatsapp</p>
+                        <span>
+                            {AuthService.hasSession() ? <AiFillUnlock/> : <RiWhatsappLine/>}
+                        </span>
+                        <p className="link-text">
+                            {AuthService.hasSession() ? AuthService.getRole() : 'whatsapp'}
+                        </p>
                     </Link>
                 </li>
             </ul>

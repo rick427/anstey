@@ -1,4 +1,4 @@
-import {LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT_SUCCESS, LOGOUT_REQUEST} from '../types';
+import {LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT_SUCCESS, LOGOUT_REQUEST, REGISTER_REQUEST, REGISTER_SUCCESS, REGISTER_FAILED} from '../types';
 
 const initialState = {
     loading: false,
@@ -9,11 +9,13 @@ const initialState = {
 export default (state = initialState, action) => {
     switch(action.type){
         case LOGIN_REQUEST:
+        case REGISTER_REQUEST:
             return {
                 ...state,
                 loading: true
             }
         case LOGIN_SUCCESS:
+        case REGISTER_SUCCESS:
             return {
                 ...state,
                 loading: false,
@@ -21,6 +23,7 @@ export default (state = initialState, action) => {
                 error: ''
             }
         case LOGIN_FAIL:
+        case REGISTER_FAILED:
             return {
                 ...state,
                 loading: false,

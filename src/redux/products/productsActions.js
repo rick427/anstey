@@ -38,7 +38,6 @@ export const getAllProducts = () => async dispatch => {
     if(AuthService.getToken()){
         setAuthToken(AuthService.getToken());
     }
-
     const config = {
         headers: {
             'Content-Type': 'application/json'

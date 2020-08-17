@@ -1,5 +1,5 @@
 import React from 'react';
-import {Badge} from 'antd';
+// import {Badge} from 'antd';
 import {Link, useLocation, useHistory} from 'react-router-dom';
 import {AiOutlineHome, AiOutlineShoppingCart, AiOutlineLogin, AiOutlineLogout, AiOutlineFileProtect, AiFillUnlock} from 'react-icons/ai';
 import {RiWhatsappLine, RiStore3Line} from 'react-icons/ri';

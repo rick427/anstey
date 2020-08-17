@@ -10,7 +10,7 @@ import {getAllProducts, getAllCategories} from '../../redux';
 import {StyledSection} from './products-styles';
 import Navbar from '../../components/navbar';
 import Card from '../../components/card';
-import UtilService from '../../services/util_service';
+// import UtilService from '../../services/util_service';
 
 import bg from '../../assets/h-1.jpg';
 import bg2 from '../../assets/h-2.jpg';

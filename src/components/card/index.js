@@ -14,7 +14,7 @@ const Card = ({imageUrl, title, price, loading}) => {
             ]}
         >
             <div className="image">
-                <img src={imageUrl}/>
+                <img src={imageUrl} alt="product"/>
             </div>
             <h2 className="title">{title}</h2>
             <p className="price">&#8358; {price}</p>

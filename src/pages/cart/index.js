@@ -123,7 +123,7 @@ const CartPage = ({history}) => {
                         </table>
                     </Spin>
 
-                    {cartInfo.cartitems &&
+                    {AuthService.hasSession() &&
                     <div className="edit">
                         <div className="edit-inner">
                             <input type="text" placeholder="Coupon code"/>

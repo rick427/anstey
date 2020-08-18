@@ -91,16 +91,19 @@ const CartPage = ({history}) => {
                 </div>
 
                 <div className="subtotal">
-                    <div className="subtotal-flex">
-                        <h3>total: </h3>
-                        <p className="amount">&#8358; 95,300</p>
-                    </div>
-                    <div className="text">
-                        <span><FiAlertCircle/></span>
-                        <p>
-                            Delivery charges not included.
-                        </p>
-                    </div>
+                   {cartInfo.cartitems.length > 0 &&
+                   <>
+                        <div className="subtotal-flex">
+                            <h3>total: </h3>
+                            <p className="amount">&#8358; 95,300</p>
+                        </div>
+                        <div className="text">
+                            <span><FiAlertCircle/></span>
+                            <p>
+                                Delivery charges not included.
+                            </p>
+                        </div>
+                    </>}
                     {AuthService.hasSession() ? (
                         <div className="btns">
                             <button className="alt">continue shopping</button>

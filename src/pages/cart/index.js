@@ -91,7 +91,7 @@ const CartPage = ({history}) => {
                 </div>
 
                 <div className="subtotal">
-                   {cartInfo.cartitems.length > 0 &&
+                   {Object.entries(cartInfo).length > 0 && cartInfo.cartitems.length > 0 &&
                    <>
                         <div className="subtotal-flex">
                             <h3>total: </h3>

@@ -32,7 +32,7 @@ function App() {
 
         <Switch>
           <Route exact path="/" component={HomePage}/>
-          <PrivateRoute path="/products" component={ProductsPage}/>
+          <Route path="/products" component={ProductsPage}/>
           <PrivateRoute path="/product/:id" component={ProductDetails}/>
 
           <Route path="/cart" component={CartPage}/>
@@ -40,7 +40,7 @@ function App() {
 
           <RestrictedRoute path="/login" component={LoginPage}/>
           <Route path="/register" component={RegisterPage}/>
-          
+
           <PrivateRoute path="/checkout" component={CheckOutPage}/>
           <PrivateRoute path="/main" component={AppDashboard}/>
           <Route component={ErrorPage}/>

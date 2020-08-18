@@ -54,13 +54,13 @@ export default function Navbar() {
                     </Link>
                 </li>
 
-                {AuthService.hasSession() && 
+               
                 <li className="nav-item">
                     <Link to="/products" style={checkActive('/products')} className="nav-link">
                         <span><RiStore3Line/></span>
                         <p className="link-text">store</p>
                     </Link>
-                </li>}
+                </li>
 
                 <li className="nav-item">
                     <Link to="/cart" style={checkActive('/cart')} className="nav-link">

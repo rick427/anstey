@@ -1,18 +1,22 @@
 import React, {useState, useEffect} from 'react';
-import {Card, Table, Tag, Spin} from 'antd';
+import {Card, Table, Tag, Spin, Button, Popconfirm, message} from 'antd';
 import Lightbox from 'react-image-lightbox';
-import {EditOutlined, DeleteOutlined, LoadingOutlined} from '@ant-design/icons';
+import {EditOutlined, DeleteOutlined, LoadingOutlined, FormOutlined} from '@ant-design/icons';
 import {useSelector, useDispatch} from 'react-redux';
 
-import {getAllProducts} from '../../../redux';
+import {getAllProducts, deleteProduct} from '../../../redux';
 import styles from './list.module.css';
+import CreateProduct from '../create';
+import UtilService from '../../../services/util_service';
 
 function ProductList() {
   const [data, setData] = useState(null);
+  const [isCreating, setIsCreating] = useState(false);
   const [lightbox, setLightbox] = useState(false);
 
   const loading = useSelector(state => state.products.loading);
   const products = useSelector(state => state.products.data);
+  
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -20,11 +24,24 @@ function ProductList() {
     //eslint-disable-next-line
   }, []);
 
+  const checkPath = (image) => {
+    if(image && image.indexOf('https') === -1){
+      return `${UtilService.getAttachmentPath()}${image}`;
+    }
+    return image;
+  }
+
   const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />
 
   const handleLightBox = (data) => {
     setLightbox(true);
     setData(data);
+  }
+
+  function confirm(id) {
+    dispatch(deleteProduct(id)).then(() => {
+      message.success('Product Deleted.');
+    });
   }
 
   const columns = [
@@ -46,14 +63,14 @@ function ProductList() {
       dataIndex: 'imageone',
       key: 'imageone',
       align: 'center',
-      render: val => <img onClick={() => handleLightBox(val)} className={styles.img} src={val} alt="product"/>
+      render: val => <img onClick={() => handleLightBox(val)} className={styles.img} src={checkPath(val)} alt="product"/>
     },
     {
       title: 'Description',
       dataIndex: 'longdescription',
       key: 'longdescription',
       align: 'center',
-      width: 500
+      width: 350
     },
     {
       title: 'Price',
@@ -108,25 +125,45 @@ function ProductList() {
       title: 'Delete',
       key: 'delete',
       align: 'center',
-      render: () => <DeleteOutlined style={{cursor: 'pointer', color: '#de2f40'}}/>
+      render: (items) => (
+        <Popconfirm
+          title="Are you sure you want to delete this category?"
+          onConfirm={() => confirm(items.id)}
+          okText="Yes"
+          cancelText="No"
+        >
+          <DeleteOutlined style={{cursor: 'pointer', color: '#de2f40'}}/>
+        </Popconfirm>
+      )
     },
   ];
+
+  const handleCreate = () => setIsCreating(true);
 
   return (
     <Spin indicator={antIcon} spinning={loading}>
       <Card className={styles.cardReset} title="All Products">
-        <Table
-          columns={columns}
-          dataSource={products}
-          bordered
-          scroll={{x: 1800}}
-          rowKey="id"
-        />
+        {!isCreating && <Button icon={<FormOutlined />} type="primary" onClick={handleCreate}>
+            Add Product
+          </Button>}
+
+        {isCreating ? (
+          <CreateProduct setIsCreating={() => setIsCreating()}/>
+        ) : (
+          <Table
+            columns={columns}
+            dataSource={products}
+            bordered
+            scroll={{x: 1600}}
+            rowKey="id"
+            style={{marginTop: '2rem'}}
+          />
+        )}
       </Card> 
 
       {lightbox && 
       <Lightbox
-          mainSrc={data}
+          mainSrc={checkPath(data)}
           onCloseRequest={() => setLightbox(false)}
           animationOnKeyInput={true}
       />}

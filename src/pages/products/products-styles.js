@@ -20,15 +20,50 @@ export const StyledSection = styled.section`
             margin-bottom: 5%;
 
             .category-card{
-                position: relative;
                 border-bottom: 1px solid #f5f5f5;
+
+                .cover{
+                    height: 520px;
+                    position: relative;
+                    background-color: rgba(0,0,0,.5);
+
+                    .cover-info{
+                        padding: .5rem;
+                        margin: 0;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        color: black;
+                        background: ${colors.offGreen};
+                        width: 50%;
+                        font-size: 1.8rem;
+                        text-align: center;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        color: #444;
+                        border-radius: 2px;
+
+                        p{
+                            margin-top: 2rem;
+                        }
+                    }
+                    
+                    .coverimage{
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        position: absolute;
+                    }
+                }
 
                 @media screen and (min-width: 800px){
                     &.wide{
                         grid-column: span 3 / auto;   
                     }
                 }
-
+/* 
                 &.banner{
                     background: ${({bg}) => `linear-gradient(rgba(0,148, 116,.4),rgba(0,0,0,.6)), url(${bg}) center center no-repeat`};
                     background-size: cover;
@@ -62,7 +97,7 @@ export const StyledSection = styled.section`
                             letter-spacing: .2px;
                         }
                     }
-                }
+                } */
 
                 .header{
                     text-transform: uppercase;
@@ -290,34 +325,15 @@ export const StyledSection = styled.section`
         .listings{
             display: grid;
             gap: 2em;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             grid-auto-rows: 330px;
+            margin: 4rem 0;
         }
 
         .btn{
             margin-top: 5%;
             margin-bottom: 8rem;
-            
-            button{
-                width: 12rem;
-                padding: 1rem;
-                margin: 0 auto;
-                display: block;
-                background: ${colors.pastelGreen};
-                border: none;
-                border-radius: 2px;
-                color: ${colors.white};
-                text-transform: uppercase;
-                font-family: 'Open Sans', sans-serif;
-                font-weight: 400;
-                cursor: pointer;
-                font-size: 1.3rem;
-                transition: all 200ms;
-
-                :hover{
-                    background: ${colors.primary};
-                }
-            }
+            text-align: center;
         }
         /* end of listings */
 

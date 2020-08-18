@@ -46,9 +46,6 @@ function Sider() {
                 <Menu.Item key="/main/dashboard/admin" icon={<UserOutlined />}>
                     <Link to="/main/dashboard/admin">Admin</Link>
                 </Menu.Item>
-                {/* <Menu.Item key="b" icon={<UserOutlined />}>
-                    Tailor
-                </Menu.Item> */}
             </SubMenu>
 
             <SubMenu key="sub2" icon={<UserOutlined />} title="Orders">

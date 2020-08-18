@@ -1,8 +1,8 @@
 import React from 'react';
 // import {Badge} from 'antd';
 import {Link, useLocation, useHistory} from 'react-router-dom';
-import {AiOutlineHome, AiOutlineShoppingCart, AiOutlineLogin, AiOutlineLogout, AiOutlineFileProtect, AiFillUnlock} from 'react-icons/ai';
-import {RiWhatsappLine, RiStore3Line} from 'react-icons/ri';
+import {AiOutlineHome, AiOutlineShoppingCart, AiOutlineLogin, AiOutlineLogout, AiOutlineFileProtect} from 'react-icons/ai';
+import {RiStore3Line} from 'react-icons/ri';
 import {GiThreeLeaves} from 'react-icons/gi';
 
 import {useDispatch} from 'react-redux';
@@ -14,14 +14,16 @@ import {StyledNav} from './navbar-styles';
 import colors from '../../utils/colors';
 
 export default function Navbar() {
-    //const userData = useSelector(state => state.auth.userData);
+    //const cartInfo = useSelector(state => state.cart.userCart);
     const dispatch = useDispatch();
     const location = useLocation();
     const history = useHistory();
 
     // useEffect(() => {
-    //     //@: log nothing
-    // },[userData]);
+    //     const payload = {identifier: AuthService.getCartId()};
+
+    //     dispatch(getCart(payload));
+    // },[]);
 
     const checkActive = (path) => {
         if(location.pathname === path){
@@ -63,6 +65,9 @@ export default function Navbar() {
                 <li className="nav-item">
                     <Link to="/cart" style={checkActive('/cart')} className="nav-link">
                         <span><AiOutlineShoppingCart/></span>
+                        {/* <div className="badge">
+                            <p className="val">{cartInfo.cartItemCount}</p>
+                        </div> */}
                         <p className="link-text">cart</p>
                     </Link>
                 </li>
@@ -75,14 +80,6 @@ export default function Navbar() {
                     </Link>
                 </li>}
 
-                {AuthService.hasSession() && 
-                <li className="nav-item">
-                    <span to="/login" style={checkActive('/login')} className="nav-link" onClick={handleLogout}>
-                        <span><AiOutlineLogout/></span>
-                        <p className="link-text">logout</p>
-                    </span>
-                </li>}
-
                 {AuthService.getRole() === 'SUPER_ADMIN' &&
                 <li className="nav-item">
                     <Link to="/main/dashboard/admin" style={checkActive('/main/dashboard/admin')} className="nav-link">
@@ -90,17 +87,25 @@ export default function Navbar() {
                         <p className="link-text">Dashboard</p>
                     </Link>
                 </li>}
-                
+
+                {AuthService.hasSession() && 
                 <li className="nav-item">
+                    <span to="/login" style={checkActive('/login')} className="nav-link" onClick={handleLogout}>
+                        <span><AiOutlineLogout/></span>
+                        <p className="link-text">logout</p>
+                    </span>
+                </li>}
+                
+                {/* <li className="nav-item">
                     <Link to="/" className="nav-link">
                         <span>
-                            {AuthService.hasSession() ? <AiFillUnlock/> : <RiWhatsappLine/>}
+                            {AuthService.hasSession() ? <AiOutlineUser/> : <RiWhatsappLine/>}
                         </span>
                         <p className="link-text">
                             {AuthService.hasSession() ? AuthService.getRole() : 'whatsapp'}
                         </p>
                     </Link>
-                </li>
+                </li> */}
             </ul>
         </StyledNav>
     )

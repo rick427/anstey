@@ -46,4 +46,9 @@ justify-content: space-between !important;
         }
     }
 }
+
+@media screen and (max-width: 600px){
+    width: 80%;
+    margin: 0 auto;
+}
 `;

@@ -118,6 +118,10 @@ class AuthService {
     static getPhoneNumber(){
         return localStorage.getItem('anstey:auth:phoneNumber')
     } 
+
+    static getCartId(){
+        return localStorage.getItem('anstey:cart_id')
+    } 
 }
 
 export default AuthService;

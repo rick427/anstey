@@ -13,7 +13,13 @@ const UrlService = {
     GET_CATEGORY_BY_ID: `${baseUrl}/category`,
     GET_FRONT_SLIDES: `${baseUrl}/frontslides`,
     GET_PRODUCTS: `${baseUrl}/products`,
+    CREATE_PRODUCTS: `${baseUrl}/product`,
+    DELETE_PRODUCTS: `${baseUrl}/product`,
+    GET_PRODUCTS_BY_ID: `${baseUrl}/product`,
     UPLOAD_IMAGE: `${baseUrl}/uploads.php`,
+    REGISTER_CART: `${baseUrl}/register/cart`,
+    ADD_TO_CART: `${baseUrl}/carts`,
+    GET_CART: `${baseUrl}/mycart`,
 }
 
 export default UrlService;

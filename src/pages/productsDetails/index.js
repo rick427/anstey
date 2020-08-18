@@ -1,5 +1,7 @@
-import React from 'react';
-import {AiOutlineStar} from 'react-icons/ai';
+import React, {useEffect} from 'react';
+import {Spin, Tag, Carousel} from 'antd';
+import { LoadingOutlined } from '@ant-design/icons';
+import {useSelector, useDispatch} from 'react-redux';
 
 // import product from '../../assets/h-3.jpg';
 
@@ -7,12 +9,33 @@ import {StyledSection} from './productDetails-styles';
 import Navbar from '../../components/navbar';
 import Picker from '../../components/picker';
 import Header from '../../components/header';
+import {getProductsById} from '../../redux';
+import UtilService from '../../services/util_service';
 
-import banner from '../../assets/banner-3.jpg';
-import banner2 from '../../assets/g-8.jpg';
-import banner3 from '../../assets/h-5.jpg';
+// import banner from '../../assets/banner-3.jpg';
+// import banner2 from '../../assets/g-8.jpg';
+// import banner3 from '../../assets/h-5.jpg';
 
-const ProductDetails = ({history}) => {
+const ProductDetails = ({history, match}) => {
+    const loading = useSelector(state => state.products.loading);
+    const product = useSelector(state => state.products.product);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getProductsById(match.params.id));
+        //eslint-disable-next-line
+    },[]);
+
+
+    const checkPath = (image) => {
+        if(image && image.indexOf('https') === -1){
+          return `${UtilService.getAttachmentPath()}${image}`;
+        }
+        return image;
+    }
+
+    const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />
+
     return (
         <StyledSection>
             <Navbar/>
@@ -21,40 +44,55 @@ const ProductDetails = ({history}) => {
                 <Header current="products | details"/>
 
                 <div className="product">
-                    <div className="product-card">
-                        <img src={banner3} alt="product"  className="product-img"/>
-                    </div>
+                    <Spin indicator={antIcon} spinning={loading}>
+                        <div className="product-card">
+                            <Carousel effect="fade" dotPosition="left">
+                                <div className="cover">
+                                    <img src={checkPath(product.imageone)} alt="product" className="product-img"/>
+                                </div>
 
-                    <div className="product-card wide details">
-                        <h3 className="title">oxford enterprise xamarin bedroom</h3>
+                                {product.imagetwo &&
+                                <div className="cover">
+                                    <img src={checkPath(product.imagetwo)} alt="product" className="product-img"/>
+                                </div>}
 
-                        <div className="reviews">
-                            <span className="stars">
-                                <AiOutlineStar/>
-                                <AiOutlineStar/>
-                                <AiOutlineStar/>
-                            </span>
-                            <p>(0 customer reviews) <span>sold: 39</span></p>
+                                {product.imagethree &&
+                                <div className="cover">
+                                    <img src={checkPath(product.imagethree)} alt="product" className="product-img"/>
+                                </div>}
+                            </Carousel>
                         </div>
+                    </Spin>
 
-                        <h3 className="price">&#8358;150,000.00 - &#8358;200,000.00</h3>
-                        <p className="description">
-                            Promote healthy living. Enjoy the best of the
-                            double treaded enterprise bedroom. Helps maintain
-                            capilary health with it's air been a very strong antioxidant.
-                            Sleep with swag, sleep with flex, sleep enterprise.
-                            Our enterprise level bathrooms have the power to change your lives
-                            forever just ask sponge bob. Our sole founder, slayer of dragons, king of
-                            the north Jon Snow. Amapiano is the new norm !!..
-                        </p>
-                        
-                        <Picker/>
+                    <Spin indicator={antIcon} spinning={loading}>
+                        <div className="product-card wide details">
+                            <h3 className="title">{product.name}</h3>
 
-                        <div className="actions">
-                            <button onClick={() => history.push('/cart')}>add to cart</button>
-                            <button onClick={() => history.push('/cart')} className="alt">buy now</button>
+                            <div className="reviews">
+                                <span className="push">
+                                    {product.categoryname ? (
+                                        <Tag color="orange">{product.categoryname}</Tag>
+                                    ) : (
+                                        <Tag color="#de2f40">N/A</Tag>
+                                    )}
+                                </span>
+
+                                <span>status: {' '} <span><Tag color="#34bd7c">{product.status}</Tag></span></span>
+                            </div>
+
+                            <h3 className="price">&#8358; {product.price}</h3>
+                            <p className="description">
+                                {product.longdescription}
+                            </p>
+                            
+                            <Picker/>
+
+                            <div className="actions">
+                                <button onClick={() => history.push('/cart')}>add to cart</button>
+                                <button onClick={() => history.push('/cart')} className="alt">buy now</button>
+                            </div>
                         </div>
-                    </div>
+                    </Spin>
                 </div>
 
                 <div className="product-description">
@@ -67,11 +105,18 @@ const ProductDetails = ({history}) => {
                             facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil 
                             impedit quo minus id quod maxime placeat facere.
                         </p>
-                        <div className="images">
+                        <p>
+                            At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti 
+                            atque corrupti quos dolores et quas molestias excepturi. sint occaecati cupiditate non provident, similique 
+                            sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum 
+                            facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil 
+                            impedit quo minus id quod maxime placeat facere.
+                        </p>
+                        {/* <div className="images">
                             <img src={banner} alt="banner-img"/>
                             <img src={banner3} alt="banner-img"/>
                             <img src={banner2} alt="banner-img"/>
-                        </div>
+                        </div> */}
                     </div>
                     <div className="product-desc-card">
                         <h3>additional info</h3>

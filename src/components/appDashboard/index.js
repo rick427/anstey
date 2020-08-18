@@ -74,6 +74,10 @@ export default function AppDashboard({match, history}) {
                         </div>
 
                         <div className={styles.nav}>
+                            <div className={`${styles.profile} ${styles.mobile}`} onClick={() => history.push('/')}>
+                                <HomeOutlined className={styles.icon}/>
+                            </div>
+
                             <div className={`${styles.profile} ${styles.mobile}`} onClick={() => setVisible(true)}>
                                 <MenuOutlined className={styles.icon}/>
                             </div>
@@ -121,6 +125,7 @@ export default function AppDashboard({match, history}) {
                 <p className={styles.role}>
                    SUPER ADMIN
                 </p>
+                
                 <Divider/>
 
                 <SiderMenu/>
@@ -128,7 +133,9 @@ export default function AppDashboard({match, history}) {
                 <Divider/>
 
                 <div className={styles.actions}>
-                    <Button type="danger">LOGOUT</Button>
+                    <Button type="danger" ghost onClick={handleLogout}>
+                        Logout
+                    </Button>
                 </div>
             </Drawer>
         </>

@@ -26,11 +26,17 @@ export const StyledSection = styled.section`
                     background: ${colors.grey3};
                 }
 
-                .product-img{
-                    width: 100%;
-                    height: 100%;
-                    object-fit: cover;
+                .cover{
+                    height: 410px;
+                    background: ${colors.grey2};
+
+                    .product-img{
+                        width: 100%;
+                        height: 100%;
+                        object-fit: contain;
+                    }
                 }
+
 
                 &.details{
                     padding: 2rem;
@@ -48,14 +54,11 @@ export const StyledSection = styled.section`
                         align-items: center;
                         margin-top: 1rem;
 
-                        .stars{
-                            display: block;
-                            margin-top: .5rem;
-                            font-size: 1.6rem;
-                            color: ${colors.orange};
+                        .push{
+                            margin-right: 2rem;
                         }
 
-                        p{
+                        /* p{
                             font-size: 1.3rem;
                             margin-top: 1rem;
                             margin-left: 2rem;
@@ -67,7 +70,7 @@ export const StyledSection = styled.section`
                                 display: inline-block;
                                 font-weight: 600;
                             }
-                        }
+                        } */
                     }
 
                     .price{

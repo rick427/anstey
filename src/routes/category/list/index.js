@@ -106,7 +106,7 @@ function CategoryList({history}) {
           okText="Yes"
           cancelText="No"
         >
-          <DeleteOutlined style={{cursor: 'pointer'}}/>
+          <DeleteOutlined style={{cursor: 'pointer', color: '#de2f40'}}/>
         </Popconfirm>
       )
     },

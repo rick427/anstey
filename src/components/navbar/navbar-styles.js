@@ -61,6 +61,30 @@ export const StyledNav = styled.nav`
         filter: greyscale(100%) opacity(0.7);
         transition: all 600ms;
         cursor: pointer;
+        position: relative;
+
+        .badge{
+            /* padding: 1rem; */
+            position: absolute;
+            top: -5%;
+            left: 90%;
+            transform: translate(-90%, 5%);
+            width: 2.2rem;
+            height: 2.2rem;
+            background: ${colors.red};
+            color: #fff;
+            border-radius: 50px;
+            font-size: 1rem;
+            text-align: center;
+            font-weight: 600;
+
+            .val{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
 
         span{
             display: block;
@@ -103,6 +127,15 @@ export const StyledNav = styled.nav`
         :hover{
             width: 20rem;
             box-shadow: 4px 0 5px rgba(0,0,0,.15);
+
+            .nav-link{
+                .badge{
+                    top: 0%;
+                    left: 15%;
+                    transform: translate(-15%, 0%);   
+        
+                }
+            }
         }
 
         :hover .link-text{
@@ -128,6 +161,12 @@ export const StyledNav = styled.nav`
 
         .nav-link{
             justify-content: center;
+
+            .badge{
+                top: 0;
+                left: 40%;
+                transform: translate(40%, 0);   
+            }
         }
 
         .logo{

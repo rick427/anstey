@@ -17,6 +17,8 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 loading: true,
+                data: [],
+                categoryData: {}
             }
         case GET_CATEGORY_BY_ID_SUCCESS:
             return {
@@ -36,7 +38,6 @@ export default (state = initialState, action) => {
                 loading: false,
                 data: [...state.data, action.payload],
                 error: '',
-                categoryAdded: true,
             }
         case EDIT_CATEGORY_SUCCESS:
             const edited = state.data.map(item => {
@@ -66,8 +67,6 @@ export default (state = initialState, action) => {
                 loading: false,
                 data: [],
                 error: action.payload,
-                categoryAdded: false,
-                categoryDeleted: false
             }
         default:
             return state;

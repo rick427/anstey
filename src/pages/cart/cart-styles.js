@@ -200,6 +200,7 @@ export const StyledSection = styled.section`
             justify-content: space-between;
             align-items: center;
             /* border: 1px solid red; */
+            margin-top: 4rem;
 
 
             .subtotal-flex{

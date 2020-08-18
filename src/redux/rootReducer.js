@@ -8,6 +8,7 @@ import categoryReducer from './categories/categoryReducer';
 import frontSlideReducer from './frontslides/frontSlideReducer';
 import productsReducer from './products/productsReducer';
 import uploadReducer from './upload/uploadReducer';
+import cartReducer from './cart/cartReducer';
 
 const rootReducer = combineReducers({
     auth: authReducer, 
@@ -17,7 +18,8 @@ const rootReducer = combineReducers({
     category: categoryReducer,
     frontSlides: frontSlideReducer,
     products: productsReducer,
-    upload: uploadReducer
+    upload: uploadReducer,
+    cart: cartReducer
 })
 
 export default rootReducer;

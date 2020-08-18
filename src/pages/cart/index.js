@@ -46,7 +46,7 @@ const CartPage = ({history}) => {
                 <div className="cart">
                     <Spin spinning={loading}>
 
-                        <table className="cart-table">
+                        {Object.entries(cartInfo).length > 0 && cartInfo.cartitems.length > 0 ? <table className="cart-table">
                             <thead>
                                 <tr>
                                     <th>product</th>
@@ -75,52 +75,8 @@ const CartPage = ({history}) => {
                                         <td className="total">&#8358; {item.total}</td>
                                     </tr>
                                 ))}
-
-                                {/* <tr>
-                                    <td>
-                                        <img src={prod2} alt="product"/>
-                                    </td>
-                                    <td className="w-25 name">synaptic nerves inducer P10</td>
-                                    <td className="w-30">Brain optimizer and pain killers. Only for adults.</td>
-                                    <td>&#8358; 5,100</td>
-                                    <td>
-                                        <Picker/>
-                                    </td>
-                                    <td><span className="action"><BsTrash className="icon"/></span></td>
-                                    <td className="total">&#8358; 5,100</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <img src={prod3} alt="product"/>
-                                    </td>
-                                    <td className="w-25 name">medical gas masks.</td>
-                                    <td className="w-30">h20 optimizer and stress reducer. Only for pied pipers.</td>
-                                    <td>&#8358; 2,100</td>
-                                    <td>
-                                        <Picker/>
-                                    </td>
-                                    <td><span className="action"><BsTrash className="icon"/></span></td>
-                                    <td className="total">&#8358; 2,100</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <img src={prod4} alt="product"/>
-                                    </td>
-                                    <td className="w-25 name">context provider exterminator.</td>
-                                    <td className="w-30">
-                                        context optimizer and stress flexer. 
-                                        For the devs that like Angular 
-                                        <span role="img" aria-label="emoji">&#129326;</span>
-                                    </td>
-                                    <td>&#8358; 4,100</td>
-                                    <td>
-                                        <Picker/>
-                                    </td>
-                                    <td><span className="action"><BsTrash className="icon"/></span></td>
-                                    <td className="total">&#8358; 4,100</td>
-                                </tr> */}
                             </tbody>
-                        </table>
+                        </table> : Object.entries(cartInfo).length > 0 && cartInfo.cartitems.length === 0 ?<h2 style={{textAlign: 'center'}}>You have no products in your cart</h2> : null}
                     </Spin>
 
                     {AuthService.hasSession() &&

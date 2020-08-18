@@ -108,7 +108,7 @@ export const registerUser = (formData, routerProps) => async dispatch => {
         }
 
         dispatch(registerSuccess(res.data.user));
-        toast('success', `Registeration successfully. Please Sign in.`);
+        toast('success', `Registration successful. Please Sign in.`);
         routerProps.history.push('/login');  
 
     } catch (error) {

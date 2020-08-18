@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import {Spin} from 'antd';
+import { LoadingOutlined } from '@ant-design/icons';
 import {BsTrash} from 'react-icons/bs';
 import {FiAlertCircle} from 'react-icons/fi';
 import {useSelector, useDispatch} from 'react-redux';
@@ -34,7 +35,9 @@ const CartPage = ({history}) => {
           return `${UtilService.getAttachmentPath()}${image}`;
         }
         return image;
-    }
+    };
+
+    const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />
 
     return (
         <StyledSection>
@@ -44,7 +47,7 @@ const CartPage = ({history}) => {
 
                 <Header current="cart"/>
                 <div className="cart">
-                    <Spin spinning={loading}>
+                    <Spin indicator={antIcon} spinning={loading}>
 
                         {Object.entries(cartInfo).length > 0 && cartInfo.cartitems.length > 0 ? <table className="cart-table">
                             <thead>

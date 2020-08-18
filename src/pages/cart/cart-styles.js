@@ -17,9 +17,12 @@ export const StyledSection = styled.section`
             border: 1px solid ${colors.veryLightGrey};
 
             .alert{
-                font-size: 1.8rem;
+                font-size: 2rem;
+                font-weight: 400;
                 color: ${colors.pastelGreen};
                 margin-top: 4rem;
+                text-align: center;
+                text-transform: capitalize;
             }
 
             .cart-table{
@@ -305,7 +308,7 @@ export const StyledSection = styled.section`
             }
 
             .bold{
-                font-size: 1.8rem;
+                font-size: 1.6rem;
                 text-transform: capitalize;
                 font-weight: 400;
                 color: ${colors.pastelGreen};

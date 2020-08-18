@@ -76,7 +76,7 @@ const CartPage = ({history}) => {
                                     </tr>
                                 ))}
                             </tbody>
-                        </table> : Object.entries(cartInfo).length > 0 && cartInfo.cartitems.length === 0 ?<h2 style={{textAlign: 'center'}}>You have no products in your cart</h2> : null}
+                        </table> : Object.entries(cartInfo).length > 0 && cartInfo.cartitems.length === 0 ?<h2 className="alert">You have no products in your cart</h2> : null}
                     </Spin>
 
                     {AuthService.hasSession() &&

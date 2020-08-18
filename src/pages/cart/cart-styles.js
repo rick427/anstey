@@ -16,6 +16,12 @@ export const StyledSection = styled.section`
             overflow-x: auto;
             border: 1px solid ${colors.veryLightGrey};
 
+            .alert{
+                font-size: 1.8rem;
+                color: ${colors.pastelGreen};
+                margin-top: 4rem;
+            }
+
             .cart-table{
                 border-collapse: collapse;
                 margin: 20px auto 25px auto;

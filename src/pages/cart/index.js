@@ -145,10 +145,14 @@ const CartPage = ({history}) => {
                             Delivery charges not included.
                         </p>
                     </div>
-                    <div className="btns">
-                        <button className="alt">continue shopping</button>
-                        <button onClick={() => history.push('/checkout')}>proceed to checkout</button>
-                    </div>
+                    {AuthService.hasSession() ? (
+                        <div className="btns">
+                            <button className="alt">continue shopping</button>
+                            <button onClick={() => history.push('/checkout')}>proceed to checkout</button>
+                        </div>
+                    ) : (
+                        <p className="bold">Please sign in to checkout</p>
+                    )}
                 </div>
             </div>
         </StyledSection>

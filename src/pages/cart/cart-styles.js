@@ -298,6 +298,13 @@ export const StyledSection = styled.section`
                 }
             }
 
+            .bold{
+                font-size: 1.8rem;
+                text-transform: capitalize;
+                font-weight: 400;
+                color: ${colors.pastelGreen};
+            }
+
             @media screen and (max-width: 600px){
                 height: 100%;
                 margin-bottom: 5rem;

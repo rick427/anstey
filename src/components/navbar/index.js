@@ -1,8 +1,8 @@
 import React from 'react';
 // import {Badge} from 'antd';
 import {Link, useLocation, useHistory} from 'react-router-dom';
-import {AiOutlineHome, AiOutlineShoppingCart, AiOutlineLogin, AiOutlineLogout, AiOutlineFileProtect} from 'react-icons/ai';
-import {RiStore3Line} from 'react-icons/ri';
+import {AiOutlineHome, AiOutlineShoppingCart, AiOutlineLogin, AiOutlineLogout, AiOutlineFileProtect, AiOutlineUser} from 'react-icons/ai';
+import {RiStore3Line, RiWhatsappLine} from 'react-icons/ri';
 import {GiThreeLeaves} from 'react-icons/gi';
 
 import {useDispatch} from 'react-redux';
@@ -96,7 +96,7 @@ export default function Navbar() {
                     </span>
                 </li>}
                 
-                {/* <li className="nav-item">
+                <li className="nav-item">
                     <Link to="/" className="nav-link">
                         <span>
                             {AuthService.hasSession() ? <AiOutlineUser/> : <RiWhatsappLine/>}
@@ -105,7 +105,7 @@ export default function Navbar() {
                             {AuthService.hasSession() ? AuthService.getRole() : 'whatsapp'}
                         </p>
                     </Link>
-                </li> */}
+                </li>
             </ul>
         </StyledNav>
     )

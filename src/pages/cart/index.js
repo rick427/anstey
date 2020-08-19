@@ -78,8 +78,8 @@ const CartPage = ({history}) => {
                                             <img src={checkPath(item.image)} alt="product"/>
                                         </td>
                                         <td className="w-25 name">{item.name}</td>
-                                        <td className="w-30">{item.shortdescription ? item.shortdescription : 'N/A'}</td>
-                                        <td>&#8358;{item.price}</td>
+                                        <td className="w-30">{item.description ? item.description : 'N/A'}</td>
+                                        <td>&#8358; {item.price}</td>
                                         <td>
                                             <Picker quantity={item.quantity}/>
                                         </td>

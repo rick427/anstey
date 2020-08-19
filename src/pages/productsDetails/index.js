@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {Spin, Tag, Carousel} from 'antd';
+import {Spin, Tag, Carousel, message} from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
 import {useSelector, useDispatch} from 'react-redux';
 
@@ -10,6 +10,7 @@ import Navbar from '../../components/navbar';
 import Picker from '../../components/picker';
 import Header from '../../components/header';
 import {getProductsById, addToCart} from '../../redux';
+import AuthService from '../../services/authentication_service';
 import UtilService from '../../services/util_service';
 
 // import banner from '../../assets/banner-3.jpg';
@@ -32,6 +33,19 @@ const ProductDetails = ({history, match}) => {
           return `${UtilService.getAttachmentPath()}${image}`;
         }
         return image;
+    }
+
+    const handleAddToCart = () => {
+        const info = {
+            id: product.id,
+            price: product.price,
+            qty: product.quantity,
+            totalall: product.price*product.quantity,
+            identifier: AuthService.getCartId()
+        };
+        dispatch(addToCart(info)).then(() => {
+            message.success('Product added to cart');
+        })
     }
 
     const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />
@@ -88,7 +102,7 @@ const ProductDetails = ({history, match}) => {
                             <Picker/>
 
                             <div className="actions">
-                                <button onClick={() => history.push('/cart')}>add to cart</button>
+                                <button onClick={handleAddToCart}>add to cart</button>
                                 <button onClick={() => history.push('/cart')} className="alt">buy now</button>
                             </div>
                         </div>

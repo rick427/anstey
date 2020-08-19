@@ -39,6 +39,15 @@ const CartPage = ({history}) => {
 
     const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />
 
+    const calculateTotal = () => {
+        if(cartInfo.cartitems){
+            let total;
+            const val = cartInfo.cartitems.map(item => item.price * item.quantity);
+            total = val.reduce((a, b) => a + b, 0);
+            return total;
+        }
+    }
+
     return (
         <StyledSection>
             <Navbar/>
@@ -72,7 +81,7 @@ const CartPage = ({history}) => {
                                         <td className="w-30">{item.shortdescription ? item.shortdescription : 'N/A'}</td>
                                         <td>&#8358;{item.price}</td>
                                         <td>
-                                            <Picker/>
+                                            <Picker quantity={item.quantity}/>
                                         </td>
                                         <td><span className="action"><BsTrash className="icon"/></span></td>
                                         <td className="total">&#8358; {item.total}</td>
@@ -98,7 +107,7 @@ const CartPage = ({history}) => {
                    <>
                         <div className="subtotal-flex">
                             <h3>total: </h3>
-                            <p className="amount">&#8358; 95,300</p>
+                            <p className="amount">&#8358; {calculateTotal()}</p>
                         </div>
                         <div className="text">
                             <span><FiAlertCircle/></span>
@@ -113,7 +122,7 @@ const CartPage = ({history}) => {
                             <button onClick={() => history.push('/checkout')}>proceed to checkout</button>
                         </div>
                     ) : (
-                        <p className="bold">Please sign in to checkout</p>
+                        <p className="bold">Please <span onClick={() => history.push('/login')}>sign in</span> to checkout</p>
                     )}
                 </div>
             </div>

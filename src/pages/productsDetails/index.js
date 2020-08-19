@@ -9,7 +9,7 @@ import {StyledSection} from './productDetails-styles';
 import Navbar from '../../components/navbar';
 import Picker from '../../components/picker';
 import Header from '../../components/header';
-import {getProductsById} from '../../redux';
+import {getProductsById, addToCart} from '../../redux';
 import UtilService from '../../services/util_service';
 
 // import banner from '../../assets/banner-3.jpg';

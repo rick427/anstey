@@ -183,8 +183,14 @@ export const StyledSection = styled.section`
                 }
 
                 p{
-                    font-size: 1.4rem;
-                    color: ${colors.primary}
+                    font-size: 1.6rem;
+                    color: ${colors.primary};
+
+                    span{
+                        font-weight: 700;
+                        color: ${colors.pastelGreen};
+                        cursor: pointer;
+                    }
                 }
 
                 button{

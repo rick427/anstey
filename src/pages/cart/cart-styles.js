@@ -310,8 +310,13 @@ export const StyledSection = styled.section`
             .bold{
                 font-size: 1.6rem;
                 text-transform: capitalize;
-                font-weight: 400;
-                color: ${colors.pastelGreen};
+                font-weight: 600;
+                color: ${colors.grey2};
+
+                span{
+                    color: ${colors.pastelGreen};
+                    cursor: pointer;
+                }
             }
 
             @media screen and (max-width: 600px){

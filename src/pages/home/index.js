@@ -14,7 +14,7 @@ import {StyledSection} from './home-styles';
 import Navbar from '../../components/navbar';
 import colors from '../../utils/colors';
 
-export default function HomePage() {
+export default function HomePage({history}) {
     const [tabs, setTabs] = useState(1);
 
     const handleTabs = (id) => {
@@ -74,14 +74,25 @@ export default function HomePage() {
                         <img src={tabs === 1 ? banner1 : tabs === 2 ? banner2 : banner3} alt="banner"/>
                     </div>
                     <div className="tabs-box flex-column">
-                        <h2>lorem ipsum dolor superhuman fiat</h2>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
-                            ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                        </p>
+                        {/* <h2>lorem ipsum dolor superhuman fiat</h2> */}
+                        {tabs === 1 ? (
+                            <p>
+                                Ansteys is know for having 99% of everything medical and phamacitical. 
+                                One of our top priorities is to always help you find what ever you need. 
+                                Take a look at our store <span onClick={() => history.push('/products')}>Here</span>
+                            </p>
+                        ) : tabs === 2 ? (
+                            <p>
+                                Ansteys has partnered with top consultants in the medical and pharmacitical 
+                                industry and we can help you book an appointment with them directly. 
+                                We ensure that you get the best of services with 100% service delivery.
+                            </p>
+                        ) : tabs === 3 ? (
+                            <p>
+                                Do you want to scout our store and see the awesome products we have ? 
+                                Click <span onClick={() => history.push('/products')}>Here</span>
+                            </p>
+                        ) : null}
                         <button>contact us</button>
                     </div>
                 </div>

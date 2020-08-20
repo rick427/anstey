@@ -1,5 +1,4 @@
 import {ADD_TO_CART_REQUEST, ADD_TO_CART_SUCCESS, ADD_TO_CART_FAILED, CLIENT_ERROR, GET_CART_REQUEST, GET_CART_SUCCESS, GET_CART_FAILED, INCREMENT_QUANTITY, DECREMENT_QUANTITY} from "../types";
-import { incrementCart, decrementCart } from "./cartActions";
 
 const initialState = {
     loading: false,

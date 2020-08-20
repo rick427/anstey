@@ -17,6 +17,7 @@ class AuthService {
         this.setEmail(null);
         this.setName(null);
         this.setPhoneNumber(null);
+        this.setCartId(null);
     }
 
     static hasSession(){
@@ -118,6 +119,15 @@ class AuthService {
     static getPhoneNumber(){
         return localStorage.getItem('anstey:auth:phoneNumber')
     } 
+
+    static setCartId(id){
+        if(id){
+            localStorage.setItem('anstey:cart_id', id);
+        }
+        else{
+            localStorage.removeItem('anstey:cart_id');
+        }
+    }
 
     static getCartId(){
         return localStorage.getItem('anstey:cart_id')

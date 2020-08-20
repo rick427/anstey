@@ -257,9 +257,10 @@ export const StyledSection = styled.section`
 
 
             .btns{
-                width: 40rem;
+                width: 45rem;
+                margin: 0 auto;
                 display: flex;
-                justify-content: space-between;
+                justify-content: center;
                 align-items: center;
 
                 button{
@@ -277,6 +278,7 @@ export const StyledSection = styled.section`
                     font-size: 1.2rem;
                     outline: none;
                     transition: all 200ms;
+                    margin: 0 2rem;
 
                     :hover{
                         background: ${colors.primary};
@@ -334,4 +336,47 @@ export const StyledSection = styled.section`
         }
     }
     /* end of  @: main */
+`;
+
+export const StyledDiv = styled.div`
+    width: 18rem;
+    height: 2rem;
+    padding: 2rem;
+    border: 1px solid ${colors.grey3};
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.4rem;
+    color: ${colors.grey2};
+    margin: 2rem 0;
+
+    button{
+        width: 2rem;
+        height: 2rem;
+        cursor: pointer;
+        padding: 1.6rem;
+        border: none;
+        border-radius: 50px;
+        outline: none;
+        background: none;
+        position: relative;
+
+        :hover{
+            background: ${colors.offGreen};
+        }
+
+        .icon{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.5rem;
+        }
+    }
+
+    p{
+        font-weight: 600;
+        cursor: pointer;
+        margin-top: 1rem;
+    }  
 `;

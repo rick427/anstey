@@ -20,7 +20,7 @@ import bg5 from '../../assets/h-5.jpg';
 import cat from '../../assets/cat-banner.jpg';
 import Header from '../../components/header';
 
-const ProductsPage = ({history}) => {
+const ProductsPage = () => {
     useEffect(() => {
         dispatch(getAllProducts());
         dispatch(getAllCategories());
@@ -113,6 +113,7 @@ const ProductsPage = ({history}) => {
                                 title={product.name} 
                                 price={product.price} 
                                 quantity={product.quantity}
+                                total={parseInt(product.price) * 1}
                             />
                         ))}
                     </div>

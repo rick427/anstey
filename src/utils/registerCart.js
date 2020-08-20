@@ -3,6 +3,7 @@ import axios from 'axios';
 
 import toast from './toasts';
 import UrlService from '../services/url_service';
+import AuthService from '../services/authentication_service';
 
 const RegisterCart = () => {
     useEffect(() => {
@@ -10,7 +11,7 @@ const RegisterCart = () => {
     }, []);
 
     const handleRegisterCart = async () => {
-        if(localStorage.getItem('anstey:cart_id')){
+        if(AuthService.getCartId()){
             return;
         }
 
@@ -25,8 +26,7 @@ const RegisterCart = () => {
             if(res.data.status === false){
                 return toast('error', res.data.message);
             }
-
-            localStorage.setItem('anstey:cart_id', res.data.identifier);
+            AuthService.setCartId(res.data.identifier)
         } 
         catch (error) {
             console.log(error);

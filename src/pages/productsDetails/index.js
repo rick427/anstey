@@ -1,5 +1,5 @@
-import React, {useEffect} from 'react';
-import {Spin, Tag, Carousel, message} from 'antd';
+import React, {useState, useEffect} from 'react';
+import {Spin, Tag, Carousel, message, InputNumber} from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
 import {useSelector, useDispatch} from 'react-redux';
 
@@ -7,7 +7,6 @@ import {useSelector, useDispatch} from 'react-redux';
 
 import {StyledSection} from './productDetails-styles';
 import Navbar from '../../components/navbar';
-import Picker from '../../components/picker';
 import Header from '../../components/header';
 import {getProductsById, addToCart} from '../../redux';
 import AuthService from '../../services/authentication_service';
@@ -18,6 +17,8 @@ import UtilService from '../../services/util_service';
 // import banner3 from '../../assets/h-5.jpg';
 
 const ProductDetails = ({history, match}) => {
+    const [quantity, setQuantity] = useState(1);
+    const cartLoading = useSelector(state => state.cart.loading);
     const loading = useSelector(state => state.products.loading);
     const product = useSelector(state => state.products.product);
     const dispatch = useDispatch();
@@ -39,13 +40,22 @@ const ProductDetails = ({history, match}) => {
         const info = {
             id: product.id,
             price: product.price,
-            qty: product.quantity,
-            totalall: product.price*product.quantity,
+            qty: quantity,
+            totalall: parseInt(product.price) * quantity,
             identifier: AuthService.getCartId()
         };
+
         dispatch(addToCart(info)).then(() => {
             message.success('Product added to cart');
         })
+    };
+
+    const handleChange = val => {
+        if(val === '' || val === 0 || val === undefined){
+            return setQuantity(1);
+        };
+
+        setQuantity(val);
     }
 
     const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />
@@ -99,10 +109,14 @@ const ProductDetails = ({history, match}) => {
                                 {product.longdescription}
                             </p>
                             
-                            <Picker/>
+                            <InputNumber min={1} max={10} defaultValue={1} onChange={handleChange} style={{margin: '2rem 0'}}/>
 
                             <div className="actions">
-                                <button onClick={handleAddToCart}>add to cart</button>
+                                <Spin indicator={antIcon} spinning={cartLoading}>
+                                    <button onClick={handleAddToCart}>
+                                        add to cart
+                                    </button>
+                                </Spin>
                                 <button onClick={() => history.push('/cart')} className="alt">buy now</button>
                             </div>
                         </div>

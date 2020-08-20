@@ -9,11 +9,14 @@ export default function Picker({quantity = 0}) {
 
     const handleIncrement = () => {
         setAmount(prevState => prevState + 1);
+        console.log('decrement');
     }
+
 
     const handleDecrement = () => {
         if(amount === 0) return;
         setAmount(prevState => prevState - 1);
+        console.log('increment')
     }
 
     return (

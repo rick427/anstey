@@ -1,9 +1,11 @@
-import {ADD_TO_CART_REQUEST, ADD_TO_CART_SUCCESS, ADD_TO_CART_FAILED, CLIENT_ERROR, GET_CART_REQUEST, GET_CART_SUCCESS, GET_CART_FAILED} from "../types";
+import {ADD_TO_CART_REQUEST, ADD_TO_CART_SUCCESS, ADD_TO_CART_FAILED, CLIENT_ERROR, GET_CART_REQUEST, GET_CART_SUCCESS, GET_CART_FAILED, INCREMENT_QUANTITY, DECREMENT_QUANTITY} from "../types";
+import { incrementCart, decrementCart } from "./cartActions";
 
 const initialState = {
     loading: false,
     cart: [],
-    userCart: {},
+    userCartInfo: {},
+    userCart: [],
     error: ''
 }
 
@@ -13,19 +15,49 @@ export default (state = initialState, action) => {
         case GET_CART_REQUEST:
             return {
                 ...state,
-                loading: true
+                loading: true,
             }
         case GET_CART_SUCCESS:
             return {
                 ...state,
                 loading: false,
-                userCart: action.payload
+                userCartInfo: action.payload,
+                userCart: action.payload.cartitems
             }
         case ADD_TO_CART_SUCCESS:
             return {
                 ...state,
                 loading: false,
                 cart: [...state.cart, action.payload]
+            }
+        case INCREMENT_QUANTITY:
+            const incrementedCart = state.userCart.map(item => {
+                if(item.pid === action.payload){
+                    item.quantity = parseInt(item.quantity) + 1;
+                    item.total = parseInt(item.price) * parseInt(item.quantity);
+                    return item;
+                }
+                return item;
+            });
+            return {
+                ...state,
+                userCart: incrementedCart
+            }
+        case DECREMENT_QUANTITY:
+            const decrementedCart = state.userCart.map(item => {
+                if(item.pid === action.payload){
+                    if(parseInt(item.quantity) === 1) return item;
+                    else{
+                        item.quantity = parseInt(item.quantity) - 1;
+                        item.total = parseInt(item.price) * parseInt(item.quantity);
+                        return item;
+                    }
+                }
+                return item;
+            });
+            return {
+                ...state,
+                userCart: decrementedCart
             }
         case ADD_TO_CART_FAILED:
         case GET_CART_FAILED:

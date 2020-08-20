@@ -1,4 +1,4 @@
-import {toast, Flip, Slide, Bounce} from 'react-toastify';
+import {toast, Flip, Slide} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default (status, message, duration = 4000) => {
@@ -9,7 +9,7 @@ export default (status, message, duration = 4000) => {
             {
                 position: toast.POSITION.TOP_RIGHT,
                 autoClose: duration,
-                transition: Bounce
+                transition: Slide
             }
         )
     }

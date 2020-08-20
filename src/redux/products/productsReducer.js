@@ -61,6 +61,7 @@ export default (state = initialState, action) => {
                 ...state,
                 loading: false,
                 data: [],
+                product: {},
                 error: action.payload
             }
         default:

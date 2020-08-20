@@ -133,15 +133,11 @@ export const getProductsById = (id) => async dispatch => {
     try {
         dispatch(getProductByIdRequest());
         const res = await axios.get(`${UrlService.GET_PRODUCTS_BY_ID}/${id}`, config);
-
-        if(res.data.status === false){
-            dispatch(getProductByIdError(res.data.message));
-            return toast('error', res.data.message);
-        }
-
         dispatch(getProductByIdSuccess(res.data.item));
+
     } catch (error) {
-        dispatch(apiError(error));
+        dispatch(getProductByIdError(error.response.data));
+        toast('error', error.response.data.message);
     }
 }
 

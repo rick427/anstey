@@ -1,22 +1,18 @@
-import React, {useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Spin} from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
 import {BsTrash} from 'react-icons/bs';
-import {FiAlertCircle} from 'react-icons/fi';
+import {FiAlertCircle, FiPlus} from 'react-icons/fi';
+import {AiOutlineMinus} from 'react-icons/ai';
 import {useSelector, useDispatch} from 'react-redux';
 
-import {StyledSection} from './cart-styles';
+import {StyledSection, StyledDiv} from './cart-styles';
 import Navbar from '../../components/navbar';
 import Header from '../../components/header';
-import {getCart} from '../../redux';
+import {getCart, incrementCart, decrementCart} from '../../redux';
 import AuthService from '../../services/authentication_service';
 import UtilService from '../../services/util_service';
-
-// import prod1 from '../../assets/h-3.jpg';
-// import prod2 from '../../assets/g-18.jpg';
-// import prod3 from '../../assets/g-16.jpg';
-// import prod4 from '../../assets/g-20.jpg';
-import Picker from '../../components/picker';
+import digitFormat from '../../utils/digitFormat';
 
 const CartPage = ({history}) => {
     const loading = useSelector(state => state.cart.loading);
@@ -30,6 +26,14 @@ const CartPage = ({history}) => {
         //eslint-disable-next-line
     }, []);
 
+    const handleIncrement = (id) => {
+        dispatch(incrementCart(id));
+    }
+
+    const handleDecrement = (id) => {
+        dispatch(decrementCart(id));
+    }
+
     const checkPath = (image) => {
         if(image && image.indexOf('https') === -1){
           return `${UtilService.getAttachmentPath()}${image}`;
@@ -40,11 +44,12 @@ const CartPage = ({history}) => {
     const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />
 
     const calculateTotal = () => {
-        if(cartInfo.cartitems){
+        if(cartInfo){
             let total;
-            const val = cartInfo.cartitems.map(item => item.price * item.quantity);
+            const val = cartInfo.map(item => item.price * item.quantity);
             total = val.reduce((a, b) => a + b, 0);
-            return total;
+
+            return digitFormat(total);
         }
     }
 
@@ -58,7 +63,7 @@ const CartPage = ({history}) => {
                 <div className="cart">
                     <Spin indicator={antIcon} spinning={loading}>
 
-                        {Object.entries(cartInfo).length > 0 && cartInfo.cartitems.length > 0 ? <table className="cart-table">
+                        {cartInfo && cartInfo.length > 0 ? <table className="cart-table">
                             <thead>
                                 <tr>
                                     <th>product</th>
@@ -72,26 +77,40 @@ const CartPage = ({history}) => {
                             </thead>
 
                             <tbody>
-                                {Object.entries(cartInfo).length > 0 && cartInfo.cartitems.map(item => (
-                                    <tr key={item.id}>
+                                {cartInfo.map((item, index) => (
+                                    <tr key={index}>
                                         <td>
-                                            <img src={checkPath(item.image)} alt="product"/>
+                                            <img src={checkPath(item.image)} alt="product" onClick={() => history.push(`/product/${item.id}`)}/>
                                         </td>
                                         <td className="w-25 name">{item.name}</td>
                                         <td className="w-30">{item.description ? item.description : 'N/A'}</td>
-                                        <td>&#8358; {item.price}</td>
+                                        <td>&#8358; {digitFormat(item.price)}</td>
                                         <td>
-                                            <Picker quantity={item.quantity}/>
+                                            <StyledDiv>
+                                                <button onClick={() => handleDecrement(item.pid)}>
+                                                    <AiOutlineMinus className="icon"/>
+                                                </button>
+
+                                                <p>{item.quantity}</p>
+
+                                                <button onClick={() => handleIncrement(item.pid)}>
+                                                    <FiPlus className="icon"/>
+                                                </button>
+                                            </StyledDiv>
                                         </td>
-                                        <td><span className="action"><BsTrash className="icon"/></span></td>
-                                        <td className="total">&#8358; {item.total}</td>
+                                        <td>
+                                            <span className="action">
+                                                <BsTrash className="icon"/>
+                                            </span>
+                                        </td>
+                                        <td className="total">&#8358; {digitFormat(item.total)}</td>
                                     </tr>
                                 ))}
                             </tbody>
-                        </table> : Object.entries(cartInfo).length > 0 && cartInfo.cartitems.length === 0 ?<h2 className="alert">You have no products in your cart</h2> : null}
+                        </table> : cartInfo.length === 0 ?<h2 className="alert">You have no products in your cart</h2> : null}
                     </Spin>
 
-                    {AuthService.hasSession() &&
+                    {AuthService.hasSession() && cartInfo.length > 0 &&
                     <div className="edit">
                         <div className="edit-inner">
                             <input type="text" placeholder="Coupon code"/>
@@ -103,26 +122,33 @@ const CartPage = ({history}) => {
                 </div>
 
                 <div className="subtotal">
-                   {Object.entries(cartInfo).length > 0 && cartInfo.cartitems.length > 0 &&
+                   {cartInfo && cartInfo.length > 0 &&
                    <>
                         <div className="subtotal-flex">
                             <h3>total: </h3>
                             <p className="amount">&#8358; {calculateTotal()}</p>
                         </div>
-                        <div className="text">
-                            <span><FiAlertCircle/></span>
-                            <p>
-                                Delivery charges not included.
-                            </p>
-                        </div>
+                        {AuthService.hasSession() &&
+                            <div className="text">
+                                <span><FiAlertCircle/></span>
+                                <p>
+                                    Delivery charges not included.
+                                </p>
+                            </div>}
                     </>}
                     {AuthService.hasSession() ? (
                         <div className="btns">
                             <button className="alt">continue shopping</button>
-                            <button onClick={() => history.push('/checkout')}>proceed to checkout</button>
+
+                            {cartInfo.length > 0 && 
+                            <button onClick={() => history.push('/checkout')}>
+                                proceed to checkout
+                            </button>}
                         </div>
                     ) : (
-                        <p className="bold">Please <span onClick={() => history.push('/login')}>sign in</span> to checkout</p>
+                        <p className="bold">
+                            Please <span onClick={() => history.push('/login')}>sign in</span> to checkout
+                        </p>
                     )}
                 </div>
             </div>

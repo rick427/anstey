@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import {ADD_TO_CART_REQUEST, ADD_TO_CART_SUCCESS, ADD_TO_CART_FAILED, CLIENT_ERROR, GET_CART_REQUEST, GET_CART_FAILED, GET_CART_SUCCESS} from "../types";
+import {ADD_TO_CART_REQUEST, ADD_TO_CART_SUCCESS, ADD_TO_CART_FAILED, CLIENT_ERROR, GET_CART_REQUEST, GET_CART_FAILED, GET_CART_SUCCESS, DECREMENT_QUANTITY, INCREMENT_QUANTITY} from "../types";
 import toast from '../../utils/toasts';
 import UrlService from '../../services/url_service';
 
@@ -44,6 +44,20 @@ export const getCartError = (error) => {
     }
 }
 
+export const decrementCart = (id) => {
+    return {
+        type: DECREMENT_QUANTITY,
+        payload: id
+    }
+}
+
+export const incrementCart = (id) => {
+    return {
+        type: INCREMENT_QUANTITY,
+        payload: id
+    }
+}
+
 export const apiError = (error) => {
     return {
         type: CLIENT_ERROR,
@@ -61,14 +75,15 @@ export const addToCart = (cartData) => async dispatch => {
         dispatch(addToCartRequest());
         const res = await axios.post(UrlService.ADD_TO_CART, cartData, config);
 
-        if(res.data.status === false){
-            dispatch(addToCartError(res.data.message));
-            return toast('error', res.data.message);
-        }
+        // if(res.data.status === false){
+        //     dispatch(addToCartError(res.data.message));
+        //     return toast('error', res.data.message);
+        // }
 
         dispatch(addToCartSuccess(res.data));
     } catch (error) {
-        dispatch(apiError(error));
+        dispatch(addToCartError(error.response.data));
+        toast('error', error.response.data);
     }
 }
 

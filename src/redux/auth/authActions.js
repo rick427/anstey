@@ -119,6 +119,6 @@ export const registerUser = (formData, routerProps) => async dispatch => {
 //@: ACTION CREATOR - logout user
 export const logoutUser = () => dispatch => {
     dispatch(logoutRequest());
-    AuthService.removeSession();
     dispatch(logoutSuccess());
+    AuthService.removeSession();
 }

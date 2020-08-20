@@ -8,9 +8,10 @@ import {StyledCard} from './card-styles';
 import {addToCart} from '../../redux';
 import AuthService from '../../services/authentication_service';
 import UtilService from '../../services/util_service';
+import digitFormat from '../../utils/digitFormat';
 
 
-const Card = ({imageUrl, title, price, id, quantity}) => {
+const Card = ({imageUrl, title, price, id, total}) => {
     const [loading, setLoading] = useState(false);
 
     const dispatch = useDispatch();
@@ -28,8 +29,7 @@ const Card = ({imageUrl, title, price, id, quantity}) => {
         const info = {
             id,
             price,
-            qty: quantity,
-            totalall: price*quantity,
+            totalall: total,
             identifier: AuthService.getCartId()
         };
 
@@ -52,7 +52,7 @@ const Card = ({imageUrl, title, price, id, quantity}) => {
                 <img src={checkPath(imageUrl)} alt="product"/>
             </div>
             <h2 className="title">{title}</h2>
-            <p className="price">&#8358; {price}</p>
+            <p className="price">&#8358; {digitFormat(price)}</p>
         </StyledCard>
     )
 }

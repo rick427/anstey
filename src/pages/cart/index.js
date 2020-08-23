@@ -77,7 +77,7 @@ const CartPage = ({history}) => {
                             </thead>
 
                             <tbody>
-                                {cartInfo.map((item, index) => (
+                                {cartInfo && cartInfo.map((item, index) => (
                                     <tr key={index}>
                                         <td>
                                             <img src={checkPath(item.image)} alt="product" onClick={() => history.push(`/product/${item.id}`)}/>
@@ -107,10 +107,10 @@ const CartPage = ({history}) => {
                                     </tr>
                                 ))}
                             </tbody>
-                        </table> : cartInfo.length === 0 ?<h2 className="alert">You have no products in your cart</h2> : null}
+                        </table> : cartInfo && cartInfo.length === 0 ?<h2 className="alert">You have no products in your cart</h2> : null}
                     </Spin>
 
-                    {AuthService.hasSession() && cartInfo.length > 0 &&
+                    {AuthService.hasSession() && cartInfo && cartInfo.length > 0 &&
                     <div className="edit">
                         <div className="edit-inner">
                             <input type="text" placeholder="Coupon code"/>
@@ -140,7 +140,7 @@ const CartPage = ({history}) => {
                         <div className="btns">
                             <button className="alt">continue shopping</button>
 
-                            {cartInfo.length > 0 && 
+                            {cartInfo && cartInfo.length > 0 && 
                             <button onClick={() => history.push('/checkout')}>
                                 proceed to checkout
                             </button>}

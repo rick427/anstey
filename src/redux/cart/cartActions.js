@@ -74,14 +74,9 @@ export const addToCart = (cartData) => async dispatch => {
     try {
         dispatch(addToCartRequest());
         const res = await axios.post(UrlService.ADD_TO_CART, cartData, config);
-
-        // if(res.data.status === false){
-        //     dispatch(addToCartError(res.data.message));
-        //     return toast('error', res.data.message);
-        // }
-
         dispatch(addToCartSuccess(res.data));
-    } catch (error) {
+    } 
+    catch (error) {
         dispatch(addToCartError(error.response.data));
         toast('error', error.response.data);
     }

@@ -49,8 +49,8 @@ const CATEGORIES = [
 
 export default function HomePage({ history }) {
   const [tabs, setTabs] = useState(1);
-  const [needs, setNeeds] = useState([]);
-  const [status, setStatus] = useState("");
+  // const [needs, setNeeds] = useState([]);
+  // const [status, setStatus] = useState("");
 
   const handleTabs = (id) => {
     setTabs(id);

@@ -76,7 +76,7 @@ export const StyledSection = styled.section`
 
       h2 {
         color: ${colors.veryLightGrey};
-        font-size: 2.8rem;
+        font-size: 2.7rem;
         position: absolute;
         top: 50%;
         left: 50%;
@@ -89,7 +89,7 @@ export const StyledSection = styled.section`
         span {
           color: ${colors.greenDust};
           font-weight: bold;
-          font-size: 3.3rem;
+          font-size: 3.1rem;
         }
       }
     }

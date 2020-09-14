@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Spin, Tag, Carousel, message, InputNumber } from "antd";
+import { Spin, Tag, message, InputNumber } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 import { useSelector, useDispatch } from "react-redux";
 

@@ -81,7 +81,7 @@ export const StyledSection = styled.section`
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 50%;
+        width: 70%;
         text-align: center;
         margin: 0 auto;
         letter-spacing: 1px;

@@ -18,37 +18,39 @@ import colors from "../../utils/colors";
 
 const { Option } = Select;
 
-const OPTIONS = [
-  "I'm having surgery",
-  "I snore",
-  "I need a sleep test",
-  "I think i have sleep apnoea",
-  "I lack quality sleep",
-  "I need compression garments",
-  "I'm having/had a baby",
-  "I have an injury",
-  "I'm struggling with everyday tasks",
-  "I'm a carer of someone with a disability",
-  "I'm having continence issues",
-  "I have body ache and pains",
-  "I need a daily posture care",
-  "I need to hire an equipment",
-  "I need a service/repair on my mobility aid",
-  "I need some home modifications",
-  "I'm a DVA card holder",
-  "I'm an NDIS participant",
+const NEEDS = [
+  { id: 10, status: "I'm having surgery" },
+  { id: 11, status: "I snore" },
+  { id: 12, status: "I need a sleep test" },
+  { id: 13, status: "I think i have sleep apnoea" },
+  { id: 14, status: "I lack quality sleep" },
+  { id: 15, status: "I need compression garments" },
+  { id: 16, status: "I'm having/had a baby" },
+  { id: 17, status: "I have an injury" },
+  { id: 18, status: "I'm struggling with everyday tasks" },
+  { id: 19, status: "I'm a carer of someone with a disability" },
+  { id: 20, status: "I'm having continence issues" },
+  { id: 21, status: "I have body ache and pains" },
+  { id: 22, status: "I need a daily posture care" },
+  { id: 23, status: "I need to hire an equipment" },
+  { id: 24, status: "I need a service/repair on my mobility aid" },
+  { id: 25, status: "I need some home modifications" },
+  { id: 26, status: "I'm a DVA card holder" },
+  { id: 27, status: "I'm an NDIS participant" },
 ];
 
 const CATEGORIES = [
-  "Bedroom",
-  "Bathroom",
-  "Compression Garments",
-  "Continence",
-  "Daily Assisted Living",
+  { id: "avabbsa", category: "Bedroom" },
+  { id: "vabshds", category: "Bathroom" },
+  { id: "gaha", category: "Compression Garments" },
+  { id: "cbxnas", category: "Continence" },
+  { id: "gahaww", category: "Daily Assisted Living" },
 ];
 
 export default function HomePage({ history }) {
   const [tabs, setTabs] = useState(1);
+  const [needs, setNeeds] = useState([]);
+  const [status, setStatus] = useState("");
 
   const handleTabs = (id) => {
     setTabs(id);
@@ -71,7 +73,7 @@ export default function HomePage({ history }) {
     console.log("checked = ", checkedValues);
   }
 
-  const handleRoute = () => history.push("/store");
+  const handleRoute = () => history.push("/products");
 
   return (
     <StyledSection banner={infoBanner} hbanner={headerBanner}>
@@ -156,9 +158,9 @@ export default function HomePage({ history }) {
                   style={{ width: "100%" }}
                   placeholder="Filter by needs"
                 >
-                  {OPTIONS.map((option, index) => (
-                    <Option key={index} value={option}>
-                      {option}
+                  {NEEDS.map((need) => (
+                    <Option key={need.id} value={need.status}>
+                      {need.status}
                     </Option>
                   ))}
                 </Select>
@@ -199,12 +201,12 @@ export default function HomePage({ history }) {
                 </p>
                 <Select
                   style={{ width: "60%" }}
+                  size="large"
                   placeholder="Filter by categories"
-                  defaultValue="Bedroom"
                 >
-                  {CATEGORIES.map((option, index) => (
-                    <Option key={index} value={option}>
-                      {option}
+                  {CATEGORIES.map((option) => (
+                    <Option key={option.id} value={option.category}>
+                      {option.category}
                     </Option>
                   ))}
                 </Select>

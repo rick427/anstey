@@ -1,81 +1,129 @@
-import React, {useEffect} from 'react';
-import {Spin, Carousel, Button} from 'antd';
-import { LoadingOutlined } from '@ant-design/icons';
-import {useSelector, useDispatch} from 'react-redux';
+import React, { useEffect, useState } from "react";
+import { Spin, Button } from "antd";
+import { LoadingOutlined } from "@ant-design/icons";
+import { useSelector, useDispatch } from "react-redux";
 
 // import {AiFillStar, AiOutlineStar} from 'react-icons/ai';
 // import {MdFilterList} from 'react-icons/md';
 
-import {getAllProducts, getAllCategories} from '../../redux';
-import {StyledSection} from './products-styles';
-import Navbar from '../../components/navbar';
-import Card from '../../components/card';
+import { getAllProducts, getAllCategories } from "../../redux";
+import { StyledSection } from "./products-styles";
+import Navbar from "../../components/navbar";
+import Card from "../../components/card";
 // import UtilService from '../../services/util_service';
 
-import bg from '../../assets/h-1.jpg';
-import bg2 from '../../assets/h-2.jpg';
-import bg3 from '../../assets/h-3.jpg';
-import bg4 from '../../assets/h-4.jpg';
-import bg5 from '../../assets/h-5.jpg';
-import cat from '../../assets/cat-banner.jpg';
-import Header from '../../components/header';
+// import bg from "../../assets/h-1.jpg";
+// import bg2 from "../../assets/h-2.jpg";
+// import bg3 from "../../assets/h-3.jpg";
+// import bg4 from "../../assets/h-4.jpg";
+// import bg5 from "../../assets/h-5.jpg";
+import cat from "../../assets/cat-banner.jpg";
+import Header from "../../components/header";
+
+const PRODUCTS_PER_PAGE = 10;
+let productsArray = [];
 
 const ProductsPage = () => {
-    useEffect(() => {
-        dispatch(getAllProducts());
-        dispatch(getAllCategories());
-        //eslint-disable-next-line
-    },[]);
+  const [productsToShow, setProductsToShow] = useState([]);
+  const [next, setNext] = useState(3);
 
-    const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllProducts()).then((product) => {
+      if (product) {
+        sliceProductsAmount(0, PRODUCTS_PER_PAGE, product);
+      }
+    });
+    dispatch(getAllCategories());
+    //eslint-disable-next-line
+  }, []);
 
-    const loading = useSelector(state => state.products.loading);
-    const catLoading = useSelector(state => state.category.loading);
-    const category = useSelector(state => state.category.data);
-    const products = useSelector(state => state.products.data);
+  const dispatch = useDispatch();
 
-    const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />
+  const loading = useSelector((state) => state.products.loading);
+  //const catLoading = useSelector((state) => state.category.loading);
+  const category = useSelector((state) => state.category.data);
+  const products = useSelector((state) => state.products.data);
 
-    return (
-        <StyledSection bg={cat}>
-            <Navbar/>
+  const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
-            <div className="main">
-                <Header current="products"/>
+  const sliceProductsAmount = (start, end, products) => {
+    const slicedProducts = products.length > 0 && products.slice(start, end);
+    productsArray = [...productsArray, ...slicedProducts];
+    setProductsToShow(productsArray);
+  };
 
-                <Spin tip="Loading categories..." indicator={antIcon} spinning={catLoading}>
-                    <div className="category">
-                            <div className="category-card">
-                                    <p className="header">categories</p>
-                                    <ul className="category-list">
-                                        {category.map(item => (
-                                            <li key={item.id} className="category-item"><span>{item.name}</span></li>
-                                        ))}
-                                    </ul>
-                            </div>
-                        
+  const handleMoreProducts = () => {
+    sliceProductsAmount(next, next + PRODUCTS_PER_PAGE, products);
+    setNext(next + PRODUCTS_PER_PAGE);
+  };
 
-                        <div className="category-card wide">
-                            <Carousel effect="fade" dotPosition="bottom" autoplay>
-                                {category.map(item => (
-                                    <div key={item.id} className="cover">
-                                        <img className="coverimage" src={item.coverimage} alt="coverimage"/>
-                                        <div className="cover-info">
-                                            <p>{item.description}</p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </Carousel>
-                        </div>
+  return (
+    <StyledSection bg={cat}>
+      <Navbar />
+
+      <div className="main">
+        <Header current="products" />
+
+        <Spin tip="Loading..." indicator={antIcon} spinning={loading}>
+          <div className="category">
+            <div className="category-card">
+              <p className="header">categories</p>
+              <ul className="category-list">
+                {category.map((item) => (
+                  <li key={item.id} className="category-item">
+                    <span>{item.name}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="filter">
+                <h4>FILTERS HERE</h4>
+              </div>
+              <div className="filter">
+                <h4>FEATURED PRODUCT HERE</h4>
+              </div>
+              <div className="filter">
+                <h4>BEST SELLING PRODUCT HERE</h4>
+              </div>
+            </div>
+
+            <div className="category-card wide">
+              {/* <Carousel effect="fade" dotPosition="bottom" autoplay>
+                {category.map((item) => (
+                  <div key={item.id} className="cover">
+                    <img
+                      className="coverimage"
+                      src={item.coverimage}
+                      alt="coverimage"
+                    />
+                    <div className="cover-info">
+                      <p>{item.description}</p>
                     </div>
-                </Spin>
-                
-                <div className="section-title">
-                    <h3>new arrivals</h3>
-                    <input type="text" placeholder="search by product name"/>
-                </div>
+                  </div>
+                ))}
+              </Carousel> */}
+              <div className="listings">
+                {productsToShow.map((product) => (
+                  <Card
+                    key={product.id}
+                    id={product.id}
+                    imageUrl={product.imageone}
+                    title={product.name}
+                    price={product.price}
+                    quantity={product.quantity}
+                    total={parseInt(product.price) * 1}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </Spin>
 
-                <div className="collage">
+        {/* <div className="section-title">
+          <h3>new arrivals</h3>
+          <input type="text" placeholder="search by product name" />
+        </div> */}
+
+        {/* <div className="collage">
                     <div className="collage-card wide tall">
                         <img src={bg} alt="collage"/>
                         <span>trending beddings !</span>
@@ -96,36 +144,25 @@ const ProductsPage = () => {
                         <img src={bg5} alt="collage"/>
                         <span>sanitized environments !</span>
                     </div>
-                </div>
+                </div> */}
 
-                <div className="section-title">
-                    <h3>best selling products</h3>
-                    <input type="text" placeholder="search by product name"/>
-                </div>
+        {/* <div className="section-title">
+          <h3>best selling products</h3>
+          <input type="text" placeholder="search by product name" />
+        </div> */}
 
-                <Spin indicator={antIcon} tip="Loading Products..." spinning={loading}>
-                    <div className="listings">
-                        {products.map(product => (
-                            <Card 
-                                key={product.id}
-                                id={product.id}
-                                imageUrl={product.imageone} 
-                                title={product.name} 
-                                price={product.price} 
-                                quantity={product.quantity}
-                                total={parseInt(product.price) * 1}
-                            />
-                        ))}
-                    </div>
-                </Spin>
+        <div className="btn">
+          <Button
+            type="primary"
+            onClick={handleMoreProducts}
+            disabled={loading ? true : false}
+          >
+            Load More
+          </Button>
+        </div>
+      </div>
+    </StyledSection>
+  );
+};
 
-                <div className="btn">
-                    <Button type="primary" disabled={loading ? true : false}>Load More</Button>
-                </div>
-            </div>
-        </StyledSection>
-
-    )
-}
-
-export default ProductsPage
+export default ProductsPage;

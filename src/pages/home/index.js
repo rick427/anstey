@@ -71,6 +71,8 @@ export default function HomePage({ history }) {
     console.log("checked = ", checkedValues);
   }
 
+  const handleRoute = () => history.push("/store");
+
   return (
     <StyledSection banner={infoBanner} hbanner={headerBanner}>
       <Navbar />
@@ -148,7 +150,12 @@ export default function HomePage({ history }) {
                   find what ever you need. Take a look at our store{" "}
                   <span onClick={() => history.push("/products")}>Here</span>
                 </p>
-                <Select style={{ width: "60%" }} placeholder="Filter by needs">
+                <Select
+                  mode="multiple"
+                  size="large"
+                  style={{ width: "100%" }}
+                  placeholder="Filter by needs"
+                >
                   {OPTIONS.map((option, index) => (
                     <Option key={index} value={option}>
                       {option}
@@ -193,6 +200,7 @@ export default function HomePage({ history }) {
                 <Select
                   style={{ width: "60%" }}
                   placeholder="Filter by categories"
+                  defaultValue="Bedroom"
                 >
                   {CATEGORIES.map((option, index) => (
                     <Option key={index} value={option}>
@@ -200,7 +208,7 @@ export default function HomePage({ history }) {
                     </Option>
                   ))}
                 </Select>
-                <button>browse</button>
+                <button onClick={handleRoute}>browse</button>
               </>
             ) : null}
           </div>

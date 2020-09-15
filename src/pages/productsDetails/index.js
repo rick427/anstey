@@ -130,15 +130,15 @@ const ProductDetails = ({ history, match }) => {
                 <Spin indicator={antIcon} spinning={cartLoading}>
                   <button onClick={handleAddToCart}>add to cart</button>
                 </Spin>
-                <button onClick={() => history.push("/cart")} className="alt">
+                {/* <button onClick={() => history.push("/cart")} className="alt">
                   buy now
-                </button>
+                </button> */}
               </div>
             </div>
           </Spin>
         </div>
 
-        <div className="product-description">
+        {/* <div className="product-description">
           <div className="product-desc-card">
             <h3>description</h3>
             <p>
@@ -161,11 +161,6 @@ const ProductDetails = ({ history, match }) => {
               nobis est eligendi optio cumque nihil impedit quo minus id quod
               maxime placeat facere.
             </p>
-            {/* <div className="images">
-                            <img src={banner} alt="banner-img"/>
-                            <img src={banner3} alt="banner-img"/>
-                            <img src={banner2} alt="banner-img"/>
-                        </div> */}
           </div>
           <div className="product-desc-card">
             <h3>additional info</h3>
@@ -187,7 +182,7 @@ const ProductDetails = ({ history, match }) => {
               eos qui ratione
             </p>
           </div>
-        </div>
+        </div> */}
       </div>
     </StyledSection>
   );

@@ -16,7 +16,9 @@ export const StyledSection = styled.section`
       display: grid;
       gap: 1em;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      grid-auto-rows: 420px;
+      grid-auto-rows: 500px;
+      /* border: 1px solid red; */
+      /* place-items: center; */
 
       .product-card {
         &.flex {
@@ -27,8 +29,10 @@ export const StyledSection = styled.section`
         }
 
         .cover {
-          height: 410px;
-          background: ${colors.grey2};
+          height: 500px;
+          width: 100%;
+          margin-top: 2rem;
+          /* background: ${colors.grey2}; */
 
           .product-img {
             width: 100%;

@@ -67,11 +67,11 @@ export const StyledSection = styled.section`
       height: 70vh;
       width: 100%;
       background: ${({ hbanner }) =>
-        `linear-gradient(to right top, rgba(0,0,0,.75),rgba(0,0,0,.4)),url(${hbanner}) center center no-repeat`};
+        `linear-gradient(to right top, rgba(0,0,0,.75),rgba(0,0,0,.4)),url(${hbanner}) center center no-repeat fixed`};
       background-size: cover;
       position: relative;
-      border-bottom-left-radius: 25px;
-      border-bottom-right-radius: 25px;
+      /* border-bottom-left-radius: 25px;
+      border-bottom-right-radius: 25px; */
       margin-bottom: 4rem;
 
       h2 {
@@ -277,9 +277,10 @@ export const StyledSection = styled.section`
     .info {
       height: 60vh;
       background-image: ${({ banner }) =>
-        `linear-gradient(rgba(0,148,116,.4), rgba(115, 212, 168,.8)),url(${banner})`};
+        `linear-gradient(to right, rgba(0,148,116,.4), rgba(115, 212, 168,.8)),url(${banner})`};
       background-repeat: no-repeat;
       background-size: cover;
+      background-attachment: fixed;
       position: relative;
 
       p {

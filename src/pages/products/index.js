@@ -75,7 +75,7 @@ const ProductsPage = () => {
                   </li>
                 ))}
               </ul>
-              <div className="filter">
+              {/* <div className="filter">
                 <h4>FILTERS HERE</h4>
               </div>
               <div className="filter">
@@ -83,7 +83,7 @@ const ProductsPage = () => {
               </div>
               <div className="filter">
                 <h4>BEST SELLING PRODUCT HERE</h4>
-              </div>
+              </div> */}
             </div>
 
             <div className="category-card wide">

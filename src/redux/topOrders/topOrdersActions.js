@@ -54,7 +54,7 @@ export const getAllTopOrders = () => async dispatch => {
             return toast('error', res.data.message);
         }
 
-        dispatch(getTopOrders(res.data.items));
+        dispatch(getTopOrders(res.data));
     } catch (error) {
         dispatch(apiError(error));
     }

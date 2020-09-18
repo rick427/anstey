@@ -13,7 +13,7 @@ import { addToCart } from "../../redux";
 import AuthService from "../../services/authentication_service";
 import UtilService from "../../services/util_service";
 import digitFormat from "../../utils/digitFormat";
-
+import ConstantUtil from "../../utils/constantUtil";
 const Card = ({ imageUrl, title, price, id, total }) => {
   const [loading, setLoading] = useState(false);
 
@@ -33,6 +33,7 @@ const Card = ({ imageUrl, title, price, id, total }) => {
       id,
       price,
       totalall: total,
+      qty: 1,
       identifier: AuthService.getCartId(),
     };
 
@@ -42,6 +43,8 @@ const Card = ({ imageUrl, title, price, id, total }) => {
     });
   };
 
+
+  
   return (
     <StyledCard
       // loading={loading}
@@ -63,7 +66,7 @@ const Card = ({ imageUrl, title, price, id, total }) => {
       </div>
       <div className="flex">
         <h2 className="title">{title}</h2>
-        <p className="price">&#8358; {digitFormat(price)}</p>
+        <p className="price">{ConstantUtil.CURRENCY} {digitFormat(price)}</p>
       </div>
     </StyledCard>
   );

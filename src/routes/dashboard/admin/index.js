@@ -5,6 +5,10 @@ import {useSelector, useDispatch} from 'react-redux';
 import styles from './admin.module.css';
 import {getDashboardDetails} from '../../../redux';
 
+import ConstantUtil from "../../../utils/constantUtil"
+
+import digitFormat from "../../../utils/digitFormat";
+
 import offer from '../../../assets/dashboard/offer.svg';
 import price from '../../../assets/dashboard/price.svg';
 import sales from '../../../assets/dashboard/sales.svg';
@@ -129,17 +133,17 @@ export default function AdminDashboard() {
                             <div className={`${styles.cardImg}`}>
                               <img src={offer} alt="card-svg"/>
                             </div>
-                            <h2>₦ 53,146</h2>
+                            <h2>{ConstantUtil.CURRENCY} {data && data.orderStatistics && digitFormat(data.orderStatistics.orderTotalAmount)}</h2>
                         </div>
                         <div className={styles.cardStats}>
                             <p className={styles.cardDay}>This Month</p>
-                            <div className={styles.line}/>
-                            <p className={styles.value}>240</p>
+                            <div className={styles.line} style={{width: '5rem'}} />
+                            <p className={styles.value}>{ConstantUtil.CURRENCY} {data && data.currentMonthOrderStatistics && digitFormat(data.currentMonthOrderStatistics.orderTotalAmount)}</p>
                         </div>
                         <div className={styles.cardStats}>
                             <p className={styles.cardDay}>Last Month</p>
-                            <div className={styles.line}/>
-                            <p className={styles.value}>30%</p>
+                            <div className={styles.line} style={{width: '5rem'}} />
+                            <p className={styles.value}>{ConstantUtil.CURRENCY} {data && data.lastMonthOrderStatistics && digitFormat(data.lastMonthOrderStatistics.orderTotalAmount)}</p>
                         </div>
                     </Card>
                 </Col>
@@ -150,7 +154,7 @@ export default function AdminDashboard() {
                             <div className={`${styles.cardImg} ${styles.profit}`}>
                               <img src={sales} alt="card-svg"/>
                             </div>
-                            <h2>₦ 8,246</h2>
+                            <h2>{ConstantUtil.CURRENCY} 8,246</h2>
                         </div>
                         <div className={styles.cardStats}>
                             <p className={styles.cardDay}>This Month</p>
@@ -166,22 +170,22 @@ export default function AdminDashboard() {
                 </Col>
                 <Col lg={6} md={8} sm={24} xs={24} className={styles.mb2}>
                     <Card className={`${styles.cardReset} ${styles.stagger_3}`} loading={loading}>
-                        <h1 className={styles.heading}>total sales</h1>
+                        <h1 className={styles.heading}>Cart stats</h1>
                         <div className={styles.cardInfo}>
-                            <div className={`${styles.cardImg} ${styles.sales}`}>
-                              <img src={touch} alt="card-svg"/>
+                            <div className={`${styles.cardImg}`}>
+                              <img src={offer} alt="card-svg"/>
                             </div>
-                            <h2>₦ 15,146</h2>
+                            <h2>{ConstantUtil.CURRENCY} {data && data.cartStatistics && digitFormat(data.cartStatistics.cartTotalAmount)}</h2>
                         </div>
                         <div className={styles.cardStats}>
                             <p className={styles.cardDay}>This Month</p>
-                            <div className={styles.line}/>
-                            <p className={styles.value}>200</p>
+                            <div className={styles.line} style={{width: '5rem'}} />
+                            <p className={styles.value}>{ConstantUtil.CURRENCY} {data && data.currentMonthCartStatistics && digitFormat(data.currentMonthCartStatistics.cartTotalAmount)}</p>
                         </div>
                         <div className={styles.cardStats}>
                             <p className={styles.cardDay}>Last Month</p>
-                            <div className={styles.line}/>
-                            <p className={styles.value}>15%</p>
+                            <div className={styles.line} style={{width: '5rem'}} />
+                            <p className={styles.value}>{ConstantUtil.CURRENCY} {data && data.lastMonthCartStatistics && digitFormat(data.lastMonthCartStatistics.cartTotalAmount)}</p>
                         </div>
                     </Card>
                 </Col>
@@ -192,7 +196,7 @@ export default function AdminDashboard() {
                             <div className={`${styles.cardImg} ${styles.revenue}`}>
                               <img src={price} alt="card-svg"/>
                             </div>
-                            <h2>₦ 7,246</h2>
+                            <h2>{ConstantUtil.CURRENCY} 7,246</h2>
                         </div>
                         <div className={styles.cardStats}>
                             <p className={styles.cardDay}>This Month</p>

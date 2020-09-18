@@ -7,7 +7,7 @@ import {getAllTopOrders} from '../../../../redux';
 
 function TopSellingOrders() {
   const loading = useSelector(state => state.topOrders.loading);
-  //const orders = useSelector(state => state.topOrders.data);
+  const orders = useSelector(state => state.topOrders.data);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -82,15 +82,15 @@ function TopSellingOrders() {
       align: 'center'
     },
     {
-      title: 'Product Code',
-      dataIndex: 'code',
-      key: 'code',
+      title: 'Product',
+      dataIndex: 'name',
+      key: 'name',
       align: 'center'
     },
     {
-      title: 'Product',
-      dataIndex: 'product',
-      key: 'product',
+      title: 'Category',
+      dataIndex: 'categoryname',
+      key: 'categoryname',
       align: 'center'
     },
     {
@@ -100,27 +100,27 @@ function TopSellingOrders() {
       align: 'center'
     },
     {
-      title: 'Total',
-      dataIndex: 'total',
-      key: 'total',
+      title: 'Total Sales',
+      dataIndex: 'totalSold',
+      key: 'totalSold',
       align: 'center'
     },
     {
-      title: 'Quantity',
-      dataIndex: 'quantity',
-      key: 'quantity',
+      title: 'Total Quantity',
+      dataIndex: 'totalQty',
+      key: 'totalQty',
       align: 'center'
     },
   ];
 
   return (
     <Spin indicator={antIcon} spinning={loading}>
-      <Table
-        dataSource={datasource}
+      {orders && orders.items && <Table
+        dataSource={orders.items}
         columns={columns}
         bordered
         scroll={{x: 1000}}
-      />
+      />}
     </Spin>
   )
 }

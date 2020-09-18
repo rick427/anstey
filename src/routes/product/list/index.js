@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {Card, Table, Tag, Spin, Button, Popconfirm, message} from 'antd';
+import Pagination from 'antd/es/pagination';
 import Lightbox from 'react-image-lightbox';
 import {EditOutlined, DeleteOutlined, LoadingOutlined, FormOutlined} from '@ant-design/icons';
 import {useSelector, useDispatch} from 'react-redux';
@@ -9,10 +10,12 @@ import styles from './list.module.css';
 import CreateProduct from '../create';
 import UtilService from '../../../services/util_service';
 
+const pagesize = 20;
 function ProductList() {
   const [data, setData] = useState(null);
   const [isCreating, setIsCreating] = useState(false);
   const [lightbox, setLightbox] = useState(false);
+  const [next, setNext] = useState(1);
 
   const loading = useSelector(state => state.products.loading);
   const products = useSelector(state => state.products.data);
@@ -20,9 +23,13 @@ function ProductList() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllProducts());
+    getAllNextProducts(next,pagesize, '');
     //eslint-disable-next-line
   }, []);
+
+  const getAllNextProducts = (next,pagesize,categoryName) => {
+    dispatch(getAllProducts(next, pagesize,categoryName));
+  }
 
   const checkPath = (image) => {
     if(image && image.indexOf('https') === -1){
@@ -42,6 +49,11 @@ function ProductList() {
     dispatch(deleteProduct(id)).then(() => {
       message.success('Product Deleted.');
     });
+  }
+
+  const onChangePageNumber = (pagenumber) => {
+    setNext(pagenumber);
+    dispatch(getAllProducts(pagenumber, pagesize,''));
   }
 
   const columns = [
@@ -152,13 +164,15 @@ function ProductList() {
         ) : (
           <Table
             columns={columns}
-            dataSource={products}
+            dataSource={products.list}
             bordered
             scroll={{x: 1600}}
             rowKey="id"
+            pagination={false} 
             style={{marginTop: '2rem'}}
           />
         )}
+        {products && <Pagination showQuickJumper pageSize={pagesize}  current={next} defaultCurrent={next} total={products.numberOfRecord} onChange={(data) => onChangePageNumber(data)} />}
       </Card> 
 
       {lightbox && 

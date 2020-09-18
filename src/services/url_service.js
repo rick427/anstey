@@ -20,6 +20,11 @@ const UrlService = {
     REGISTER_CART: `${baseUrl}/register/cart`,
     ADD_TO_CART: `${baseUrl}/carts`,
     GET_CART: `${baseUrl}/mycart`,
+    EDIT_CART: `${baseUrl}/carts`,
+    DELETE_CART_ITEM: `${baseUrl}/deletecartitem`,
+    CHECKOUT: `${baseUrl}/checkout`,
+
+    
 }
 
 export default UrlService;

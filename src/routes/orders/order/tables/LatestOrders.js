@@ -31,12 +31,6 @@ function LatestOrders() {
       align: 'center'
     },
     {
-      title: 'Sum Total',
-      dataIndex: 'sumtotal',
-      key: 'sumtotal',
-      align: 'center'
-    },
-    {
       title: 'Amount',
       dataIndex: 'totalamount',
       key: 'totalamount',
@@ -60,12 +54,6 @@ function LatestOrders() {
       key: 'deliveryStatus',
       align: 'center',
       render: val => val === 'processing' ? <Tag color="orange">{val}</Tag> : val === 'intransit' ? <Tag color="#1C84C6">{val}</Tag> : <Tag color="#34bd7c">{val}</Tag>
-    },
-    {
-      title: 'Delivery Fee',
-      dataIndex: 'deliveryfee',
-      key: 'deliveryfee',
-      align: 'center'
     },
     {
       title: 'Delivery Time',

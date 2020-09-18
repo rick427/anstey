@@ -1,22 +1,95 @@
-import React from 'react';
-import {AiFillCheckCircle} from 'react-icons/ai';
+import React, { useEffect, useState } from 'react';
+import { AiFillCheckCircle } from 'react-icons/ai';
+import { Spin, message } from "antd";
+import { LoadingOutlined } from "@ant-design/icons";
+import { useSelector, useDispatch } from "react-redux";
 
 import Navbar from '../../components/navbar';
 import Header from '../../components/header';
-import {StyledSection} from './checkout-styles';
+import { StyledSection } from './checkout-styles';
 
-import g6 from '../../assets/h-4.jpg';
+
+import { getCart, checkout } from "../../redux";
+import AuthService from "../../services/authentication_service";
+import UtilService from "../../services/util_service";
+import digitFormat from "../../utils/digitFormat";
+import ConstantUtil from "../../utils/constantUtil";
+
+
 import g7 from '../../assets/g-16.jpg';
-import g8 from '../../assets/g-20.jpg';
-import g9 from '../../assets/g-18.jpg';
 
-export default function CheckOutPage() {
+
+
+
+
+const CheckOutPage = ({ history }) => {
+    const [shipping, setShipping] = useState({});
+    const loading = useSelector((state) => state.cart.loading);
+    const cartInfo = useSelector((state) => state.cart.userCart);
+    const userCartInfo = useSelector((state) => state.cart.userCartInfo);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        const payload = { identifier: AuthService.getCartId() };
+
+        dispatch(getCart(payload));
+        //eslint-disable-next-line
+    }, []);
+
+    const checkPath = (image) => {
+        if (image && image.indexOf("https") === -1) {
+            return `${UtilService.getAttachmentPath()}${image}`;
+        }
+        return image;
+    };
+
+    const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
+
+    const handleChange = e => {
+        const { name, value } = e.target;
+        setShipping({ ...shipping, [name]: value });
+    }
+
+    const handlecheckout = () => {
+        let data = {};
+        shipping.name = shipping.fistName+" "+shipping.lastName;
+        data.shipping = shipping;
+        data.order = {};
+        data.order.totalamount = parseInt(userCartInfo.cart.totalprice) + parseInt(userCartInfo.deliveryfee);
+        data.order.sumtotal = parseInt(userCartInfo.cart.totalprice);
+        data.order.deliveryfee = parseInt(userCartInfo.deliveryfee);
+        data.order.totalquantity = (userCartInfo.cart.numberofitems);
+
+        let orders = cartInfo.map(item => {
+            let cartItem = {};
+            cartItem.id = item.id;
+            cartItem.price = item.price;
+            cartItem.count = item.quantity;
+            cartItem.total = item.total;
+            return cartItem;
+        });
+
+        data.orders = orders;
+        data.paymentMethod = "paypal";
+        data.newShipment = true;
+        data.user_id = AuthService.getId();
+        data.identifier = AuthService.getCartId();
+
+        console.log(data);
+        dispatch(checkout(data)).then(() => {
+          message.success("Checkout successful.");
+          AuthService.setCartId(null);
+          history.go(0);
+        });
+    }
+
+
     return (
         <StyledSection>
-            <Navbar/>
+            <Navbar />
 
             <div className="main">
-                <Header current="checkout"/>
+                <Header current="checkout" />
 
                 <div className="checkout-grid">
                     <div className="checkout-card tall">
@@ -26,160 +99,163 @@ export default function CheckOutPage() {
                             <div className="top-card">
                                 <div className="top-heading">
                                     <div className="top-left">
-                                        <span><AiFillCheckCircle/></span>
+                                        <span><AiFillCheckCircle /></span>
                                         <h3>address details</h3>
                                     </div>
                                     <h3 className="top-action">change</h3>
                                 </div>
                                 <h4>kirigaya kazuhito</h4>
                                 <p>
-                                    Anstey Australia Limited, World trade center, 
-                                    20th floor, Constituition Avenue, Central area, 
+                                    Anstey Australia Limited, World trade center,
+                                    20th floor, Constituition Avenue, Central area,
                                     Abuja-Central, Federal Capital Territory
-                                </p>
+                            </p>
                             </div>
 
-                            <form>
+                            <div>
                                 <div className="form-flex">
                                     <div className="form-group">
                                         <label>first name</label>
-                                        <input type="text" placeholder="Enter first name" required/>
+                                        <input type="text" placeholder="Enter first name"
+                                            name="firstName"
+                                            value={shipping.firstName}
+                                            onChange={handleChange}
+                                            required />
                                     </div>
                                     <div className="form-group">
                                         <label>last name</label>
-                                        <input type="text" placeholder="Enter last name" required/>
+                                        <input type="text" placeholder="Enter last name"
+                                            name="lastName"
+                                            value={shipping.lastName}
+                                            onChange={handleChange}
+                                            required />
                                     </div>
                                 </div>
-                                <div className="form-group full">
+                                {/* <div className="form-group full">
                                     <label>company name</label>
-                                    <input type="text" placeholder="Enter company name" required/>
-                                </div>
-                                <div className="form-group full">
+                                    <input type="text" placeholder="Enter company name" required />
+                                </div> */}
+                                {/* <div className="form-group full">
                                     <label>select a country</label>
-                                    <input type="text" placeholder="select country" required/>
+                                    <input type="text" placeholder="select country" required />
+                                </div> */}
+                                <div className="form-group full">
+                                    <label>address</label>
+                                    <input type="text" placeholder="Address"
+                                        name="address"
+                                        value={shipping.address}
+                                        onChange={handleChange}
+                                        required />
+                                    {/* <input className="mt" type="text" placeholder="apartment, suite, unit etc." required /> */}
                                 </div>
                                 <div className="form-group full">
-                                    <label>street address</label>
-                                    <input type="text" placeholder="house number and street name" required/>
-                                    <input className="mt" type="text" placeholder="apartment, suite, unit etc." required/>
+                                    <label>State</label>
+                                    <input type="text" placeholder="Enter state"
+                                        name="state"
+                                        value={shipping.state}
+                                        onChange={handleChange}
+                                        required />
                                 </div>
                                 <div className="form-group full">
                                     <label>town / city</label>
-                                    <input type="text" placeholder="Enter town or city" required/>
+                                    <input type="text" placeholder="Enter town or city"
+                                        name="city"
+                                        value={shipping.city}
+                                        onChange={handleChange}
+                                        required />
                                 </div>
-                                <div className="form-flex">
+                                {/* <div className="form-flex">
                                     <div className="form-group">
                                         <label>state / country</label>
-                                        <input type="text" placeholder="Enter country or state" required/>
+                                        <input type="text" placeholder="Enter country or state" required />
                                     </div>
                                     <div className="form-group">
                                         <label>postcode / ZIP</label>
-                                        <input type="text" placeholder="Enter postcode or zip code" required/>
+                                        <input type="text" placeholder="Enter postcode or zip code" required />
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="form-flex">
                                     <div className="form-group">
                                         <label>phone</label>
-                                        <input type="text" placeholder="Enter phone number" required/>
+                                        <input type="text" placeholder="Enter phone number"
+                                            name="phone"
+                                            value={shipping.phone}
+                                            onChange={handleChange}
+                                            required />
                                     </div>
                                     <div className="form-group">
                                         <label>email</label>
-                                        <input type="text" placeholder="Enter email address" required/>
+                                        <input type="text" placeholder="Enter email address"
+                                            name="email"
+                                            value={shipping.email}
+                                            onChange={handleChange}
+                                            required />
                                     </div>
                                 </div>
                                 <div className="form-group full">
                                     <label>addition information</label>
-                                    <input className="info" type="text" placeholder="Enter additional information" required/>
+                                    <input className="info" type="text" placeholder="Enter additional information" required />
                                 </div>
-                                <button>proceed to payment</button>
-                            </form>
+                            <button onClick={() => handlecheckout()}>proceed to payment</button>
+                                
+                            </div>
                         </div>
                     </div>
 
                     <div className="checkout-card tall-sm">
-                        <div className="summary">
-                            <h3 className="summary-header">order summary (4)</h3>
+                        <Spin indicator={antIcon} spinning={loading}>
+                            <div className="summary">
+                                <h3 className="summary-header">order summary ({userCartInfo && userCartInfo.cartItemCount})</h3>
 
-                            <div className="order">
-                                <div className="order-img">
-                                    <img src={g6} alt="order-product"/>
-                                </div>
-                                <div className="order-info">
-                                    <h3>oxyford lanford automated bed</h3>
-                                    <p>&#8358; 60.00</p>
-                                    <p>Quantity: x2</p>
-                                    <p>xamarin bedded crips sheets</p>
-                                </div>
-                                <div className="order-price">
-                                    <p>&#8358; 120,000.00</p>
-                                </div>
-                            </div>
-                            <div className="order">
-                                <div className="order-img">
-                                    <img src={g7} alt="order-product"/>
-                                </div>
-                                <div className="order-info">
-                                    <h3>gas mask of the twilight zone</h3>
-                                    <p>&#8358; 50.00</p>
-                                    <p>Quantity: x2</p>
-                                    <p>selenium bedded crips sheets</p>
-                                </div>
-                                <div className="order-price">
-                                    <p>&#8358; 100,000.00</p>
-                                </div>
-                            </div>
-                            <div className="order">
-                                <div className="order-img">
-                                    <img src={g8} alt="order-product"/>
-                                </div>
-                                <div className="order-info">
-                                    <h3>paracetmol redux inducer</h3>
-                                    <p>&#8358; 10,000.00</p>
-                                    <p>Quantity: x1</p>
-                                    <p>springboot bedded crips sheets</p>
-                                </div>
-                                <div className="order-price">
-                                    <p>&#8358; 10,000.00</p>
-                                </div>
-                            </div>
-                            <div className="order">
-                                <div className="order-img">
-                                    <img src={g9} alt="order-product"/>
-                                </div>
-                                <div className="order-info">
-                                    <h3>paracetmol context relaxer</h3>
-                                    <p>&#8358; 20,000.00</p>
-                                    <p>Quantity: x4</p>
-                                    <p>jenkins bedded crips sheets</p>
-                                </div>
-                                <div className="order-price">
-                                    <p>&#8358; 80,000.00</p>
-                                </div>
-                            </div>
+                                {cartInfo &&
+                                    cartInfo.map((item, index) => (
+                                        <div className="order" key={index} >
+                                            <div className="order-img">
+                                                <img
+                                                    src={checkPath(item.image)}
+                                                    alt="product"
+                                                    onClick={() => history.push(`/product/${item.id}`)}
+                                                />
+                                            </div>
+                                            <div className="order-info" style={{ height: '100%' }}>
+                                                <h3>{item.name}</h3>
+                                                <p>Quantity: x{item.quantity}</p>
+                                                <p>{item.description ? item.description : 'N/A'}</p>
+                                            </div>
+                                            <div className="order-price">
+                                                <p>{ConstantUtil.CURRENCY} {digitFormat(item.price)}</p>
+                                            </div>
+                                        </div>
+                                    ))}
 
-                            <div className="order-summary">
-                                <div className="inner-flex">
-                                    <p>subtotal:</p>
-                                    <p>&#8358; 230,000</p>
-                                </div>
-                                <div className="inner-flex">
+                                <div className="order-summary">
+                                    <div className="inner-flex">
+                                        <p>subtotal:</p>
+                                        <p>{ConstantUtil.CURRENCY} {userCartInfo && userCartInfo.cart && digitFormat(userCartInfo.cart.totalprice)}</p>
+                                    </div>
+                                    {/* <div className="inner-flex">
                                     <p>promo code applied:</p>
-                                    <p>&#8358; -20,000</p>
-                                </div>
-                                <div className="inner-flex">
-                                    <p>shipping anf handling tax:</p>
-                                    <p>&#8358; 3,000</p>
-                                </div>
-                                <div className="inner-flex">
-                                    <p>estimated tax:</p>
-                                    <p>&#8358; 5,000</p>
+                                    <p>{ConstantUtil.CURRENCY} -20,000</p>
+                                </div> */}
+                                    <div className="inner-flex">
+                                        <p>shipping anf handling tax:</p>
+                                        <p>{ConstantUtil.CURRENCY} {userCartInfo && userCartInfo.deliveryfee}</p>
+                                    </div>
+                                    <div className="inner-flex">
+                                        <p>Total:</p>
+                                        <p>{ConstantUtil.CURRENCY} {userCartInfo && userCartInfo.cart && digitFormat(parseInt(userCartInfo.cart.totalprice) + parseInt(userCartInfo.deliveryfee))}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </Spin>
+
+
                     </div>
 
                 </div>
             </div>
         </StyledSection>
-    )
-}
+    );
+};
+
+export default CheckOutPage;

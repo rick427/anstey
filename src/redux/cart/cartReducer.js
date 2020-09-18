@@ -1,4 +1,4 @@
-import {ADD_TO_CART_REQUEST, ADD_TO_CART_SUCCESS, ADD_TO_CART_FAILED, CLIENT_ERROR, GET_CART_REQUEST, GET_CART_SUCCESS, GET_CART_FAILED, INCREMENT_QUANTITY, DECREMENT_QUANTITY} from "../types";
+import {DELETE_CART_SUCCESS,ADD_TO_CART_REQUEST, ADD_TO_CART_SUCCESS, ADD_TO_CART_FAILED, CLIENT_ERROR, GET_CART_REQUEST, GET_CART_SUCCESS, GET_CART_FAILED, INCREMENT_QUANTITY, DECREMENT_QUANTITY} from "../types";
 
 const initialState = {
     loading: false,
@@ -28,6 +28,16 @@ export default (state = initialState, action) => {
                 ...state,
                 loading: false,
                 cart: [...state.cart, action.payload]
+            }
+        case DELETE_CART_SUCCESS:
+            
+            const updatedCart = state.userCart.filter(function( obj ) {
+                return obj.id !== action.payload;
+            });
+            console.log(updatedCart);
+            return {
+                ...state,
+                userCart: updatedCart
             }
         case INCREMENT_QUANTITY:
             const incrementedCart = state.userCart.map(item => {

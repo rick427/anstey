@@ -107,7 +107,7 @@ export const apiError = (error) => {
   };
 };
 
-export const getAllProducts = () => async (dispatch, getState) => {
+export const getAllProducts = (pagenumber,pagesize,categoryName) => async (dispatch, getState) => {
   //@: Global header for auth token
   if (AuthService.getToken()) {
     setAuthToken(AuthService.getToken());
@@ -115,6 +115,9 @@ export const getAllProducts = () => async (dispatch, getState) => {
   const config = {
     headers: {
       "Content-Type": "application/json",
+      "pagesize": pagesize,
+      "pagenumber": pagenumber,
+      "category": categoryName,
     },
   };
   try {
@@ -124,7 +127,7 @@ export const getAllProducts = () => async (dispatch, getState) => {
     if (res.data.status === false)
       throw dispatch(getProductsError(res.data.message));
 
-    dispatch(getProducts(res.data.list));
+    dispatch(getProducts(res.data));
     return Promise.resolve(getState().products.data);
   } catch (error) {
     dispatch(apiError(error));

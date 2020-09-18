@@ -20,19 +20,17 @@ import Card from "../../components/card";
 import cat from "../../assets/cat-banner.jpg";
 import Header from "../../components/header";
 
-const PRODUCTS_PER_PAGE = 10;
+const PRODUCTS_PER_PAGE = 20;
 let productsArray = [];
 
 const ProductsPage = () => {
   const [productsToShow, setProductsToShow] = useState([]);
-  const [next, setNext] = useState(3);
+  const [next, setNext] = useState(1);
+  const [categoryName, setCategoryName] = useState('');
 
   useEffect(() => {
-    dispatch(getAllProducts()).then((product) => {
-      if (product) {
-        sliceProductsAmount(0, PRODUCTS_PER_PAGE, product);
-      }
-    });
+
+    getAllNextProducts(next,PRODUCTS_PER_PAGE,categoryName)
     dispatch(getAllCategories());
     //eslint-disable-next-line
   }, []);
@@ -47,15 +45,40 @@ const ProductsPage = () => {
   const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
   const sliceProductsAmount = (start, end, products) => {
-    const slicedProducts = products.length > 0 && products.slice(start, end);
-    productsArray = [...productsArray, ...slicedProducts];
+    //const slicedProducts = products.length > 0 && products.slice(start, end);
+    productsArray = [...productsArray, ...products];
     setProductsToShow(productsArray);
   };
 
   const handleMoreProducts = () => {
-    sliceProductsAmount(next, next + PRODUCTS_PER_PAGE, products);
-    setNext(next + PRODUCTS_PER_PAGE);
+    
+    getAllNextProducts(next+1,PRODUCTS_PER_PAGE,categoryName)
+    setNext(next + 1);
+    //sliceProductsAmount(next, next + PRODUCTS_PER_PAGE, products);
+    //setNext(next + 1);
   };
+
+  const getAllNextProducts = (next,PRODUCTS_PER_PAGE,categoryName) => {
+    dispatch(getAllProducts(next, PRODUCTS_PER_PAGE,categoryName)).then((products) => {
+      if (products) {
+        sliceProductsAmount(0, PRODUCTS_PER_PAGE, products);
+      }
+    });
+  }
+
+  const searchByCategory = (value) => {
+    console.log(value);
+    
+    // setNext({val:1, callback: ()=>
+    //   setProductsToShow({val:[], callback: ()=>
+    //     getAllNextProducts()})
+    // })
+    setNext(1);
+    productsArray = [];
+    setCategoryName(value);
+    getAllNextProducts(next,PRODUCTS_PER_PAGE,value)
+    
+  }
 
   return (
     <StyledSection bg={cat}>
@@ -70,7 +93,7 @@ const ProductsPage = () => {
               <p className="header">categories</p>
               <ul className="category-list">
                 {category.map((item) => (
-                  <li key={item.id} className="category-item">
+                  <li key={item.id} className="category-item" value={item.name} onClick={() => searchByCategory(item.name)} >
                     <span>{item.name}</span>
                   </li>
                 ))}
@@ -102,9 +125,9 @@ const ProductsPage = () => {
                 ))}
               </Carousel> */}
               <div className="listings">
-                {productsToShow.map((product) => (
+                {productsToShow.map((product, i) => (
                   <Card
-                    key={product.id}
+                    key={i}
                     id={product.id}
                     imageUrl={product.imageone}
                     title={product.name}

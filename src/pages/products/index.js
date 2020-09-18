@@ -26,11 +26,10 @@ let productsArray = [];
 const ProductsPage = () => {
   const [productsToShow, setProductsToShow] = useState([]);
   const [next, setNext] = useState(1);
-  const [categoryName, setCategoryName] = useState('');
+  const [categoryName, setCategoryName] = useState("");
 
   useEffect(() => {
-
-    getAllNextProducts(next,PRODUCTS_PER_PAGE,categoryName)
+    getAllNextProducts(next, PRODUCTS_PER_PAGE, categoryName);
     dispatch(getAllCategories());
     //eslint-disable-next-line
   }, []);
@@ -40,7 +39,7 @@ const ProductsPage = () => {
   const loading = useSelector((state) => state.products.loading);
   //const catLoading = useSelector((state) => state.category.loading);
   const category = useSelector((state) => state.category.data);
-  const products = useSelector((state) => state.products.data.list);
+  //const products = useSelector((state) => state.products.data.list);
 
   const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
@@ -51,24 +50,25 @@ const ProductsPage = () => {
   };
 
   const handleMoreProducts = () => {
-    
-    getAllNextProducts(next+1,PRODUCTS_PER_PAGE,categoryName)
+    getAllNextProducts(next + 1, PRODUCTS_PER_PAGE, categoryName);
     setNext(next + 1);
     //sliceProductsAmount(next, next + PRODUCTS_PER_PAGE, products);
     //setNext(next + 1);
   };
 
-  const getAllNextProducts = (next,PRODUCTS_PER_PAGE,categoryName) => {
-    dispatch(getAllProducts(next, PRODUCTS_PER_PAGE,categoryName)).then((products) => {
-      if (products) {
-        sliceProductsAmount(0, PRODUCTS_PER_PAGE, products.list);
+  const getAllNextProducts = (next, PRODUCTS_PER_PAGE, categoryName) => {
+    dispatch(getAllProducts(next, PRODUCTS_PER_PAGE, categoryName)).then(
+      (products) => {
+        if (products) {
+          sliceProductsAmount(0, PRODUCTS_PER_PAGE, products.list);
+        }
       }
-    });
-  }
+    );
+  };
 
   const searchByCategory = (value) => {
     console.log(value);
-    
+
     // setNext({val:1, callback: ()=>
     //   setProductsToShow({val:[], callback: ()=>
     //     getAllNextProducts()})
@@ -76,9 +76,8 @@ const ProductsPage = () => {
     setNext(1);
     productsArray = [];
     setCategoryName(value);
-    getAllNextProducts(next,PRODUCTS_PER_PAGE,value)
-    
-  }
+    getAllNextProducts(next, PRODUCTS_PER_PAGE, value);
+  };
 
   return (
     <StyledSection bg={cat}>
@@ -93,7 +92,12 @@ const ProductsPage = () => {
               <p className="header">categories</p>
               <ul className="category-list">
                 {category.map((item) => (
-                  <li key={item.id} className="category-item" value={item.name} onClick={() => searchByCategory(item.name)} >
+                  <li
+                    key={item.id}
+                    className="category-item"
+                    value={item.name}
+                    onClick={() => searchByCategory(item.name)}
+                  >
                     <span>{item.name}</span>
                   </li>
                 ))}

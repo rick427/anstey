@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Spin,message } from "antd";
+import { Spin, message } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 import { BsTrash } from "react-icons/bs";
 import { FiAlertCircle, FiPlus } from "react-icons/fi";
@@ -9,12 +9,17 @@ import { useSelector, useDispatch } from "react-redux";
 import { StyledSection, StyledDiv } from "./cart-styles";
 import Navbar from "../../components/navbar";
 import Header from "../../components/header";
-import { getCart, incrementCart, decrementCart, editCart, deleteCart } from "../../redux";
+import {
+  getCart,
+  incrementCart,
+  decrementCart,
+  editCart,
+  deleteCart,
+} from "../../redux";
 import AuthService from "../../services/authentication_service";
 import UtilService from "../../services/util_service";
 import digitFormat from "../../utils/digitFormat";
 import ConstantUtil from "../../utils/constantUtil";
-
 
 const CartPage = ({ history }) => {
   const loading = useSelector((state) => state.cart.loading);
@@ -29,22 +34,20 @@ const CartPage = ({ history }) => {
   }, []);
 
   const handleDeleteCart = (item) => {
-    if(item){
+    if (item) {
       item.identifier = AuthService.getCartId();
     }
     console.log(item);
     dispatch(deleteCart(item)).then(() => {
       // setLoading(false);
-      message.success(item.name+" deleted from your cart.");
+      message.success(item.name + " deleted from your cart.");
     });
-
   };
 
   const handleIncrement = (id) => {
     dispatch(incrementCart(id));
     updateCart(id, "Add");
   };
-
 
   const handleDecrement = (id) => {
     dispatch(decrementCart(id));
@@ -53,18 +56,16 @@ const CartPage = ({ history }) => {
 
   const updateCart = (id, symbol) => {
     let data = null;
-    cartInfo.map(item => {
+    cartInfo.forEach((item) => {
       if (item.id === id) {
-        if(symbol === "Add")
-          item.quantity = parseInt(item.quantity) + 1;
-        if(symbol === "Subtract")
-          item.quantity = parseInt(item.quantity) - 1;
+        if (symbol === "Add") item.quantity = parseInt(item.quantity) + 1;
+        if (symbol === "Subtract") item.quantity = parseInt(item.quantity) - 1;
         item.total = parseInt(item.price) * parseInt(item.quantity);
         data = item;
       }
       //return item;
     });
-    if(data){
+    if (data) {
       data.identifier = AuthService.getCartId();
     }
     console.log(data);
@@ -72,7 +73,7 @@ const CartPage = ({ history }) => {
       // setLoading(false);
       message.success("Cart updated.");
     });
-  }
+  };
 
   const checkPath = (image) => {
     if (image && image.indexOf("https") === -1) {
@@ -128,9 +129,13 @@ const CartPage = ({ history }) => {
                         </td>
                         <td className="w-25 name">{item.name}</td>
                         {/* <td className="w-30">{item.description ? item.description : 'N/A'}</td> */}
-                        <td>{ConstantUtil.CURRENCY} {digitFormat(item.price)}</td>
                         <td>
-                          {item && item.categoryname === "Hire" && <h4>How many months?</h4>}
+                          {ConstantUtil.CURRENCY} {digitFormat(item.price)}
+                        </td>
+                        <td>
+                          {item && item.categoryname === "Hire" && (
+                            <h4>How many months?</h4>
+                          )}
 
                           <StyledDiv>
                             <button onClick={() => handleDecrement(item.id)}>
@@ -146,11 +151,14 @@ const CartPage = ({ history }) => {
                         </td>
                         <td>
                           <span className="action">
-                            <BsTrash className="icon" onClick={() => handleDeleteCart(item)} />
+                            <BsTrash
+                              className="icon"
+                              onClick={() => handleDeleteCart(item)}
+                            />
                           </span>
                         </td>
                         <td className="total">
-                        {ConstantUtil.CURRENCY} {digitFormat(item.total)}
+                          {ConstantUtil.CURRENCY} {digitFormat(item.total)}
                         </td>
                       </tr>
                     ))}
@@ -176,9 +184,11 @@ const CartPage = ({ history }) => {
         <div className="subtotal">
           {cartInfo && cartInfo.length > 0 && (
             <>
-              <div className="subtotal-flex" style={{width: '20rem'}}>
+              <div className="subtotal-flex" style={{ width: "20rem" }}>
                 <h3>total: </h3>
-                <p className="amount">{ConstantUtil.CURRENCY} {calculateTotal()}</p>
+                <p className="amount">
+                  {ConstantUtil.CURRENCY} {calculateTotal()}
+                </p>
               </div>
               {AuthService.hasSession() && (
                 <div className="text">
@@ -201,11 +211,11 @@ const CartPage = ({ history }) => {
               )}
             </div>
           ) : (
-              <p className="bold">
-                Please <span onClick={() => history.push("/login")}>sign in</span>{" "}
-                to checkout
+            <p className="bold">
+              Please <span onClick={() => history.push("/login")}>sign in</span>{" "}
+              to checkout
             </p>
-            )}
+          )}
         </div>
       </div>
     </StyledSection>

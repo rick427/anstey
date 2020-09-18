@@ -40,7 +40,7 @@ const ProductsPage = () => {
   const loading = useSelector((state) => state.products.loading);
   //const catLoading = useSelector((state) => state.category.loading);
   const category = useSelector((state) => state.category.data);
-  const products = useSelector((state) => state.products.data);
+  const products = useSelector((state) => state.products.data.list);
 
   const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
@@ -61,7 +61,7 @@ const ProductsPage = () => {
   const getAllNextProducts = (next,PRODUCTS_PER_PAGE,categoryName) => {
     dispatch(getAllProducts(next, PRODUCTS_PER_PAGE,categoryName)).then((products) => {
       if (products) {
-        sliceProductsAmount(0, PRODUCTS_PER_PAGE, products);
+        sliceProductsAmount(0, PRODUCTS_PER_PAGE, products.list);
       }
     });
   }

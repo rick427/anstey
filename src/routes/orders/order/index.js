@@ -14,7 +14,7 @@ import PendingApproval from './tables/PendingApproval';
 
 const { TabPane } = Tabs;
 
-const Order = () => {
+const Order = ({history}) => {
     const [loading, setLoading] = useState(true);
     // const orders = useSelector(state => state.order.orders);
     // const dispatch = useDispatch();
@@ -84,7 +84,7 @@ const Order = () => {
                         <TopSellingOrders/>
                     </TabPane>
                     <TabPane tab="Latest Orders" key="2">
-                        <LatestOrders/>
+                        <LatestOrders history={history}/>
                     </TabPane>
                     <TabPane tab="Pending Approval" key="3">
                         <PendingApproval/>

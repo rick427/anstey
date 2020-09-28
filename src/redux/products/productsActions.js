@@ -107,7 +107,10 @@ export const apiError = (error) => {
   };
 };
 
-export const getAllProducts = (pagenumber,pagesize,categoryName) => async (dispatch, getState) => {
+export const getAllProducts = (pagenumber, pagesize, categoryName) => async (
+  dispatch,
+  getState
+) => {
   //@: Global header for auth token
   if (AuthService.getToken()) {
     setAuthToken(AuthService.getToken());
@@ -115,9 +118,9 @@ export const getAllProducts = (pagenumber,pagesize,categoryName) => async (dispa
   const config = {
     headers: {
       "Content-Type": "application/json",
-      "pagesize": pagesize,
-      "pagenumber": pagenumber,
-      "category": categoryName,
+      pagesize: pagesize,
+      pagenumber: pagenumber,
+      category: categoryName,
     },
   };
   try {
@@ -179,7 +182,8 @@ export const createProduct = (formData) => async (dispatch) => {
 
     dispatch(createProducts(res.data.item));
   } catch (error) {
-    dispatch(apiError(error));
+    dispatch(apiError(error.response.data));
+    toast.error("error", error.response.data.message);
   }
 };
 

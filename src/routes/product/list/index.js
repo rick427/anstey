@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {Card, Table, Tag, Spin, Button, Popconfirm, message} from 'antd';
 import Pagination from 'antd/es/pagination';
 import Lightbox from 'react-image-lightbox';
-import {EditOutlined, DeleteOutlined, LoadingOutlined, FormOutlined} from '@ant-design/icons';
+import {EditOutlined, DeleteOutlined, LoadingOutlined, FormOutlined, ExpandOutlined} from '@ant-design/icons';
 import {useSelector, useDispatch} from 'react-redux';
 
 import {getAllProducts, deleteProduct} from '../../../redux';
@@ -11,7 +11,7 @@ import CreateProduct from '../create';
 import UtilService from '../../../services/util_service';
 
 const pagesize = 20;
-function ProductList() {
+function ProductList({history}) {
   const [data, setData] = useState(null);
   const [isCreating, setIsCreating] = useState(false);
   const [lightbox, setLightbox] = useState(false);
@@ -77,25 +77,25 @@ function ProductList() {
       align: 'center',
       render: val => <img onClick={() => handleLightBox(val)} className={styles.img} src={checkPath(val)} alt="product"/>
     },
-    {
-      title: 'Description',
-      dataIndex: 'longdescription',
-      key: 'longdescription',
-      align: 'center',
-      width: 350
-    },
+    // {
+    //   title: 'Description',
+    //   dataIndex: 'longdescription',
+    //   key: 'longdescription',
+    //   align: 'center',
+    //   width: 350
+    // },
     {
       title: 'Price',
       dataIndex: 'price',
       key: 'price',
       align: 'center'
     },
-    {
-      title: 'Quantity',
-      dataIndex: 'quantity',
-      key: 'quantity',
-      align: 'center'
-    },
+    // {
+    //   title: 'Quantity',
+    //   dataIndex: 'quantity',
+    //   key: 'quantity',
+    //   align: 'center'
+    // },
     {
       title: 'Total Quantity',
       dataIndex: 'totalquantity',
@@ -121,17 +121,17 @@ function ProductList() {
       align: 'center',
       render: val => <Tag color="#34bd7c">{val}</Tag>
     },
-    // {
-    //   title: 'View',
-    //   key: 'view',
-    //   align: 'center',
-    //   render: () => <ExpandAltOutlined style={{cursor: 'pointer'}}/>
-    // },
+    {
+      title: 'View',
+      key: 'view',
+      align: 'center',
+      render: data => <ExpandOutlined style={{cursor: 'pointer'}} onClick={() => history.push(`/main/products/list/${data.id}`)}/>
+    },
     {
       title: 'Edit',
       key: 'edit',
       align: 'center',
-      render: () => <EditOutlined style={{cursor: 'pointer'}}/>
+      render: data => <EditOutlined style={{cursor: 'pointer'}} onClick={() => history.push(`/main/products/list/edit/${data.id}`)}/>
     },
     {
       title: 'Delete',
@@ -172,7 +172,17 @@ function ProductList() {
             style={{marginTop: '2rem'}}
           />
         )}
-        {products && <Pagination showQuickJumper pageSize={pagesize}  current={next} defaultCurrent={next} total={products.numberOfRecord} onChange={(data) => onChangePageNumber(data)} />}
+        {products && (
+          <Pagination 
+            showQuickJumper 
+            pageSize={pagesize}  
+            current={next} 
+            defaultCurrent={next} 
+            total={products.numberOfRecord} 
+            onChange={(data) => onChangePageNumber(data)} 
+            style={{marginTop: '2rem'}}
+          />
+        )}
       </Card> 
 
       {lightbox && 

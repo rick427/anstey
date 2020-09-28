@@ -6,6 +6,7 @@ const UrlService = {
   GET_DASHBOARD_DETAILS: `${baseUrl}/dashboarddetails`,
   GET_TOP_SELLING_PRODUCTS: `${baseUrl}/topselling`,
   GET_ORDERS: `${baseUrl}/orders`,
+  GET_ORDER_BY_ID: `${baseUrl}/orderdetails/`,
   GET_CATEGORIES: `${baseUrl}/categories`,
   CREATE_CATEGORY: `${baseUrl}/category`,
   DELETE_CATEGORY: `${baseUrl}/category`,

@@ -76,10 +76,10 @@ function TopSellingOrders() {
 
   const columns = [
     {
-      title: "Id",
-      dataIndex: "id",
+      title: "S/N",
       key: "id",
       align: "center",
+      render: (item, items, index) => index+1
     },
     {
       title: "Product",

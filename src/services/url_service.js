@@ -24,6 +24,7 @@ const UrlService = {
   EDIT_CART: `${baseUrl}/carts`,
   DELETE_CART_ITEM: `${baseUrl}/deletecartitem`,
   CHECKOUT: `${baseUrl}/checkout`,
+  CAPTURE_PAYMENT: `${baseUrl}/payment/capture`,
 };
 
 export default UrlService;

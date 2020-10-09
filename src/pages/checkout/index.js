@@ -46,7 +46,7 @@ const CheckOutPage = ({ history }) => {
 
   const handlecheckout = () => {
     let data = {};
-    shipping.name = shipping.fistName + " " + shipping.lastName;
+    shipping.name = shipping.firstName + " " + shipping.lastName;
     data.shipping = shipping;
     data.order = {};
     data.order.totalamount =
@@ -58,10 +58,11 @@ const CheckOutPage = ({ history }) => {
 
     let orders = cartInfo.map((item) => {
       let cartItem = {};
-      cartItem.id = item.id;
+      cartItem.id = item.product_id;
       cartItem.price = item.price;
       cartItem.count = item.quantity;
       cartItem.total = item.total;
+      cartItem.categoryname = item.categoryname;
       return cartItem;
     });
 
@@ -75,7 +76,7 @@ const CheckOutPage = ({ history }) => {
     dispatch(checkout(data)).then(() => {
       message.success("Checkout successful.");
       AuthService.setCartId(null);
-      history.go(0);
+      // history.go(0);
     });
   };
 

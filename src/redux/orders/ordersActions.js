@@ -111,3 +111,27 @@ export const getOrder = (id) => async dispatch => {
     toast.error("error", error.response.data.message);
   }
 }
+
+
+
+export const capturePayment = (formData) => async dispatch => {
+  if (AuthService.getToken()) {
+    setAuthToken(AuthService.getToken());
+  }
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  try {
+    const res = await axios.post(UrlService.CAPTURE_PAYMENT, formData, config);
+
+    if (res.data.status === false) {
+      return toast("error", res.data.message);
+    }
+
+    toast("success", "Payment captured");
+  } catch (error) {
+    toast.error("error", error.response.data.message);
+  }
+}

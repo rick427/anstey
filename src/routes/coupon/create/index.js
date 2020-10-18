@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col, Card, Form, Button, Input, Divider, Select, message, Tag } from 'antd';
 import { CheckOutlined, CloseOutlined,  FormOutlined } from '@ant-design/icons';
-import { useSelector, useDispatch } from 'react-redux';
+import {useDispatch } from 'react-redux';
 
 import {  createCoupon } from '../../../redux';
 
@@ -9,7 +9,6 @@ const { Option } = Select;
 
 const CreateCoupon = ({ setIsCreating }) => {
 
-    const uploaded = useSelector(state => state.upload.uploaded);
     const dispatch = useDispatch();
 
     const [form] = Form.useForm();

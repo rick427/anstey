@@ -1,4 +1,4 @@
-import {DELETE_CART_SUCCESS,ADD_TO_CART_REQUEST, ADD_TO_CART_SUCCESS, ADD_TO_CART_FAILED, CLIENT_ERROR, GET_CART_REQUEST, GET_CART_SUCCESS, GET_CART_FAILED, INCREMENT_QUANTITY, DECREMENT_QUANTITY} from "../types";
+import {COUPON_CODE,DELETE_CART_SUCCESS,ADD_TO_CART_REQUEST, ADD_TO_CART_SUCCESS, ADD_TO_CART_FAILED, CLIENT_ERROR, GET_CART_REQUEST, GET_CART_SUCCESS, GET_CART_FAILED, INCREMENT_QUANTITY, DECREMENT_QUANTITY} from "../types";
 
 const initialState = {
     loading: false,
@@ -22,6 +22,12 @@ export default (state = initialState, action) => {
                 loading: false,
                 userCartInfo: action.payload,
                 userCart: action.payload.cartitems
+            }
+        case COUPON_CODE:
+            return {
+                ...state,
+                loading: false,
+                couponCode: action.payload
             }
         case ADD_TO_CART_SUCCESS:
             return {

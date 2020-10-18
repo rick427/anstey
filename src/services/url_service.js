@@ -30,6 +30,7 @@ const UrlService = {
   DELETE_COUPON: `${baseUrl}/coupon`,
   EDIT_COUPON: `${baseUrl}/coupon`,
   GET_COUPON_BY_ID: `${baseUrl}/coupon`,
+  GET_COUPON_BY_CODE: `${baseUrl}/coupon/code`,
 
 
 };

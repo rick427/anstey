@@ -1,6 +1,7 @@
 import axios from "axios";
 
 import {
+  COUPON_CODE,
   DELETE_CART_REQUEST,
   DELETE_CART_SUCCESS,
   DELETE_CART_ERROR,
@@ -114,6 +115,13 @@ export const incrementCart = (id) => {
   };
 };
 
+export const couponCode = (data) => {
+  return {
+    type: COUPON_CODE,
+    payload: data,
+  };
+};
+
 export const apiError = (error) => {
   return {
     type: CLIENT_ERROR,
@@ -209,3 +217,27 @@ export const getCart = (data) => async (dispatch) => {
     dispatch(apiError(error));
   }
 };
+
+
+
+
+
+export const getCouponCode = (code) => async (dispatch) => {
+ 
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+
+  try {
+    const res = await axios.get(
+      `${UrlService.GET_COUPON_BY_CODE}/${code}`,
+      config
+    );
+    dispatch(couponCode(res.data.item[0]));
+  } catch (error) {
+  }
+};
+
+

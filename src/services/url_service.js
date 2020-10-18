@@ -25,6 +25,14 @@ const UrlService = {
   DELETE_CART_ITEM: `${baseUrl}/deletecartitem`,
   CHECKOUT: `${baseUrl}/checkout`,
   CAPTURE_PAYMENT: `${baseUrl}/payment/capture`,
+  GET_COUPONS: `${baseUrl}/coupons`,
+  CREATE_COUPON: `${baseUrl}/coupon`,
+  DELETE_COUPON: `${baseUrl}/coupon`,
+  EDIT_COUPON: `${baseUrl}/coupon`,
+  GET_COUPON_BY_ID: `${baseUrl}/coupon`,
+  GET_COUPON_BY_CODE: `${baseUrl}/coupon/code`,
+
+
 };
 
 export default UrlService;

@@ -1,70 +1,55 @@
 import React, {useState, useEffect} from 'react';
 import {Card, Table, Tag, Spin, Button, Popconfirm, message} from 'antd';
-import Lightbox from 'react-image-lightbox';
 import {EditOutlined, DeleteOutlined, LoadingOutlined, FormOutlined} from '@ant-design/icons';
 import {useSelector, useDispatch} from 'react-redux';
 
-import {getAllCategories, deleteCategory} from '../../../redux';
-import styles from './category.module.css';
-import CreateCategory from '../create';
-import UtilService from '../../../services/util_service';
+import {getAllCoupons, deleteCoupon} from '../../../redux';
+import styles from './coupon.module.css';
+import CreateCoupon from '../create';
 
-function CategoryList({history}) {
-  const [data, setData] = useState(null);
+function CouponList({history}) {
   const [isCreating, setIsCreating] = useState(false);
-  const [lightbox, setLightbox] = useState(false);
 
-  const loading = useSelector(state => state.category.loading);
-  const category = useSelector(state => state.category.data);
+  const loading = useSelector(state => state.coupon.loading);
+  const coupon = useSelector(state => state.coupon.data);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllCategories());
+    dispatch(getAllCoupons());
     //eslint-disable-next-line
   }, []);
 
   const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />
 
-  const handleLightBox = (data) => {
-    setLightbox(true);
-    setData(data);
-  }
-
-  const checkPath = (image) => {
-    if(image && image.indexOf('https') === -1){
-      return `${UtilService.getAttachmentPath()}${image}`;
-    }
-    return image;
-  }
+  
 
   function confirm(id) {
-    dispatch(deleteCategory(id)).then(() => {
-      message.success('Category Deleted.');
+    dispatch(deleteCoupon(id)).then(() => {
+      message.success('Coupon Deleted.');
     });
   }
 
   const handleRoute = id => {
-    history.push(`/main/category/edit/${id}`)
+    history.push(`/main/coupon/edit/${id}`)
   }
 
   const columns = [
     {
-      title: 'Name',
-      dataIndex: 'name',
-      key: 'name',
+      title: 'Code',
+      dataIndex: 'code',
+      key: 'code',
       align: 'center'
     },
     {
-      title: 'Image',
-      dataIndex: 'coverimage',
-      key: 'coverimage',
+      title: 'Value',
+      dataIndex: 'value',
+      key: 'value',
       align: 'center',
-      render: val => <img onClick={() => handleLightBox(val)} className={styles.img} src={checkPath(val)} alt="coverimage"/>
     },
     {
-      title: 'Description',
-      dataIndex: 'description',
-      key: 'description',
+      title: 'Percentage',
+      dataIndex: 'isPercentage',
+      key: 'isPercentage',
       align: 'center'
     },
     {
@@ -72,13 +57,6 @@ function CategoryList({history}) {
       dataIndex: 'created_at',
       key: 'created_at',
       align: 'center'
-    },
-    {
-      title: 'Created By',
-      dataIndex: 'created_by',
-      key: 'created_by',
-      align: 'center',
-      render: val => val ? <p>{val}</p> : <p style={{color: '#de2f40'}}>-</p>
     },
     {
       title: 'Status',
@@ -101,7 +79,7 @@ function CategoryList({history}) {
       width: 100,
       render: (items) => (
         <Popconfirm
-          title="Are you sure you want to delete this category?"
+          title="Are you sure you want to delete this coupon?"
           onConfirm={() => confirm(items.id)}
           okText="Yes"
           cancelText="No"
@@ -116,18 +94,18 @@ function CategoryList({history}) {
 
   return (
     <Spin indicator={antIcon} spinning={loading}>
-      <Card className={styles.cardReset} title='All Category Listings'>
+      <Card className={styles.cardReset} title='All Coupon Listings'>
 
         {!isCreating && <Button icon={<FormOutlined />} type="primary" onClick={handleCreate}>
-          Add Category
+          Add Coupon
         </Button>}
 
         {isCreating ? (
-          <CreateCategory setIsCreating={() => setIsCreating()}/>
+          <CreateCoupon setIsCreating={() => setIsCreating()}/>
         ) : (
           <Table
             columns={columns}
-            dataSource={category}
+            dataSource={coupon}
             bordered
             scroll={{x: 1200}}
             rowKey="id"
@@ -136,14 +114,9 @@ function CategoryList({history}) {
         )}
       </Card> 
 
-      {lightbox && 
-      <Lightbox
-        mainSrc={checkPath(data)}
-        onCloseRequest={() => setLightbox(false)}
-        animationOnKeyInput={true}
-      />}
+   
     </Spin>
   )
 }
 
-export default CategoryList;
+export default CouponList;

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Spin, message } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 import { BsTrash } from "react-icons/bs";
@@ -15,6 +15,7 @@ import {
   decrementCart,
   editCart,
   deleteCart,
+  getCouponCode,
 } from "../../redux";
 import AuthService from "../../services/authentication_service";
 import UtilService from "../../services/util_service";
@@ -22,8 +23,10 @@ import digitFormat from "../../utils/digitFormat";
 import ConstantUtil from "../../utils/constantUtil";
 
 const CartPage = ({ history }) => {
+  const [code, setCode] = useState(null);
   const loading = useSelector((state) => state.cart.loading);
   const cartInfo = useSelector((state) => state.cart.userCart);
+  const couponCode = useSelector((state) => state.cart.couponCode);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -43,6 +46,14 @@ const CartPage = ({ history }) => {
       message.success(item.name + " deleted from your cart.");
     });
   };
+
+  const handleChange = (e) => {
+    const { value } = e.target;
+    setCode(value);
+  };
+  const getCouponByCode = () => {
+    dispatch(getCouponCode(code));
+  }
 
   const handleIncrement = (id) => {
     dispatch(incrementCart(id));
@@ -172,14 +183,21 @@ const CartPage = ({ history }) => {
           {AuthService.hasSession() && cartInfo && cartInfo.length > 0 && (
             <div className="edit">
               <div className="edit-inner">
-                <input type="text" placeholder="Coupon code" />
-                <button className="btn">apply coupon</button>
-              </div>
+                <input type="text" placeholder="Coupon code" name="code"
+                  onChange={handleChange} />
+                <button className="btn" onClick={() => getCouponByCode()} >apply coupon</button>
 
-              <button className="btn">update cart</button>
+
+              </div>
+              
+
+              {/* <button className="btn">update cart</button> */}
             </div>
           )}
         </div>
+        {
+          couponCode && <h3>{couponCode.value} {couponCode.isPercentage === "1" ? '%' : ''} would be discounted</h3>
+        }
 
         <div className="subtotal">
           {cartInfo && cartInfo.length > 0 && (
@@ -211,11 +229,11 @@ const CartPage = ({ history }) => {
               )}
             </div>
           ) : (
-            <p className="bold">
-              Please <span onClick={() => history.push("/login")}>sign in</span>{" "}
-              to checkout
+              <p className="bold">
+                Please <span onClick={() => history.push("/login")}>sign in</span>{" "}
+                to checkout
             </p>
-          )}
+            )}
         </div>
       </div>
     </StyledSection>

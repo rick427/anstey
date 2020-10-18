@@ -14,6 +14,9 @@ import UtilService from "../../services/util_service";
 import digitFormat from "../../utils/digitFormat";
 import ConstantUtil from "../../utils/constantUtil";
 
+
+import { PayPalButton } from "react-paypal-button-v2";
+
 //import g7 from '../../assets/g-16.jpg';
 
 const CheckOutPage = ({ history }) => {
@@ -91,6 +94,20 @@ const CheckOutPage = ({ history }) => {
           <div className="checkout-card tall">
             <div className="inner-card">
               <h3 className="title">checkout</h3>
+
+
+              {userCartInfo && userCartInfo.cart && <PayPalButton
+                amount={parseInt(userCartInfo.cart.totalprice) +
+                  parseInt(userCartInfo.deliveryfee)}
+                currency='USD'
+                onSuccess={(details, data) => {
+                  console.log(data);
+                  console.log(details);
+                }}
+                options={{
+                  clientId: "AUVjT-bFYBTJkCtBaWCXEfJL-Lb0vPmDdkLqnI4z-WO3TmMLxkrxf3ho4DgSuLyLDyVxpi0dEVSu_zY_"
+                }}
+              />}
 
               <div className="top-card">
                 <div className="top-heading">
@@ -223,6 +240,9 @@ const CheckOutPage = ({ history }) => {
                 <button onClick={() => handlecheckout()}>
                   proceed to payment
                 </button>
+
+
+
               </div>
             </div>
           </div>
@@ -286,7 +306,7 @@ const CheckOutPage = ({ history }) => {
                         userCartInfo.cart &&
                         digitFormat(
                           parseInt(userCartInfo.cart.totalprice) +
-                            parseInt(userCartInfo.deliveryfee)
+                          parseInt(userCartInfo.deliveryfee)
                         )}
                     </p>
                   </div>

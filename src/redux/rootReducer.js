@@ -5,6 +5,7 @@ import dashboardReducer from './dashboard/dashboardReducer';
 import topOrdersReducer from './topOrders/topOrdersReducer';
 import ordersReducer from './orders/ordersReducer';
 import categoryReducer from './categories/categoryReducer';
+import couponReducer from './coupons/couponReducer';
 import frontSlideReducer from './frontslides/frontSlideReducer';
 import productsReducer from './products/productsReducer';
 import uploadReducer from './upload/uploadReducer';
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
     orders: ordersReducer,
     category: categoryReducer,
     frontSlides: frontSlideReducer,
+    coupon: couponReducer,
     products: productsReducer,
     upload: uploadReducer,
     cart: cartReducer

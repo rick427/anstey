@@ -41,6 +41,7 @@ function Sider() {
             openKeys={openKey} 
             onOpenChange={onOpenChange} 
             selectedKeys={[current]}
+            style={{overflowY: 'scroll', height: '50vh'}}
         >
             <SubMenu key="sub1" icon={<AppstoreOutlined />} title="Dashboard">
                 <Menu.Item key="/main/dashboard/admin" icon={<UserOutlined />}>
@@ -66,6 +67,8 @@ function Sider() {
                 </Menu.Item>
             </SubMenu>
 
+            
+
             <SubMenu key="sub5" icon={<FolderOutlined />} title="Front-Slide">
                 <Menu.Item key="/main/front/slide/list" icon={<FolderOpenOutlined />}>
                     <Link to="/main/front/slide/list">List</Link>
@@ -88,6 +91,12 @@ function Sider() {
             <SubMenu key="sub8" icon={<FolderOutlined />} title="Customer">
                 <Menu.Item key="/main/customers/list" icon={<FolderOpenOutlined />}>
                     <Link to="/main/customers/list">List</Link>
+                </Menu.Item>
+            </SubMenu>
+
+            <SubMenu key="sub9" icon={<UnorderedListOutlined />} title="Coupon">
+                <Menu.Item key="/main/coupon/list" icon={<OrderedListOutlined />}>
+                    <Link to="/main/coupon/list">List</Link>
                 </Menu.Item>
             </SubMenu>
         </Menu>
